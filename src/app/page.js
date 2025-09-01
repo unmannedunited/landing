@@ -18,7 +18,7 @@ export default function Home() {
       <nav className="absolute top-0 left-0 w-full  h-16 flex items-center justify-between px-4 bg-background border-b border-dashed border-foreground z-10">
         <div className="text-xs flex items-center justify-between gap-2 uppercase tracking-[3px] font-regular w-full   max-w-[1200px] mx-auto ">
           <button className="flex items-center gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[3px]">
-            <img src="/unmanned-logo.png" alt="Unmanned united" className="w-10 h-10" />
+            <img src="/unmanned/unmanned-logo.png" alt="Unmanned united" className="w-10 h-10" />
             Unmanned united
           </button>
           <button className="uppercase text-xs font-syncopate font-regular tracking-[3px] cursor-pointer"
@@ -31,7 +31,7 @@ export default function Home() {
       </nav>
       <video
         ref={videoRef}
-        src="/start.mp4"
+        src="/unmanned/start.mp4"
         autoPlay
         muted
         playsInline
