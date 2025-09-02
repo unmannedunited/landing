@@ -39,14 +39,14 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/unmanned/favicon.ico", sizes: "any" },
+      { url: "/unmanned/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/unmanned/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/favicon-32x32.png",
+    shortcut: "/unmanned/favicon.ico",
+    apple: "/unmanned/favicon-32x32.png",
   },
-  manifest: "/site.webmanifest",
+  manifest: "/unmanned/site.webmanifest",
   themeColor: "#174F94",
   colorScheme: "light",
 };
