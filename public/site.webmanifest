@@ -1,0 +1,29 @@
+{
+  "name": "Unmanned United",
+  "short_name": "Unmanned United",
+  "description": "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions that redefine what's possible.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F7F7",
+  "theme_color": "#174F94",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/unmanned-logo.png",
+      "sizes": "40x40",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["technology", "business", "innovation"],
+  "lang": "en-US"
+}

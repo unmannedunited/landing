@@ -32,27 +32,13 @@ export default function Home() {
 
   };
 
-  // Función para acortar el video
-  const handleVideoLoad = () => {
-    if (videoRef.current) {
-      // Hacer que el video termine después de 3 segundos (en lugar de su duración completa)
-      const targetDuration = 3; // segundos
-      
-      setTimeout(() => {
-        if (videoRef.current) {
-          videoRef.current.currentTime = videoRef.current.duration;
-          handleEnded();
-        }
-      }, targetDuration * 1000);
-    }
-  };
 
   // Usar useEffect para controlar el timing del video
   useEffect(() => {
     if (videoRef.current && ended === false) {
       // Acelerar el video a 3x
       if (videoRef.current) {
-        videoRef.current.playbackRate = 3;
+        videoRef.current.playbackRate = 1;
         console.log("🚀 Video acelerado a 3x velocidad");
       }
     }
@@ -63,8 +49,7 @@ export default function Home() {
     const video = videoRef.current;
     if (video) {
       const handleCanPlay = () => {
-        video.playbackRate = 4;
-        console.log("🎥 Video listo - acelerado a 3x");
+        video.playbackRate = 1;
       };
       
       video.addEventListener('canplay', handleCanPlay);
@@ -84,8 +69,6 @@ export default function Home() {
       // Calcular posición relativa del mouse (0 a 1)
       const x = (clientX / innerWidth - 0.5) * 2; // -1 a 1
       const y = (clientY / innerHeight - 0.5) * 2; // -1 a 1
-
-      console.log(x, y);
       
       setMousePosition({ y, x });
     };
@@ -123,7 +106,6 @@ export default function Home() {
           className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
           style={{ opacity: videoOpacity }}
           onEnded={handleEnded}
-          onLoadedMetadata={handleVideoLoad}
         />
         <div className="absolute w-full h-full top-0 left-0">
 
