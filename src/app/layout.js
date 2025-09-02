@@ -18,7 +18,7 @@ const syncopate = Syncopate({
 });
 
 export const metadata = {
-  title: "Unmanned United -",
+  title: "Unmanned United",
   description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions that redefine what's possible.",
   keywords: "drones, unmanned technology, autonomous systems, innovation, robotics",
   authors: [{ name: "Unmanned United" }],
@@ -26,7 +26,7 @@ export const metadata = {
   publisher: "Unmanned United",
   robots: "index, follow",
   openGraph: {
-    title: "Unmanned United - Unstoppable Innovation",
+    title: "Unmanned United - Unmanned, United, Unstoppable",
     description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions.",
     type: "website",
     locale: "en_US",
@@ -34,7 +34,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Unmanned United - Unstoppable Innovation",
+    title: "Unmanned United - Unmanned, United, Unstoppable",
     description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions.",
   },
   icons: {
