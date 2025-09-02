@@ -5,11 +5,14 @@ import { useRef, useState, useEffect } from "react";
 export default function Home() {
   const videoRef = useRef(null);
   const [ended, setEnded] = useState(false);
+
   const [showPattern, setShowPattern] = useState(false);
   const [showBarcode, setShowBarcode] = useState(false);
   const [showBadge, setShowBadge] = useState(false);
   const [showDron, setShowDron] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
+  const [showText, setShowText] = useState(false);
+
   const [videoOpacity, setVideoOpacity] = useState(1);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -22,13 +25,14 @@ export default function Home() {
     
     // Secuencia de animaciones
     setTimeout(() => setShowPattern(true), 200); // Pattern aparece después de 200ms
-    setTimeout(() => setShowBarcode(true), 1800); // Barcode aparece después de 800ms
-    setTimeout(() => setShowBadge(true), 2100); // Badge aparece después de 800ms
     setTimeout(() => {
       setVideoOpacity(0); // Video desaparece
       setShowDron(true); // Dron aparece al mismo tiempo
     }, 1000); // Después de 1.5 segundos
     setTimeout(() => setShowTitle(true), 1200); // Badge aparece después de 800ms
+    setTimeout(() => setShowBarcode(true), 1800); // Barcode aparece después de 800ms
+    setTimeout(() => setShowBadge(true), 2100); // Badge aparece después de 800ms
+    setTimeout(() => setShowText(true), 2500); // Badge aparece después de 800ms
 
   };
 
@@ -162,7 +166,9 @@ export default function Home() {
             }`} 
           />
 
-          <div className="absolute left-[17%] top-[65%] w-content transition-opacity duration-1000 ease-in-out">
+          <div className={`absolute left-[17%] top-[65%] w-content transition-opacity duration-1000 ease-in-out ${
+              showText ? 'opacity-100' : 'opacity-0'
+            }`}>
             <p className="text-xl uppercase font-syncopate font-regular tracking-[7.5px]">Unmanned, <br/>United, <br/><span className="text-blue font-bold">Unstoppable</span></p>
           </div>
           </div>
