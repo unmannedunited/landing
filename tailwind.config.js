@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'syncopate': ['var(--font-syncopate)', 'sans-serif'],
+        'nunito': ['var(--font-nunito-sans)', 'sans-serif'],
       },
       colors: {
         'background': '#F7F7F7',

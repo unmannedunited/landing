@@ -1,68 +1,36 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const videoRef = useRef(null);
-  const [ended, setEnded] = useState(false);
-
   const [showPattern, setShowPattern] = useState(false);
   const [showBarcode, setShowBarcode] = useState(false);
   const [showBadge, setShowBadge] = useState(false);
   const [showDron, setShowDron] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
   const [showText, setShowText] = useState(false);
-
-  const [videoOpacity, setVideoOpacity] = useState(1);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const handleEnded = () => {
-    console.log("🎬 Video terminado - ejecutando secuencia de animaciones");
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-    setEnded(true);
-
-    // Secuencia de animaciones
-    setTimeout(() => setShowPattern(true), 200); // Pattern aparece después de 200ms
-    setTimeout(() => {
-      setVideoOpacity(0); // Video desaparece
-      setShowDron(true); // Dron aparece al mismo tiempo
-    }, 1000); // Después de 1.5 segundos
-    setTimeout(() => setShowTitle(true), 1200); // Badge aparece después de 800ms
-    setTimeout(() => setShowBarcode(true), 1800); // Barcode aparece después de 800ms
-    setTimeout(() => setShowBadge(true), 2100); // Badge aparece después de 800ms
-    setTimeout(() => setShowText(true), 2500); // Badge aparece después de 800ms
-
-  };
-
-
-  // Usar useEffect para controlar el timing del video
+  // Secuencia de animaciones al cargar la página
   useEffect(() => {
-    if (videoRef.current && ended === false) {
-      // Acelerar el video a 3x
-      if (videoRef.current) {
-        videoRef.current.playbackRate = 5;
-        console.log("🚀 Video acelerado a 3x velocidad");
-      }
-    }
-  }, [ended]);
+    const timer1 = setTimeout(() => setShowPattern(true), 200);
+    const timer2 = setTimeout(() => setShowTitle(true), 600);
+    const timer3 = setTimeout(() => setShowBarcode(true), 1000);
+    const timer4 = setTimeout(() => setShowBadge(true), 1200);
+    const timer5 = setTimeout(() => setShowDron(true), 1400);
+    const timer6 = setTimeout(() => setShowText(true), 1600);
 
-  // Asegurar que el video se acelere cuando esté listo
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handleCanPlay = () => {
-        video.playbackRate = 5;
-      };
-
-      video.addEventListener('canplay', handleCanPlay);
-
-      return () => {
-        video.removeEventListener('canplay', handleCanPlay);
-      };
-    }
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+      clearTimeout(timer5);
+      clearTimeout(timer6);
+    };
   }, []);
+
+
 
   // Efecto parallax para el dron
   useEffect(() => {
@@ -85,74 +53,59 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative w-full">
-      <nav className="fixed top-0 w-full  h-16 flex items-center justify-between px-4 bg-background border-b border-dashed border-foreground z-10">
+    <div className="relative w-full bg-white">
+      <nav className="fixed top-0 w-full h-16 flex items-center justify-between px-4 bg-background border-b border-dashed border-foreground z-10">
         <div className="text-xs flex items-center justify-between gap-2 uppercase tracking-[3px] font-regular w-full   max-w-[1200px] mx-auto ">
-          <button className="flex items-center gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px]">
+          <a className="flex items-center gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px]"
+          href="/unmanned"
+          >
             <img src="/unmanned/unmanned-logo.png" alt="Unmanned united" className="w-10 h-10" />
             Unmanned united
-          </button>
-          <button className="uppercase text-xs font-syncopate font-regular tracking-[4.5px] cursor-pointer"
-            onClick={() => { console.log("This does nothing yet"); }}
+          </a>
+          <a className="uppercase text-sm font-syncopate font-regular tracking-[4.5px] cursor-pointer"
+          href="mailto:info@unmannedunited.com" 
           >
             Contact us
-          </button>
+          </a>
 
         </div>
       </nav>
-      <div className={"mt-16 w-full relative"} style={{ height: "calc(100vh - 128px)" }}>
-        <video
-          ref={videoRef}
-          src="/unmanned/start.mp4"
-          autoPlay
-          muted
-          playsInline
-          className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-          style={{ opacity: videoOpacity }}
-          onEnded={handleEnded}
-        />
-        <div className="absolute w-full h-full top-0 left-0">
+      <div className={"w-full relative"}>
+        <div className="w-full h-[90vh] relative overflow-hidden">
 
           <img
-            src="/unmanned/backgroundPattern.svg"
+            src="/unmanned/unmanned-text-right.png"
             alt="Background pattern"
-            className={`absolute top-0 right-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            className={`absolute w-[25%] top-0 right-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
           />
 
           <img
-            src="/unmanned/backgroundPattern2.svg"
+            src="/unmanned/unmanned-text-left.png"
             alt="Background pattern"
-            className={`absolute bottom-0 left-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            className={`absolute w-[25%] bottom-0 left-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
           />
 
-          <div className="w-full h-full max-w-[1200px] mx-auto relative">
+          <div className="w-full h-full mx-auto relative">
             <img
-              src="/unmanned/unmanned-text.svg"
+              src="/unmanned/unmanned-text.png"
               alt="Badge of Unmanned united"
-              className={`absolute left-[5%] top-[15%] w-content transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
                 }`}
             />
 
             <img
-              src="/unmanned/barcode.svg"
+              src="/unmanned/unmanned-misc.png"
               alt="Barcode"
-              className={`absolute right-[15%] top-[55%] w-content transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
-                }`}
-            />
-
-            <img
-              src="/unmanned/badge.svg"
-              alt="Badge of Unmanned united"
-              className={`absolute right-[5%] top-[15%] w-content transition-opacity duration-1000 ease-in-out ${showBadge ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
                 }`}
             />
 
             <img
               src="/unmanned/dron1.png"
               alt="Dron image"
-              className={`absolute right-[5vw] top-[10%] w-3/5 transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-[5%] right-0 w-4/5 transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
                 }`}
               style={{
                 transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
@@ -161,34 +114,57 @@ export default function Home() {
 
 
             <img
-              src="/unmanned/unmanned-text-sub.svg"
-              alt="Badge of Unmanned united"
-              style={{ transform: "translate(7px, 39px)", width: 1112 }}
-              className={`absolute left-[5%] top-[15%] w-content transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
+              src="/unmanned/unmanned-text-sub.png"
+              className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
                 }`}
             />
 
-            <div className={`absolute left-[17%] top-[65%] w-content transition-opacity duration-1000 ease-in-out ${showText ? 'opacity-100' : 'opacity-0'
-              }`}>
-              <p className="text-xl uppercase font-syncopate font-regular tracking-[7.5px]">Unmanned, <br />United, <br /><span className="text-blue font-bold">Unstoppable</span></p>
-            </div>
           </div>
 
         </div>
       </div>
 
 
-      {(ended || true) && (
-        <div className={`w-full h-16 flex bg-background border-t border-dashed border-foreground z-10 transition-opacity duration-1000 ease-in-out`}>
-          <button
-            className={`uppercase px-6 cursor-pointer py-3 bg-blue transition-all left-1/2 relative -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-xl shadow-lg text-lg font-regular tracking-[6.5px] font-syncopate ${showDron ? 'opacity-100' : 'opacity-0'
-              }`}
-            onClick={() => {
-            }}>
-            Schedule a demo
-          </button>
+      <footer className={`w-full flex bg-background border-t border-dashed border-foreground z-10 transition-opacity duration-1000 ease-in-out`}>
+        <a
+          className={`uppercase px-24 cursor-pointer py-3 bg-blue transition-all left-1/2 absolute -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] font-syncopate ${showDron ? 'opacity-100' : 'opacity-0'
+            }`}
+          href="mailto:info@unmannedunited.com">
+          Contact us
+        </a>
+        <div className="w-full h-full border-t border-dashed border-foreground mt-20">
+
+        <div className="w-[1000px] mx-auto my-12">
+          <div className=" space-y-4 flex justify-between">
+             <p className="text-lg font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+               © 2025 Unmanned United Inc. All rights reserved.
+             </p>
+            <div className="space-y-2">
+              <div className="flex gap-4">
+                <div>
+                  <p className="text-lg text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                                <span className="font-semibold">Contact:</span>
+                              </p>
+
+                </div>
+                <div>
+                <p className="text-lg  font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                  info@unmannedunited.com
+                </p>
+                <p className="text-lg font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                  +1-321-389-1600
+                </p>
+
+                </div>
+            </div>
+              
+            </div>
+          </div>
         </div>
-      )}
+          </div>
+
+      </footer>
+
     </div>
   );
 }
