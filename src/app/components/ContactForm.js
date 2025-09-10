@@ -24,7 +24,7 @@ export default function ContactForm() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/unmanned/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,20 +48,20 @@ export default function ContactForm() {
 
   return (
     <div id="contact-form" className="w-full relative bg-[#174F94] flex items-center py-40">
-        <img src="/unmanned/footer-text2.png" alt="Footer text" className="w-[30%] absolute right-[-10%] bottom-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
-      <img src="/unmanned/footer-text.png" alt="Footer text" className="w-[30%] absolute left-[-5%] top-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
+        <img src="/footer-text2.png" alt="Footer text" className="w-[30%] absolute right-[-10%] bottom-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
+      <img src="/footer-text.png" alt="Footer text" className="w-[30%] absolute left-[-5%] top-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
 
       <div className="w-full max-w-6xl mx-auto px-8 flex flex-col lg:flex-row gap-16">
         <div className="flex-1 text-white space-y-8">
           <div className="space-y-4 mb-12">
-          <img src="/unmanned/contact-question.png" alt="Send us a message" className="h-3" />
+          <img src="/contact-question.png" alt="Send us a message" className="h-3" />
           <div className="space-y-2 mt-12">
-                <img src="/unmanned/contact-message.png" alt="Send us a message" className="" />
+                <img src="/contact-message.png" alt="Send us a message" className="" />
             </div>
           </div>
 
           <div className="flex items-center gap-6">
-              <img src="/unmanned/contact-logo.png" alt="Send us a message" className="h-20 w-20" />
+              <img src="/contact-logo.png" alt="Send us a message" className="h-20 w-20" />
 
             <div className="flex-1">
               <p className="text-lg leading-sm text-white/90" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
@@ -124,7 +124,7 @@ export default function ContactForm() {
             )}
           </form>
 
-        {/* <img src="/unmanned/footer-text.svg" alt="Contact form background" className="absolute bottom-0 right-0 w-4/5" /> */}
+        {/* <img src="/footer-text.svg" alt="Contact form background" className="absolute bottom-0 right-0 w-4/5" /> */}
         </div>
       </div>
 

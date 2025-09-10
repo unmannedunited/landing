@@ -61,7 +61,7 @@ export default function Home() {
           <a className="flex items-center gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px]"
             href="/unmanned"
           >
-            <img src="/unmanned/unmanned-logo.png" alt="Unmanned united" className="w-10 h-10" />
+            <img src="/unmanned-logo.png" alt="Unmanned united" className="w-10 h-10" />
             Unmanned united
           </a>
           <a className="uppercase text-sm font-syncopate font-regular tracking-[4.5px] cursor-pointer"
@@ -83,14 +83,14 @@ export default function Home() {
         <div className="w-full h-[90vh] relative overflow-hidden">
 
           <img
-            src="/unmanned/unmanned-text-right.png"
+            src="/unmanned-text-right.png"
             alt="Background pattern"
             className={`absolute w-[25%] top-0 right-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
           />
 
           <img
-            src="/unmanned/unmanned-text-left.png"
+            src="/unmanned-text-left.png"
             alt="Background pattern"
             className={`absolute w-[25%] bottom-0 left-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
@@ -98,21 +98,21 @@ export default function Home() {
 
           <div className="w-full h-full mx-auto relative">
             <img
-              src="/unmanned/unmanned-text.png"
+              src="/unmanned-text.png"
               alt="Badge of Unmanned united"
               className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
                 }`}
             />
 
             <img
-              src="/unmanned/unmanned-misc.png"
+              src="/unmanned-misc.png"
               alt="Barcode"
               className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
                 }`}
             />
 
             <img
-              src="/unmanned/dron1.png"
+              src="/dron1.png"
               alt="Dron image"
               className={`absolute top-[5%] right-0 w-4/5 transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
                 }`}
@@ -123,7 +123,7 @@ export default function Home() {
 
 
             <img
-              src="/unmanned/unmanned-text-sub.png"
+              src="/unmanned-text-sub.png"
               className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
                 }`}
             />
