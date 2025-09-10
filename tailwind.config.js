@@ -15,6 +15,7 @@ module.exports = {
         'background': '#F7F7F7',
         'foreground': '#1E1E1E',
         'blue': '#174F94',
+        'darkblue': '#0F407E'
       },
     },
   },

@@ -23,6 +23,7 @@ const nunitoSans = Nunito_Sans({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+
 export const metadata = {
   title: "Unmanned United",
   description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions that redefine what's possible.",

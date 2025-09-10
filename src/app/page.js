@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import ContactForm from "./components/ContactForm";
+import Overview from "./components/Overview";
 
 export default function Home() {
   const [showPattern, setShowPattern] = useState(false);
@@ -57,13 +59,20 @@ export default function Home() {
       <nav className="fixed top-0 w-full h-16 flex items-center justify-between px-4 bg-background border-b border-dashed border-foreground z-10">
         <div className="text-xs flex items-center justify-between gap-2 uppercase tracking-[3px] font-regular w-full   max-w-[1200px] mx-auto ">
           <a className="flex items-center gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px]"
-          href="/unmanned"
+            href="/unmanned"
           >
             <img src="/unmanned/unmanned-logo.png" alt="Unmanned united" className="w-10 h-10" />
             Unmanned united
           </a>
           <a className="uppercase text-sm font-syncopate font-regular tracking-[4.5px] cursor-pointer"
-          href="mailto:info@unmannedunited.com" 
+            href="#contact-form"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact-form')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
           >
             Contact us
           </a>
@@ -124,47 +133,59 @@ export default function Home() {
         </div>
       </div>
 
-
-      <footer className={`w-full flex bg-background border-t border-dashed border-foreground z-10 transition-opacity duration-1000 ease-in-out`}>
+      <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
         <a
-          className={`uppercase px-24 cursor-pointer py-3 bg-blue transition-all left-1/2 absolute -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] font-syncopate ${showDron ? 'opacity-100' : 'opacity-0'
-            }`}
-          href="mailto:info@unmannedunited.com">
-          Contact us
-        </a>
-        <div className="w-full h-full border-t border-dashed border-foreground mt-20">
+            className={`uppercase px-24 cursor-pointer py-3 bg-blue transition-all left-1/2 absolute -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] font-syncopate ${showDron ? 'opacity-100' : 'opacity-0'
+              }`}
+            href="#contact-form"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact-form')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}>
+            Contact us
+          </a>
+          <div className="h-20"></div>
 
-        <div className="w-[1000px] mx-auto my-12">
-          <div className=" space-y-4 flex justify-between">
-             <p className="text-lg font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
-               © 2025 Unmanned United Inc. All rights reserved.
-             </p>
-            <div className="space-y-2">
-              <div className="flex gap-4">
-                <div>
-                  <p className="text-lg text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
-                                <span className="font-semibold">Contact:</span>
-                              </p>
+        <Overview />
 
+        <ContactForm />
+      </div>
+
+      <footer className={`w-full bg-background relative z-20 transition-opacity duration-1000 ease-in-out`}>
+
+        <div className="w-full h-full bg-darkblue border-t border-dashed border-white">
+          <div className="w-[1000px] mx-auto mt-12 pb-20">
+            <div className=" space-y-4 flex justify-between gap-4">
+              <p className="flex-1 text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                © 2025 Unmanned United Inc. All rights reserved.
+              </p>
+              <div className="flex-1 mt-0" style={{ marginTop: '0px' }} >
+                <div className="flex gap-4">
+                  <div>
+                    <p className="text-lg text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                      <span className="font-semibold">Contact:</span>
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                      info@unmannedunited.com
+                    </p>
+                    <p className="text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
+                      +1-321-389-1600
+                    </p>
+
+                  </div>
                 </div>
-                <div>
-                <p className="text-lg  font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
-                  info@unmannedunited.com
-                </p>
-                <p className="text-lg font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
-                  +1-321-389-1600
-                </p>
 
-                </div>
-            </div>
-              
+              </div>
             </div>
           </div>
         </div>
-          </div>
 
       </footer>
-
     </div>
   );
 }
