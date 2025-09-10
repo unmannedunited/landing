@@ -65,8 +65,8 @@ export default function ContactForm() {
 
             <div className="flex-1">
               <p className="text-lg leading-sm text-white/90" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
-                We're here to help you with any inquiries about our projects, services, or documentation. 
-                Just leave us a note and we'll respond promptly.
+                We&apos;re here to help you with any inquiries about our projects, services, or documentation. 
+                Just leave us a note and we&apos;ll respond promptly.
               </p>
             </div>
           </div>
