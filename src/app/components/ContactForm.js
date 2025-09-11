@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getImageUrl } from "../../lib/utils";
+import { getImageUrl, getLinkUrl } from "../../lib/utils";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

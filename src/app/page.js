@@ -81,7 +81,7 @@ export default function Home() {
         </div>
       </nav>
       <div className={"w-full relative"}>
-        <div className="w-full h-[90vh] relative overflow-hidden">
+        <div className="w-full h-[50vw] relative overflow-hidden">
 
           <img
             src={getImageUrl("/unmanned-text-right.png")}
@@ -125,6 +125,7 @@ export default function Home() {
 
             <img
               src={getImageUrl("/unmanned-text-sub.png")}
+              alt="Unmanned text subtitle"
               className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
                 }`}
             />

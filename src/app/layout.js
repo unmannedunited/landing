@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Syncopate, Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { getImageUrl } from "../lib/utils";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,14 +47,17 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: getImageUrl("/favicon.ico"), sizes: "any" },
+      { url: getImageUrl("/favicon-16x16.png"), sizes: "16x16", type: "image/png" },
+      { url: getImageUrl("/favicon-32x32.png"), sizes: "32x32", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: getImageUrl("/favicon.ico"),
     apple: "/favicon-32x32.png",
   },
-  manifest: "/site.webmanifest",
+  manifest: getImageUrl("/site.webmanifest"),
+};
+
+export const viewport = {
   themeColor: "#174F94",
   colorScheme: "light",
 };

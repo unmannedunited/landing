@@ -20,6 +20,14 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      // Deshabilitar warning de img elements ya que necesitamos usarlos para GitHub Pages
+      "@next/next/no-img-element": "off",
+      // Asegurar que todas las imágenes tengan alt
+      "jsx-a11y/alt-text": "error",
+    },
+  },
 ];
 
 export default eslintConfig;
