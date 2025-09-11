@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isGitHubPages = process.env.BASE_PATH && process.env.BASE_PATH !== '';
+
 const nextConfig = {
     // Configuración dinámica basada en el entorno
     basePath: process.env.BASE_PATH || '',
@@ -6,13 +8,21 @@ const nextConfig = {
     
     // Configuración de imágenes
     images: {
-        unoptimized: process.env.NODE_ENV === 'production' && process.env.BASE_PATH,
+        unoptimized: isGitHubPages,
+        loader: isGitHubPages ? 'custom' : 'default',
+        path: isGitHubPages ? `${process.env.ASSET_PREFIX || ''}/_next/image` : '/_next/image',
     },
     
     // Configuración de salida estática para GitHub Pages
-    output: process.env.BASE_PATH ? 'export' : undefined,
+    output: isGitHubPages ? 'export' : undefined,
     
-    trailingSlash: !!process.env.BASE_PATH,
+    trailingSlash: isGitHubPages,
+    
+    // Configuración adicional para GitHub Pages
+    ...(isGitHubPages && {
+        distDir: 'out',
+        generateBuildId: () => 'build',
+    }),
 };
 
 export default nextConfig;
