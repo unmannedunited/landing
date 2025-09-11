@@ -48,15 +48,15 @@ export default function ContactForm() {
 
   return (
     <div id="contact-form" className="w-full relative bg-[#174F94] flex items-center py-40">
-        <img src="/footer-text2.png" alt="Footer text" className="w-[30%] absolute right-[-10%] bottom-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
-      <img src="/footer-text.png" alt="Footer text" className="w-[30%] absolute left-[-5%] top-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
+        <img src="./footer-text2.png" alt="Footer text" className="w-[30%] absolute right-[-10%] bottom-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
+      <img src="./footer-text.png" alt="Footer text" className="w-[30%] absolute left-[-5%] top-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
 
       <div className="w-full max-w-6xl mx-auto px-8 flex flex-col lg:flex-row gap-16">
         <div className="flex-1 text-white space-y-8">
           <div className="space-y-4 mb-12">
-          <img src="/contact-question.png" alt="Send us a message" className="h-3" />
+          <img src="./contact-question.png" alt="Send us a message" className="h-3" />
           <div className="space-y-2 mt-12">
-                <img src="/contact-message.png" alt="Send us a message" className="" />
+                <img src="./contact-message.png" alt="Send us a message" className="" />
             </div>
           </div>
 

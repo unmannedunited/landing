@@ -72,7 +72,7 @@ export default function RootLayout({ children }) {
         <link rel="canonical" href="https://unmanned-united.com" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased w-screen overflow-x-hidden`}
       >
         {children}
       </body>
