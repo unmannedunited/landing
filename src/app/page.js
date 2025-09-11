@@ -19,12 +19,12 @@ export default function Home() {
   const parallaxRight = useAdvancedParallax({ 
     speed: 0.3, 
     enabled: showPattern, 
-    direction: 'up-right' 
+    direction: 'up-left' 
   });
   const parallaxLeft = useAdvancedParallax({ 
     speed: 0.2, 
     enabled: showPattern, 
-    direction: 'up-left' 
+    direction: 'up-right' 
   });
 
   // Secuencia de animaciones al cargar la página
@@ -94,7 +94,7 @@ export default function Home() {
         </div>
       </nav>
       <div className={"w-full relative"}>
-        <div className="w-full h-[45vw] relative overflow-hidden">
+        <div className="w-full h-[40vw] relative overflow-hidden">
 
           <img
             src={getImageUrl("/unmanned-text-right.png")}
@@ -182,9 +182,8 @@ export default function Home() {
       </div>
 
       <footer className={`w-full bg-background relative z-20 transition-opacity duration-1000 ease-in-out`}>
-
         <div className="w-full h-full bg-darkblue border-t border-dashed border-white">
-          <div className="w-[1000px] mx-auto mt-12 pb-20">
+          <div className="w-[1200px] mx-auto mt-12 pb-20">
             <div className=" space-y-4 flex justify-between gap-4">
               <p className="flex-1 text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
                 © 2025 Unmanned United Inc. All rights reserved.

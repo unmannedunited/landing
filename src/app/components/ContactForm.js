@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { getImageUrl, getLinkUrl } from "../../lib/utils";
+import { useAdvancedParallax } from "../../hooks/useParallax";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,18 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Efectos de parallax para las texturas blancas del footer
+  const parallaxFooterRight = useAdvancedParallax({ 
+    speed: 0.25, 
+    enabled: true, 
+    direction: 'up-right' 
+  });
+  const parallaxFooterLeft = useAdvancedParallax({ 
+    speed: 0.2, 
+    enabled: true, 
+    direction: 'up-left' 
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,16 +63,32 @@ export default function ContactForm() {
   };
 
   return (
-    <div id="contact-form" className="w-full relative bg-[#174F94] flex items-center py-40">
-        <img src={getImageUrl("/footer-text2.png")} alt="Footer text" className="w-[30%] absolute right-[-10%] bottom-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
-      <img src={getImageUrl("/footer-text.png")} alt="Footer text" className="w-[30%] absolute left-[-5%] top-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
+    <div id="contact-form" className="w-full relative bg-[#174F94] flex items-center py-40 max-h-content overflow-hidden">
+        <img 
+          src={getImageUrl("/footer-text2.png")} 
+          alt="Footer text" 
+          className="w-[30%] absolute right-[-5%] bottom-[-120%] z-10" 
+          style={{ 
+            transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterRight.y}px, 0)`,
+            willChange: 'transform'
+          }} 
+        />
+      <img 
+        src={getImageUrl("/footer-text.png")} 
+        alt="Footer text" 
+        className="w-[30%] absolute left-[-5%] top-[-30%] z-10" 
+        style={{ 
+          transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterLeft.y}px, 0)`,
+          willChange: 'transform'
+        }} 
+      />
 
-      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+      <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 z-30">
         <div className="flex-1 text-white space-y-8">
           <div className="space-y-4 mb-12">
               <p className="text-white text-[22px] uppercase font-thabit" style={{ lineHeight: '26px' }}>Got a question?</p>
           <div className="space-y-2 mt-12">
-              <p className="text-white text-[82px] font-coulson" style={{ lineHeight: '88px' }}>Send us a question</p>
+              <p className="text-white text-[78px] font-coulson" style={{ lineHeight: '88px' }}>Send us a message</p>
             </div>
           </div>
 
@@ -86,7 +115,7 @@ export default function ContactForm() {
                 onChange={handleInputChange}
                 placeholder="Your message..."
                 style={{ fontFamily: 'var(--font-nunito-sans)', fontSize: '16px', lineHeight: '26px' }}
-                className="w-full rounded-[1px] h-32 bg-white border placeholder:text-black/20 border-white/20 rounded-none px-4 py-3 focus:outline-none focus:border-white/60 resize-none"
+                className="w-full text-foreground rounded-[1px] h-32 bg-white border placeholder:text-black/20 border-white/20 rounded-none px-4 py-3 focus:outline-none focus:border-white/60 resize-none"
                 required
               />
             </div>
@@ -107,7 +136,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`mt-8 w-full rounded-[1px] border-white border uppercase px-24 cursor-pointer py-3 bg-transparent transition-all  hover:bg-foreground text-white text-sm font-regular tracking-[6.5px] font-syncopate`}
+              className={`mt-8 bg-blue w-full rounded-[1px] border-white border uppercase px-24 cursor-pointer py-3  transition-all  hover:bg-foreground text-white text-sm font-regular tracking-[6.5px] font-syncopate`}
   
             //   className="w-full bg-[#2a3a4a] border border-white text-white uppercase tracking-wider py-4 px-8 hover:bg-white hover:text-[#1a2332] transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >

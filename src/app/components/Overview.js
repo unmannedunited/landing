@@ -5,11 +5,11 @@ import { getImageUrl } from "../../lib/utils";
 function Overview() {   
     return (
         <div className="w-full bg-background transition-opacity duration-1000 ease-in-out">
-            <div className="w-full max-w-[1000px] mx-auto mt-20 mb-4">
+            <div className="w-full max-w-[1200px] mx-auto mt-20 mb-4">
                 <img src={getImageUrl("/overview-logo.png")} alt="Unmanned United Overview" className="w-20 h-20 mx-auto mb-6" />
                 <h1 className="text-xl text-blue font-bold" style={{ fontFamily: 'var(--font-nunito-sans)' }}>Company OVERVIEW</h1>
             </div>
-            <div className="w-full max-w-[1000px] mx-auto flex gap-12 mb-36">
+            <div className="w-full max-w-[1200px] mx-auto flex gap-12 mb-36">
             
             <div className="flex-1">
                 <p className="text-xl font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
