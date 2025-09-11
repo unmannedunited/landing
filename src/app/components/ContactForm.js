@@ -24,8 +24,10 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const link = getLinkUrl('/api/contact');
+    
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(link, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
