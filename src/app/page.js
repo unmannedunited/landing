@@ -19,12 +19,12 @@ export default function Home() {
   const parallaxRight = useAdvancedParallax({ 
     speed: 0.3, 
     enabled: showPattern, 
-    direction: 'up-left' 
+    direction: 'down-left' 
   });
   const parallaxLeft = useAdvancedParallax({ 
     speed: 0.2, 
     enabled: showPattern, 
-    direction: 'up-right' 
+    direction: 'down-right' 
   });
 
   // Secuencia de animaciones al cargar la página
@@ -94,12 +94,12 @@ export default function Home() {
         </div>
       </nav>
       <div className={"w-full relative"}>
-        <div className="w-full h-[40vw] relative overflow-hidden">
+        <div className="w-full h-[45vw] relative overflow-hidden">
 
           <img
             src={getImageUrl("/unmanned-text-right.png")}
             alt="Background pattern"
-            className={`absolute w-[25%] top-[-40%] right-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            className={`absolute w-[25%] top-[-60%] right-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
             style={{
               transform: `translate3d(0px, ${parallaxRight.y}px, 0)`,
@@ -110,7 +110,7 @@ export default function Home() {
           <img
             src={getImageUrl("/unmanned-text-left.png")}
             alt="Background pattern"
-            className={`absolute w-[25%] bottom-[-40%] left-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            className={`absolute w-[25%] bottom-[-70%] left-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
             style={{
               transform: `translate3d(0px, ${parallaxLeft.y}px, 0)`,

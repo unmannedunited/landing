@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://agusdev.github.io/unmanned/sitemap.xml

@@ -26,6 +26,15 @@ const nunitoSans = Nunito_Sans({
 });
 
 
+// Función para generar URLs absolutas para metadatos
+function getAbsoluteUrl(path) {
+  const baseUrl = process.env.NODE_ENV === 'production' 
+    ? 'https://agusdev.github.io/unmanned' 
+    : 'http://localhost:3000';
+  const basePath = process.env.BASE_PATH || '';
+  return `${baseUrl}${basePath}${path}`;
+}
+
 export const metadata = {
   title: "Unmanned United",
   description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions that redefine what's possible.",
@@ -35,16 +44,26 @@ export const metadata = {
   publisher: "Unmanned United",
   robots: "index, follow",
   openGraph: {
-    title: "Unmanned United - Unmanned, United, Unstoppable",
+    title: "Unmanned United",
     description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions.",
     type: "website",
     locale: "en_US",
     siteName: "Unmanned United",
+    url: getAbsoluteUrl(""),
+    images: [
+      {
+        url: getAbsoluteUrl("/og-image.png"),
+        width: 1200,
+        height: 630,
+        alt: "Unmanned United - Leading the future of unmanned technology",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Unmanned United - Unmanned, United, Unstoppable",
     description: "Leading the future of unmanned technology. Discover cutting-edge drones and autonomous solutions.",
+    images: [getAbsoluteUrl("/og-image.png")],
   },
   icons: {
     icon: [
@@ -53,9 +72,12 @@ export const metadata = {
       { url: getImageUrl("/favicon-32x32.png"), sizes: "32x32", type: "image/png" },
     ],
     shortcut: getImageUrl("/favicon.ico"),
-    apple: "/favicon-32x32.png",
+    apple: getImageUrl("/favicon-32x32.png"),
   },
   manifest: getImageUrl("/site.webmanifest"),
+  alternates: {
+    canonical: getAbsoluteUrl(""),
+  },
 };
 
 export const viewport = {
