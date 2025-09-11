@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Syncopate, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { getImageUrl } from "../lib/utils";
+import FontLoader from "../components/FontLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +79,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased w-screen overflow-x-hidden`}
       >
+        <FontLoader />
         {children}
       </body>
     </html>

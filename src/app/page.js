@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import ContactForm from "./components/ContactForm";
 import { getImageUrl } from "../lib/utils";
 import Overview from "./components/Overview";
+import { useAdvancedParallax } from "../hooks/useParallax";
 
 export default function Home() {
   const [showPattern, setShowPattern] = useState(false);
@@ -13,6 +14,18 @@ export default function Home() {
   const [showTitle, setShowTitle] = useState(false);
   const [showText, setShowText] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  // Efectos de parallax para las imágenes de fondo
+  const parallaxRight = useAdvancedParallax({ 
+    speed: 0.3, 
+    enabled: showPattern, 
+    direction: 'up-right' 
+  });
+  const parallaxLeft = useAdvancedParallax({ 
+    speed: 0.2, 
+    enabled: showPattern, 
+    direction: 'up-left' 
+  });
 
   // Secuencia de animaciones al cargar la página
   useEffect(() => {
@@ -81,13 +94,17 @@ export default function Home() {
         </div>
       </nav>
       <div className={"w-full relative"}>
-        <div className="w-full h-[50vw] relative overflow-hidden">
+        <div className="w-full h-[45vw] relative overflow-hidden">
 
           <img
             src={getImageUrl("/unmanned-text-right.png")}
             alt="Background pattern"
             className={`absolute w-[25%] top-0 right-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
+            style={{
+              transform: `translate3d(${parallaxRight.x}px, ${parallaxRight.y}px, 0)`,
+              willChange: 'transform'
+            }}
           />
 
           <img
@@ -95,40 +112,47 @@ export default function Home() {
             alt="Background pattern"
             className={`absolute w-[25%] bottom-0 left-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
+            style={{
+              transform: `translate3d(${parallaxLeft.x}px, ${parallaxLeft.y}px, 0)`,
+              willChange: 'transform'
+            }}
           />
-
-          <div className="w-full h-full mx-auto relative">
-            <img
-              src={getImageUrl("/unmanned-text.png")}
-              alt="Badge of Unmanned united"
-              className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
-                }`}
-            />
 
             <img
               src={getImageUrl("/unmanned-misc.png")}
               alt="Barcode"
-              className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-0 left-[10%] w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
                 }`}
             />
+
+
+          <div className="w-full h-full mx-auto relative">
+            <div className="max-w-[1200px] mx-auto relative h-full">
+              <img
+                src={getImageUrl("/unmanned-text.png")}
+                alt="Badge of Unmanned united"
+                className={`absolute top-[20%] left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
+                  }`}
+              />
 
             <img
               src={getImageUrl("/dron1.png")}
               alt="Dron image"
-              className={`absolute top-[5%] right-0 w-4/5 transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-[5%] right-[-300px] w-[90vw] transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
                 }`}
               style={{
                 transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
               }}
             />
+            
+              <img
+                src={getImageUrl("/unmanned-text-sub.png")}
+                alt="Badge of Unmanned united"
+                className={`absolute top-[20%] left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
+                  }`}
+              />
 
-
-            <img
-              src={getImageUrl("/unmanned-text-sub.png")}
-              alt="Unmanned text subtitle"
-              className={`absolute top-0 left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
-                }`}
-            />
+            </div>
 
           </div>
 
