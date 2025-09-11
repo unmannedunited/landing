@@ -54,12 +54,12 @@ export default function ContactForm() {
         <img src={getImageUrl("/footer-text2.png")} alt="Footer text" className="w-[30%] absolute right-[-10%] bottom-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
       <img src={getImageUrl("/footer-text.png")} alt="Footer text" className="w-[30%] absolute left-[-5%] top-0 z-10 " style={{ transform: 'rotateY(180deg)' }} />
 
-      <div className="w-full max-w-6xl mx-auto px-8 flex flex-col lg:flex-row gap-16">
+      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
         <div className="flex-1 text-white space-y-8">
           <div className="space-y-4 mb-12">
-          <img src={getImageUrl("/contact-question.png")} alt="Send us a message" className="h-3" />
+              <p className="text-white text-[22px] uppercase font-thabit" style={{ lineHeight: '26px' }}>Got a question?</p>
           <div className="space-y-2 mt-12">
-                <img src={getImageUrl("/contact-message.png")} alt="Send us a message" className="" />
+              <p className="text-white text-[82px] font-coulson" style={{ lineHeight: '88px' }}>Send us a question</p>
             </div>
           </div>
 

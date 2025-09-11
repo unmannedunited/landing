@@ -10,6 +10,8 @@ module.exports = {
       fontFamily: {
         'syncopate': ['var(--font-syncopate)', 'sans-serif'],
         'nunito': ['var(--font-nunito-sans)', 'sans-serif'],
+        'thabit': ['Thabit', 'sans-serif'],
+        'coulson': ['Coulson', 'serif'],
       },
       colors: {
         'background': '#F7F7F7',

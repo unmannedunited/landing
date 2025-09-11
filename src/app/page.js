@@ -59,13 +59,13 @@ export default function Home() {
     <div className="relative w-full bg-white">
       <nav className="fixed top-0 w-full h-16 flex items-center justify-between px-4 bg-background border-b border-dashed border-foreground z-10">
         <div className="text-xs flex items-center justify-between gap-2 uppercase tracking-[3px] font-regular w-full   max-w-[1200px] mx-auto ">
-          <a className="flex items-center gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px]"
+          <a className="flex items-center text-foreground gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px]"
             href="/unmanned"
           >
             <img src={getImageUrl("/unmanned-logo.png")} alt="Unmanned united" className="w-10 h-10" />
             Unmanned united
           </a>
-          <a className="uppercase text-sm font-syncopate font-regular tracking-[4.5px] cursor-pointer"
+          <a className="uppercase text-sm text-foreground font-syncopate font-regular tracking-[4.5px] cursor-pointer"
             href="#contact-form"
             onClick={(e) => {
               e.preventDefault();
