@@ -55,8 +55,8 @@ export default function Home() {
       const { innerWidth, innerHeight } = window;
 
       // Calcular posición relativa del mouse (0 a 1)
-      const x = (clientX / innerWidth - 0.5) * 2; // -1 a 1
-      const y = (clientY / innerHeight - 0.5) * 2; // -1 a 1
+      const x = (clientX / innerWidth - 0.5) * 5; // -1 a 1
+      const y = (clientY / innerHeight - 0.5) * 5; // -1 a 1
 
       setMousePosition({ y, x });
     };
@@ -99,10 +99,10 @@ export default function Home() {
           <img
             src={getImageUrl("/unmanned-text-right.png")}
             alt="Background pattern"
-            className={`absolute w-[25%] top-0 right-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            className={`absolute w-[25%] top-[-40%] right-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
             style={{
-              transform: `translate3d(${parallaxRight.x}px, ${parallaxRight.y}px, 0)`,
+              transform: `translate3d(0px, ${parallaxRight.y}px, 0)`,
               willChange: 'transform'
             }}
           />
@@ -110,23 +110,22 @@ export default function Home() {
           <img
             src={getImageUrl("/unmanned-text-left.png")}
             alt="Background pattern"
-            className={`absolute w-[25%] bottom-0 left-0 transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            className={`absolute w-[25%] bottom-[-40%] left-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
               }`}
             style={{
-              transform: `translate3d(${parallaxLeft.x}px, ${parallaxLeft.y}px, 0)`,
+              transform: `translate3d(0px, ${parallaxLeft.y}px, 0)`,
               willChange: 'transform'
             }}
           />
 
-            <img
+          <div className="w-full h-full mx-auto relative">
+          <img
               src={getImageUrl("/unmanned-misc.png")}
               alt="Barcode"
-              className={`absolute top-0 left-[10%] w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-[-5%] right-0 w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
                 }`}
             />
 
-
-          <div className="w-full h-full mx-auto relative">
             <div className="max-w-[1200px] mx-auto relative h-full">
               <img
                 src={getImageUrl("/unmanned-text.png")}
@@ -138,9 +137,11 @@ export default function Home() {
             <img
               src={getImageUrl("/dron1.png")}
               alt="Dron image"
-              className={`absolute top-[5%] right-[-300px] w-[90vw] transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
+              className={`absolute top-[2%] right-[-25%]  transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
                 }`}
               style={{
+                width: 'calc(80vw)',
+                maxWidth: 'none',
                 transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
               }}
             />
