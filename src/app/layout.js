@@ -29,8 +29,8 @@ const nunitoSans = Nunito_Sans({
 // Función para generar URLs absolutas para metadatos
 function getAbsoluteUrl(path) {
   const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://agusdev.github.io/unmanned' 
-    : 'http://localhost:3000';
+    ? 'https://new.unmannedunited.com' 
+    : 'https://new.unmannedunited.com';
   const basePath = process.env.BASE_PATH || '';
   return `${baseUrl}${basePath}${path}`;
 }
