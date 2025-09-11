@@ -31,14 +31,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up environment variable
+      - name: Set up environment variables
         run: 
-          echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> $GITHUB_ENV
+          echo "NODE_ENV=production" >> $GITHUB_ENV
           echo "SENDGRID_API_KEY=${{ secrets.SENDGRID_API_KEY }}" >> $GITHUB_ENV
           echo "SENDGRID_FROM_EMAIL=${{ secrets.SENDGRID_FROM_EMAIL }}" >> $GITHUB_ENV
           echo "SENDGRID_TO_EMAIL=${{ secrets.SENDGRID_TO_EMAIL }}" >> $GITHUB_ENV
-          echo "BASE_PATH=${{ secrets.BASE_PATH }}" >> $GITHUB_ENV
-          echo "ASSET_PREFIX=${{ secrets.ASSET_PREFIX }}" >> $GITHUB_ENV
+          echo "BASE_PATH=/unmanned" >> $GITHUB_ENV
+          echo "ASSET_PREFIX=/unmanned" >> $GITHUB_ENV
       - name: Detect package manager
         id: detect-package-manager
         run: |
