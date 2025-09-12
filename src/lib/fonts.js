@@ -5,11 +5,6 @@
 
 // Función para obtener la ruta base correcta
 export function getFontPath(fontPath) {
-  // En desarrollo, no hay basePath
-  if (process.env.NODE_ENV === 'development') {
-    return fontPath;
-  }
-  
   // En producción, usar el basePath configurado
   const basePath = process.env.BASE_PATH || '';
   return `${basePath}${fontPath}`;
