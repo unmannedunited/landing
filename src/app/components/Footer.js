@@ -21,6 +21,7 @@ export default function Footer() {
                   {/* <p className="text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
                     +1-321-389-1600
                   </p> */}
+                  
                 </div>
               </div>
             </div>
