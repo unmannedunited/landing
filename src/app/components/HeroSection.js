@@ -141,7 +141,7 @@ export default function HeroSection({ scrollY = 0 }) {
           className={`absolute left-[-10%] top-[-60%] w-[50%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
             }`}
           style={{
-            transform: `translate3d(0px,  ${parallaxRight}px, 0) rotateY(180deg)`,
+            transform: `translate3d(0px,  ${parallaxRight.y}px, 0) rotateY(180deg)`,
             willChange: 'transform'
           }}
         />
@@ -152,7 +152,7 @@ export default function HeroSection({ scrollY = 0 }) {
           className={`absolute bottom-[-45%] right-[-15%] w-[50%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
             }`}
           style={{
-            transform: `translate3d(0px, ${parallaxLeft}px, 0) rotateY(180deg)`,
+            transform: `translate3d(0px, ${parallaxLeft.y}px, 0) rotateY(180deg)`,
             willChange: 'transform'
           }}
         />
