@@ -92,7 +92,11 @@ export function useAdvancedParallax({
       setTransform({ x, y });
     };
 
+    // Agregar listener inmediatamente
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Llamar una vez para establecer el valor inicial
+    handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);

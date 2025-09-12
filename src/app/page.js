@@ -2,167 +2,35 @@
 
 import { useState, useEffect } from "react";
 import ContactForm from "./components/ContactForm";
-import { getImageUrl } from "../lib/utils";
 import Overview from "./components/Overview";
-import { useAdvancedParallax } from "../hooks/useParallax";
+import Navigation from "./components/Navigation";
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
-  const [showPattern, setShowPattern] = useState(false);
-  const [showBarcode, setShowBarcode] = useState(false);
-  const [showBadge, setShowBadge] = useState(false);
-  const [showDron, setShowDron] = useState(false);
-  const [showTitle, setShowTitle] = useState(false);
+  // Estado para la sección de overview y botón
   const [showText, setShowText] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showButton, setShowButton] = useState(false);
 
-  // Efectos de parallax para las imágenes de fondo
-  const parallaxRight = useAdvancedParallax({ 
-    speed: 0.3, 
-    enabled: showPattern, 
-    direction: 'down-left' 
-  });
-  const parallaxLeft = useAdvancedParallax({ 
-    speed: 0.2, 
-    enabled: showPattern, 
-    direction: 'down-right' 
-  });
-
-  // Secuencia de animaciones al cargar la página
+  // Efecto para la sección de overview y botón
   useEffect(() => {
-    const timer1 = setTimeout(() => setShowPattern(true), 200);
-    const timer2 = setTimeout(() => setShowTitle(true), 600);
-    const timer3 = setTimeout(() => setShowBarcode(true), 1000);
-    const timer4 = setTimeout(() => setShowBadge(true), 1200);
-    const timer5 = setTimeout(() => setShowDron(true), 1400);
-    const timer6 = setTimeout(() => setShowText(true), 1600);
-
+    const timer1 = setTimeout(() => setShowText(true), 2000);
+    const timer2 = setTimeout(() => setShowButton(true), 3000);
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-      clearTimeout(timer5);
-      clearTimeout(timer6);
-    };
-  }, []);
-
-
-
-  // Efecto parallax para el dron
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
-
-      // Calcular posición relativa del mouse (0 a 1)
-      const x = (clientX / innerWidth - 0.5) * 5; // -1 a 1
-      const y = (clientY / innerHeight - 0.5) * 5; // -1 a 1
-
-      setMousePosition({ y, x });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
   return (
     <div className="relative w-full bg-white">
-      <nav className="fixed top-0 w-full h-16 flex items-center justify-between px-4 bg-background border-b border-dashed border-foreground z-10">
-        <div className="text-xs flex items-center justify-between gap-2 uppercase tracking-[3px] font-regular w-full   max-w-[1200px] mx-auto ">
-          <a className="flex items-center text-foreground gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px]"
-            href="/unmanned"
-          >
-            <img src={getImageUrl("/unmanned-logo.png")} alt="Unmanned united" className="w-10 h-10" />
-            Unmanned united
-          </a>
-          <a className="uppercase text-sm text-foreground font-syncopate font-regular tracking-[4.5px] cursor-pointer"
-            href="#contact-form"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('contact-form')?.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }}
-          >
-            Contact us
-          </a>
-
-        </div>
-      </nav>
-      <div className={"w-full relative"}>
-        <div className="w-full h-[45vw] relative overflow-hidden">
-
-          <img
-            src={getImageUrl("/unmanned-text-right.png")}
-            alt="Background pattern"
-            className={`absolute w-[25%] top-[-60%] right-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
-              }`}
-            style={{
-              transform: `translate3d(0px, ${parallaxRight.y}px, 0)`,
-              willChange: 'transform'
-            }}
-          />
-
-          <img
-            src={getImageUrl("/unmanned-text-left.png")}
-            alt="Background pattern"
-            className={`absolute w-[25%] bottom-[-70%] left-[-5%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
-              }`}
-            style={{
-              transform: `translate3d(0px, ${parallaxLeft.y}px, 0)`,
-              willChange: 'transform'
-            }}
-          />
-
-          <div className="w-full h-full mx-auto relative">
-          <img
-              src={getImageUrl("/unmanned-misc.png")}
-              alt="Barcode"
-              className={`absolute top-[-5%] right-0 w-full transition-opacity duration-1000 ease-in-out ${showBarcode ? 'opacity-100' : 'opacity-0'
-                }`}
-            />
-
-            <div className="max-w-[1200px] mx-auto relative h-full">
-              <img
-                src={getImageUrl("/unmanned-text.png")}
-                alt="Badge of Unmanned united"
-                className={`absolute top-[20%] left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
-                  }`}
-              />
-
-            <img
-              src={getImageUrl("/dron1.png")}
-              alt="Dron image"
-              className={`absolute top-[2%] right-[-25%]  transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
-                }`}
-              style={{
-                width: 'calc(80vw)',
-                maxWidth: 'none',
-                transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
-              }}
-            />
-            
-              <img
-                src={getImageUrl("/unmanned-text-sub.png")}
-                alt="Badge of Unmanned united"
-                className={`absolute top-[20%] left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
-                  }`}
-              />
-
-            </div>
-
-          </div>
-
-        </div>
+      <Navigation />
+      <div className="md:pt-0 pt-16">
+        <HeroSection />
       </div>
 
       <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
         <a
-            className={`uppercase px-24 cursor-pointer py-3 bg-blue transition-all left-1/2 absolute -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] font-syncopate ${showDron ? 'opacity-100' : 'opacity-0'
+            className={`uppercase px-24 cursor-pointer py-3 bg-blue transition-all left-1/2 absolute -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] font-syncopate ${showButton ? 'opacity-100' : 'opacity-0'
               }`}
             href="#contact-form"
             onClick={(e) => {
