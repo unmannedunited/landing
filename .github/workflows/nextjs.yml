@@ -84,8 +84,8 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
-          BASE_PATH: /unmanned
-          ASSET_PREFIX: /unmanned
+          BASE_PATH: /landing
+          ASSET_PREFIX: /landing
           NODE_ENV: production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

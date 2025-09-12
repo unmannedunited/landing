@@ -30,7 +30,7 @@ export default function Navigation() {
         <div className="items-center flex justify-between gap-4 uppercase tracking-[3px] font-regular w-full">
           <Link 
             className="flex items-center text-foreground gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-            href="/unmanned"
+            href="/"
           >
             <img src={getImageUrl("/unmanned-logo.png")} alt="Unmanned united" className="w-10 h-10 flex-shrink-0" />
             Unmanned united
