@@ -3,13 +3,38 @@
  * Funciona tanto en desarrollo como en producción con GitHub Pages
  */
 
+// Función para detectar si estamos en GitHub Pages
+function isGitHubPages() {
+  if (typeof window === 'undefined') return false;
+  return window.location.hostname === 'unmannedunited.github.io';
+}
+
 // Función para obtener la ruta base correcta
 export function getFontPath(fontPath) {
-  // Si estamos en GitHub Pages (con basePath), usar el assetPrefix para assets estáticos
-  const isGitHubPages = process.env.BASE_PATH && process.env.BASE_PATH !== '';
-  const assetPrefix = process.env.ASSET_PREFIX || '';
+  if (typeof window === 'undefined') {
+    // En el servidor, usar las variables de entorno
+    const isGitHubPages = process.env.BASE_PATH && process.env.BASE_PATH !== '';
+    const assetPrefix = process.env.ASSET_PREFIX || '';
+    const basePath = process.env.BASE_PATH || '';
+    
+    if (isGitHubPages) {
+      return `${assetPrefix}${basePath}${fontPath}`;
+    }
+    return fontPath;
+  }
   
-  return isGitHubPages ? `${assetPrefix}${fontPath}` : fontPath;
+  // En el cliente, detectar dinámicamente
+  const isGitHub = isGitHubPages();
+  
+  if (isGitHub) {
+    // Para GitHub Pages: https://unmannedunited.github.io/landing/
+    const fullPath = `https://unmannedunited.github.io/landing${fontPath}`;
+    console.log('Generated font path for GitHub Pages:', fullPath);
+    return fullPath;
+  }
+  
+  // Para desarrollo local
+  return fontPath;
 }
 
 // Rutas de las fuentes
