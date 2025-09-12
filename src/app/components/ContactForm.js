@@ -63,11 +63,11 @@ export default function ContactForm({ scrollY = 0 }) {
   };
 
   return (
-    <div id="contact-form" className="w-full relative bg-[#174F94] flex items-center py-40 max-h-content overflow-hidden">
+    <div id="contact-form" className="w-full relative bg-[#174F94] flex items-center md:py-40 py-20 max-h-content overflow-hidden border-t border-dashed border-white">
         <img 
           src={getImageUrl("/footer-text2.png")} 
           alt="Footer text" 
-          className="w-[30%] absolute right-[-5%] bottom-[-150%] z-10" 
+          className="md:w-[30%] w-[50%] absolute md:right-[-5%] right-[0%] bottom-[-60%] md:bottom-[-150%] z-10" 
           style={{ 
             transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterRight.y}px, 0)`,
             willChange: 'transform'
@@ -83,17 +83,18 @@ export default function ContactForm({ scrollY = 0 }) {
         }} 
       />
 
-      <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 z-30">
+      <div className="w-full max-w-[1200px] md:p-0 p-12 mx-auto flex flex-col lg:flex-row md:gap-16 gap-8 z-30">
         <div className="flex-1 text-white space-y-8">
           <div className="space-y-4 mb-12">
-              <p className="text-white text-[22px] uppercase font-thabit" style={{ lineHeight: '26px' }}>Got a question?</p>
+              <p className="text-white text-[16px] md:text-[22px] uppercase font-thabit" style={{ lineHeight: '26px' }}>Got a question?</p>
           <div className="space-y-2 mt-12">
-              <p className="text-white text-[78px] font-coulson" style={{ lineHeight: '88px' }}>Send us a message</p>
+              <p className="hidden md:block text-white text-[78px] font-coulson" style={{ lineHeight: '88px' }}>Send us a message</p>
+              <p className="block md:hidden text-white text-[46px] font-coulson" style={{ lineHeight: '50px' }}>Leave a message</p>
             </div>
           </div>
 
           <div className="flex items-center gap-6">
-              <img src={getImageUrl("/contact-logo.png")} alt="Send us a message" className="h-20 w-20" />
+              <img src={getImageUrl("/contact-logo.png")} alt="Send us a message" className="hidden md:block h-20 w-20" />
 
             <div className="flex-1">
               <p className="text-lg leading-sm text-white/90" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>

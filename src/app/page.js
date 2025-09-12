@@ -47,7 +47,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative w-full bg-white">
+    <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
       <Navigation />
       <div className="md:pt-0 pt-16">
         <HeroSection scrollY={scrollY} />
