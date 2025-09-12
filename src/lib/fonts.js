@@ -5,9 +5,11 @@
 
 // Función para obtener la ruta base correcta
 export function getFontPath(fontPath) {
-  // En producción, usar el basePath configurado
-  const basePath = process.env.BASE_PATH || '';
-  return `${basePath}${fontPath}`;
+  // Si estamos en GitHub Pages (con basePath), usar el assetPrefix para assets estáticos
+  const isGitHubPages = process.env.BASE_PATH && process.env.BASE_PATH !== '';
+  const assetPrefix = process.env.ASSET_PREFIX || '';
+  
+  return isGitHubPages ? `${assetPrefix}${fontPath}` : fontPath;
 }
 
 // Rutas de las fuentes
