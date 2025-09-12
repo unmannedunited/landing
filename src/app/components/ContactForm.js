@@ -4,7 +4,7 @@ import { useState } from "react";
 import { getImageUrl, getLinkUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 
-export default function ContactForm() {
+export default function ContactForm({ scrollY = 0 }) {
   const [formData, setFormData] = useState({
     message: "",
     email: ""
@@ -16,12 +16,12 @@ export default function ContactForm() {
   const parallaxFooterRight = useAdvancedParallax({ 
     speed: 0.25, 
     enabled: true, 
-    direction: 'down-right' 
+    direction: 'up-right' 
   });
   const parallaxFooterLeft = useAdvancedParallax({ 
     speed: 0.2, 
     enabled: true, 
-    direction: 'down-left' 
+    direction: 'up-left' 
   });
 
   const handleInputChange = (e) => {
@@ -67,7 +67,7 @@ export default function ContactForm() {
         <img 
           src={getImageUrl("/footer-text2.png")} 
           alt="Footer text" 
-          className="w-[30%] absolute right-[-5%] bottom-[-30%] z-10" 
+          className="w-[30%] absolute right-[-5%] bottom-[-150%] z-10" 
           style={{ 
             transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterRight.y}px, 0)`,
             willChange: 'transform'
@@ -76,7 +76,7 @@ export default function ContactForm() {
       <img 
         src={getImageUrl("/footer-text.png")} 
         alt="Footer text" 
-        className="w-[30%] absolute left-[-5%] top-[-120%] z-10" 
+        className="w-[30%] absolute left-[-5%] top-[-70%] z-10" 
         style={{ 
           transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterLeft.y}px, 0)`,
           willChange: 'transform'

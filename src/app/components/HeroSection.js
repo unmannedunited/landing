@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getImageUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 
-export default function HeroSection() {
+export default function HeroSection({ scrollY = 0 }) {
   const [showPattern, setShowPattern] = useState(false);
   const [showBarcode, setShowBarcode] = useState(false);
   const [showDron, setShowDron] = useState(false);
@@ -65,7 +65,7 @@ export default function HeroSection() {
 
   return (
     <div className="w-full relative">
-      <div className="w-full h-[70vh] md:h-[45vw] relative overflow-hidden">
+      <div className="hidden md:block w-full h-[70vh] md:h-[45vw] relative overflow-hidden">
         {/* Imágenes de fondo con parallax */}
         <img
           src={getImageUrl("/unmanned-text-right.png")}
@@ -128,6 +128,63 @@ export default function HeroSection() {
               src={getImageUrl("/unmanned-text-sub.png")}
               alt="Badge of Unmanned united"
               className={`absolute top-[20%] left-0 w-full transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
+                }`}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="block md:hidden w-full h-[60vh] md:h-[45vw] relative overflow-hidden">
+        {/* Imágenes de fondo con parallax */}
+        <img
+          src={getImageUrl("/unmanned-text-right.png")}
+          alt="Background pattern"
+          className={`absolute left-[-10%] top-[-60%] w-[50%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            }`}
+          style={{
+            transform: `translate3d(0px,  ${parallaxRight}px, 0) rotateY(180deg)`,
+            willChange: 'transform'
+          }}
+        />
+
+        <img
+          src={getImageUrl("/unmanned-text-left.png")}
+          alt="Background pattern"
+          className={`absolute bottom-[-45%] right-[-15%] w-[50%] transition-opacity duration-1000 ease-in-out ${showPattern ? 'opacity-100' : 'opacity-0'
+            }`}
+          style={{
+            transform: `translate3d(0px, ${parallaxLeft}px, 0) rotateY(180deg)`,
+            willChange: 'transform'
+          }}
+        />
+
+        <div className="w-full h-full mx-auto relative">
+          <div className="max-w-[1200px] mx-auto relative h-full">
+            {/* Título principal */}
+            <img
+              src={getImageUrl("/unmanned-text-mobile.png")}
+              alt="Badge of Unmanned united"
+              className={`absolute top-[10%] left-[10%] w-4/5 transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
+                }`}
+            />
+
+            {/* Dron con efecto de mouse */}
+            <img
+              src={getImageUrl("/unmanned-text-mobile-dron.png")}
+              alt="Dron image"
+              className={`absolute top-[15%] right-[10%] transition-all duration-300 ease-out ${showDron ? 'opacity-100' : 'opacity-0'
+                }`}
+              style={{
+                width: 'calc(80vw)',
+                maxWidth: 'none',
+                transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
+              }}
+            />
+            
+            {/* Subtítulo */}
+            <img
+              src={getImageUrl("/unmanned-text-mobile-sub.png")}
+              alt="Badge of Unmanned united"
+              className={`absolute top-[10%] left-[10%] w-4/5 transition-opacity duration-1000 ease-in-out ${showTitle ? 'opacity-100' : 'opacity-0'
                 }`}
             />
           </div>

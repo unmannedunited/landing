@@ -50,8 +50,8 @@ export function useAdvancedParallax({
     if (!enabled) return;
 
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scrollX = window.scrollX;
+      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const scrollX = window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
       
       let x = 0;
       let y = 0;
@@ -92,14 +92,20 @@ export function useAdvancedParallax({
       setTransform({ x, y });
     };
 
-    // Agregar listener inmediatamente
+    // Agregar múltiples listeners para mobile
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
+    window.addEventListener('wheel', handleScroll, { passive: true });
+    document.addEventListener('scroll', handleScroll, { passive: true });
     
     // Llamar una vez para establecer el valor inicial
     handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchmove', handleScroll);
+      window.removeEventListener('wheel', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
     };
   }, [speed, enabled, direction]);
 
