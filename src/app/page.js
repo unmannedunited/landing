@@ -6,6 +6,8 @@ import Overview from "./components/Overview";
 import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
+import LinkScrollButton from "./components/LinkScrollButton";
+import OverwatchSection from "./components/OverwatchSection";
 
 export default function Home() {
   // Estado para la sección de overview y botón
@@ -54,22 +56,14 @@ export default function Home() {
       </div>
 
       <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
-        <a
-            className={`uppercase md:px-24 px-4 w-[70%] text-center md:w-fit cursor-pointer py-3 bg-blue transition-all left-1/2 absolute -translate-x-1/2 -translate-y-1/2 hover:bg-foreground text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] font-syncopate ${showButton ? 'opacity-100' : 'opacity-0'
-              }`}
-            href="#contact-form"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('contact-form')?.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }}>
-            Contact us
-          </a>
-          <div className="h-20"></div>
+        <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} />
+        
 
         <Overview />
+        <LinkScrollButton text="Learn more about us" href="#contact-form" showButton={true} />
+
+
+        <OverwatchSection scrollY={scrollY} />
 
         <ContactForm scrollY={scrollY} />
       </div>
