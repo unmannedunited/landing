@@ -6,7 +6,13 @@ import { useAdvancedParallax } from "../../hooks/useParallax";
 
 export default function HeroSection({ scrollY = 0 }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
+  
+  // Hook de parallax para la imagen principal
+  const parallaxTransform = useAdvancedParallax({ 
+    speed: 0.2, 
+    enabled: true, 
+    direction: 'down' 
+  });
 
   // Efecto de seguimiento del mouse para el dron
   useEffect(() => {
@@ -33,8 +39,20 @@ export default function HeroSection({ scrollY = 0 }) {
   }, []);
 
   return (
-    <div className="w-full relative">
-      <img src={getImageUrl("/home/hero.png")} alt="Hero" className="w-full h-full" />
+    <div className="w-full relative overflow-hidden">
+      <div 
+        className="w-full h-full"
+        style={{
+          transform: `translateY(${parallaxTransform.y}px)`,
+          willChange: 'transform'
+        }}
+      >
+        <img 
+          src={getImageUrl("/home/hero.png")} 
+          alt="Hero" 
+          className="w-full h-full object-cover" 
+        />
+      </div>
       <div className="absolute top-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
       <div className="absolute bottom-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
       <img src={getImageUrl("/home/hero-text.png")} alt="Hero" 

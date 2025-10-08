@@ -37,15 +37,16 @@ export default function OverwatchSection({ scrollY = 0 }) {
   return (
     <div className="w-full relative">
       <div className="hidden md:block w-full relative overflow-hidden">
-        <div className="w-full h-fit mx-auto relative">
+        <div className="w-full h-fit mx-auto relative mt-20">
 
           <div className="max-w-[1200px] mx-auto relative h-[38vw]">
             {/* Título principal */}
             <img
-              src={getImageUrl("/home/overw-title.png")}
+              src={getImageUrl("/home/overw-title-b.png")}
               alt="Badge of Unmanned united"
               className={`absolute top-[20%] left-0 w-full transition-opacity duration-1000 ease-in-out
                 }`}
+                // style={{ paddingLeft: '10px' }}
             />
 
             {/* Dron con efecto de mouse */}
@@ -56,6 +57,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
                 }`}
               style={{
                 width: 'calc(80vw)',
+                zIndex: 10,
                 maxWidth: 'none',
                 transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
               }}
@@ -63,10 +65,11 @@ export default function OverwatchSection({ scrollY = 0 }) {
             
             {/* Subtítulo */}
             <img
-              src={getImageUrl("/home/overw-title-white.png")}
+              src={getImageUrl("/home/overw-title-w.png")}
               alt="Badge of Unmanned united"
-              className={`absolute top-[20%] left-[0px] w-full transition-opacity duration-1000 ease-in-out
+              className={`absolute top-[25%] left-[0px] w-full transition-opacity duration-1000 ease-in-out
                 }`}
+                style={{ paddingLeft: '7px', paddingRight: '7px' }}
             />
 
             <img
@@ -77,36 +80,52 @@ export default function OverwatchSection({ scrollY = 0 }) {
             />
 
           </div>
-          <div className="w-full max-w-[1200px] mx-auto relative">
+          <div className="w-full max-w-[1200px] mt-[-60px] mx-auto relative">
             <h1 className="text-xl text-blue font-bold" style={{ fontFamily: 'var(--font-nunito-sans)' }}>OVERWATCH-LR™ PROJECT<br/><br/></h1>
             <p className="text-xl font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
               The Overwatch-LR™ is a heavy-lift, long-endurance coaxial-octocopter with optional fixed wings for extended cruise efficiency. Designed for ISR, cargo, and ulti-mission defence roles, the platform combines four parallel hybrid generators with high-capacity solid-state batteries to deliver hours of station time plus rapid burst-power for vertical manoeuvres.
             </p>
           </div>
-          <div className="w-full max-w-[1200px] mt-24 mx-auto relative">
-              <p className="hidden md:block w-4/5 mb-8 text-darkblue text-[71px] font-coulson" style={{ lineHeight: '71px' }}>Application scenarios</p>
+          <div className="w-full max-w-[1200px] mt-40 mx-auto relative">
+              <h3 className="hidden md:block w-4/5 mb-8 text-darkblue text-[71px] font-coulson" style={{ lineHeight: '71px' }}>Application scenarios</h3>
+
               <div className="w-full flex mb-24">
-                <div className="w-1/3 px-12">
-                  <div className="w-full h-36 border border-darkblue mb-8"></div>
+                <div className="w-1/3 px-16">
+                  {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
+                  <img
+                    src={getImageUrl("/schemes/UU_Esquema_EW & RF NEUTRALIZATION.png")}
+                    alt="Tactical ISR"
+                    className="w-full h-72 object-cover"
+                  />
                   <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
-                    TACTICAL ISR
+                    EW & RF NEUTRALIZATION
                   </p>
                 </div>
-                <div className="w-1/3 px-12">
-                  <div className="w-full h-36 border border-darkblue mb-8"></div>
+                <div className="w-1/3 px-16">
+                  {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
+                  <img
+                    src={getImageUrl("/schemes/UU_Esquema_MARITIME BORDER ISR.png")}
+                    alt="MARITIME / BORDER ISR"
+                    className="w-full h-72 object-cover"
+                  />
+                  <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+                    MARITIME /<br/> BORDER ISR
+                  </p>
+                </div>
+                <div className="w-1/3 px-16">
+                  {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
+                  <img
+                    src={getImageUrl("/schemes/UU_Esquema_ANTI-ACCESS AREA DENIAL (A2AD).png")}
+                    alt="ANTI-ACCESS AREA DENIAL (A2AD)"
+                    className="w-full h-72 object-cover"
+                  />
                   <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                     ANTI-ACCESS AREA DENIAL (A2AD)
-                  </p>
-                </div>
-                <div className="w-1/3 px-12">
-                  <div className="w-full h-36 border border-darkblue mb-8"></div>
-                  <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
-                    SEARCH & RESCUE (SAR)
-                  </p>
+                  </p>  
                 </div>
               </div>
               <Button className="md:w-[50%] md:px-6" text="learn more about overwatch" href="/overwatch" showButton={true} />
-              <div className="h-20"></div>
+              <div className="h-40"></div>
 
           </div>
 
