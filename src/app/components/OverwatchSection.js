@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { getImageUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
-import Button from "./Button";
+import Button from "./LinkButton";
 
 export default function OverwatchSection({ scrollY = 0 }) {
   const [showDron, setShowDron] = useState(false);
@@ -53,7 +53,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
             <img
               src={getImageUrl("/dron1.png")}
               alt="Dron image"
-              className={`absolute top-[2%] right-[-25%] transition-all duration-300 ease-out
+              className={`absolute top-[0%] right-[-25%] transition-all duration-300 ease-out
                 }`}
               style={{
                 width: 'calc(80vw)',
@@ -67,9 +67,9 @@ export default function OverwatchSection({ scrollY = 0 }) {
             <img
               src={getImageUrl("/home/overw-title-w.png")}
               alt="Badge of Unmanned united"
-              className={`absolute top-[25%] left-[0px] w-full transition-opacity duration-1000 ease-in-out
+              className={`absolute top-[20%] left-[0px] w-full transition-opacity duration-1000 ease-in-out
                 }`}
-                style={{ paddingLeft: '7px', paddingRight: '7px' }}
+                style={{ zIndex: 11 }}
             />
 
             <img
@@ -80,7 +80,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
             />
 
           </div>
-          <div className="w-full max-w-[1200px] mt-[-60px] mx-auto relative">
+          <div className="w-full max-w-[1200px] mt-[-90px] mx-auto relative">
             <h1 className="text-xl text-blue font-bold" style={{ fontFamily: 'var(--font-nunito-sans)' }}>OVERWATCH-LR™ PROJECT<br/><br/></h1>
             <p className="text-xl font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
               The Overwatch-LR™ is a heavy-lift, long-endurance coaxial-octocopter with optional fixed wings for extended cruise efficiency. Designed for ISR, cargo, and ulti-mission defence roles, the platform combines four parallel hybrid generators with high-capacity solid-state batteries to deliver hours of station time plus rapid burst-power for vertical manoeuvres.
@@ -90,41 +90,41 @@ export default function OverwatchSection({ scrollY = 0 }) {
               <h3 className="hidden md:block w-4/5 mb-8 text-darkblue text-[71px] font-coulson" style={{ lineHeight: '71px' }}>Application scenarios</h3>
 
               <div className="w-full flex mb-24">
-                <div className="w-1/3 px-16">
+                <div className="w-1/3 px-8">
                   {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
                   <img
                     src={getImageUrl("/schemes/UU_Esquema_EW & RF NEUTRALIZATION.png")}
                     alt="Tactical ISR"
-                    className="w-full h-72 object-cover"
+                    className="w-full object-cover"
                   />
                   <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                     EW & RF NEUTRALIZATION
                   </p>
                 </div>
-                <div className="w-1/3 px-16">
+                <div className="w-1/3 px-8">
                   {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
                   <img
                     src={getImageUrl("/schemes/UU_Esquema_MARITIME BORDER ISR.png")}
                     alt="MARITIME / BORDER ISR"
-                    className="w-full h-72 object-cover"
+                    className="w-full object-cover"
                   />
                   <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                     MARITIME /<br/> BORDER ISR
                   </p>
                 </div>
-                <div className="w-1/3 px-16">
+                <div className="w-1/3 px-8">
                   {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
                   <img
                     src={getImageUrl("/schemes/UU_Esquema_ANTI-ACCESS AREA DENIAL (A2AD).png")}
                     alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                    className="w-full h-72 object-cover"
+                    className="w-full object-cover"
                   />
                   <p className="text-xl text-darkblue font-semibold px-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                     ANTI-ACCESS AREA DENIAL (A2AD)
                   </p>  
                 </div>
               </div>
-              <Button className="md:w-[50%] md:px-6" text="learn more about overwatch" href="/overwatch" showButton={true} />
+              <Button text="learn more about overwatch" href="/overwatch" showButton={true} />
               <div className="h-40"></div>
 
           </div>

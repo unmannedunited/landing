@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "./LinkButton";
 
 const LinkScrollButton = ({ text, href, showButton }) => {
   return (

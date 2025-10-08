@@ -13,7 +13,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 h-16 bg-background border-b border-dashed border-foreground z-50 w-full" style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%' }}>
+    <nav className="fixed top-0 left-0 right-0 h-16 bg-background border-b border-dashed border-foreground z-50 w-full" style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%', zIndex: 1001 }}>
       {/* Mobile: Solo logo centrado */}
       <div className="md:hidden max-w-[100vw] flex items-center justify-center h-full">
         <Link 
