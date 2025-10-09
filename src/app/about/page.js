@@ -7,6 +7,9 @@ import AboutHero from "../components/about/AboutHero";
 import WhoWeAre from "../components/about/WhoWeAre";
 import EachMember from "../components/about/EachMember";
 import TeamPic from "../components/about/TeamPic";
+import WhatWe from "../components/about/WhatWe";
+import ContactForm from "../components/about/ContactForm";
+import EverythingWeBuild from "../components/about/EverythingWeBuild";
 
 export default function About() {
   // Estado para parallax global
@@ -45,7 +48,10 @@ export default function About() {
       <EachMember />
 
       <TeamPic />
+      <WhatWe />
+      <EverythingWeBuild />
 
+      <ContactForm />
       <Footer />
     </div>
   );
