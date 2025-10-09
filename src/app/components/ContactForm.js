@@ -135,16 +135,7 @@ export default function ContactForm({ scrollY = 0 }) {
               />
             </div>
 
-            <ActionButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} className="w-full" />
-            {/* <button
-              type="submit"
-              
-              className={`mt-8 bg-blue w-full rounded-[1px] border-white border uppercase px-24 cursor-pointer py-3  transition-all  hover:bg-foreground text-white text-sm font-regular tracking-[6.5px] font-syncopate`}
-  
-            //   className="w-full bg-[#2a3a4a] border border-white text-white uppercase tracking-wider py-4 px-8 hover:bg-white hover:text-[#1a2332] transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
-            > */}
-              
-            {/* </button> */}
+            <ActionButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
 
             {submitStatus === 'success' && (
               <p className="font-bold text-sm  text-white text-center" style={{ fontFamily: 'var(--font-nunito-sans)', fontSize: '16px', lineHeight: '26px' }}>

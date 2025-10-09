@@ -38,7 +38,7 @@ export default function Navigation() {
           <div className="flex items-center gap-12">
             <Link 
             className="flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-            href="/about-us"
+            href="/about"
             >
               About us
             </Link>
