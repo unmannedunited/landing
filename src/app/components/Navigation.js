@@ -44,7 +44,7 @@ export default function Navigation() {
             </Link>
             <Link 
               className="flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-              href="/overwatchlr"
+              href="/overwatch"
             >
               Overwatch-LR™
             </Link>

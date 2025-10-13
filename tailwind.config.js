@@ -19,6 +19,7 @@ module.exports = {
         'blue': '#174F94',
         'darkblue': '#0F407E',
         'palegray': '#CBCBCB',
+        'black': '#000000',
       },
       transitionProperty: {
         'border': 'border',
