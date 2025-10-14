@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getImageUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 import Button from "./LinkButton";
@@ -8,6 +8,7 @@ import Button from "./LinkButton";
 export default function OverwatchSection({ scrollY = 0 }) {
   const [showDron, setShowDron] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const videoRef = useRef(null);
 
 
   // Efecto de seguimiento del mouse para el dron
@@ -37,15 +38,6 @@ export default function OverwatchSection({ scrollY = 0 }) {
   return (
     <div className="w-full relative">
       <div className="hidden md:block w-full relative overflow-hidden">
-      <video
-        ref={videoRef}
-        src={getImageUrl("/UU_vid_sm.mp4")}
-        autoPlay
-        muted
-        playsInline
-        className="w-full h-screen object-cover"
-        // onEnded={handleEnded}
-      />
         <div className="w-full h-fit mx-auto relative mt-20">
 
           <div className="max-w-[1200px] mx-auto relative h-[38vw]">
