@@ -49,63 +49,80 @@ export function useAdvancedParallax({
   useEffect(() => {
     if (!enabled) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      const scrollX = window.scrollX || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
-      
-      let x = 0;
-      let y = 0;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          // Múltiples métodos para obtener scrollY para mejor compatibilidad
+          const scrollY = window.pageYOffset || 
+                         document.documentElement.scrollTop || 
+                         document.body.scrollTop || 
+                         window.scrollY || 0;
+          
+          let x = 0;
+          let y = 0;
 
-      switch (direction) {
-        case 'up':
-          y = -scrollY * speed;
-          break;
-        case 'down':
-          y = scrollY * speed;
-          break;
-        case 'left':
-          x = -scrollY * speed;
-          break;
-        case 'right':
-          x = scrollY * speed;
-          break;
-        case 'up-left':
-          x = -scrollY * speed * 0.5;
-          y = -scrollY * speed;
-          break;
-        case 'up-right':
-          x = scrollY * speed * 0.5;
-          y = -scrollY * speed;
-          break;
-        case 'down-left':
-          x = -scrollY * speed * 0.5;
-          y = scrollY * speed;
-          break;
-        case 'down-right':
-          x = scrollY * speed * 0.5;
-          y = scrollY * speed;
-          break;
-        default:
-          y = -scrollY * speed;
+          switch (direction) {
+            case 'up':
+              y = -scrollY * speed;
+              break;
+            case 'down':
+              y = scrollY * speed;
+              break;
+            case 'left':
+              x = -scrollY * speed;
+              break;
+            case 'right':
+              x = scrollY * speed;
+              break;
+            case 'up-left':
+              x = -scrollY * speed * 0.5;
+              y = -scrollY * speed;
+              break;
+            case 'up-right':
+              x = scrollY * speed * 0.5;
+              y = -scrollY * speed;
+              break;
+            case 'down-left':
+              x = -scrollY * speed * 0.5;
+              y = scrollY * speed;
+              break;
+            case 'down-right':
+              x = scrollY * speed * 0.5;
+              y = scrollY * speed;
+              break;
+            default:
+              y = -scrollY * speed;
+          }
+
+          setTransform({ x, y });
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      setTransform({ x, y });
     };
 
-    // Agregar múltiples listeners para mobile
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('touchmove', handleScroll, { passive: true });
-    window.addEventListener('wheel', handleScroll, { passive: true });
-    document.addEventListener('scroll', handleScroll, { passive: true });
+    // Agregar listeners con mejor compatibilidad
+    const options = { passive: true };
+    
+    window.addEventListener('scroll', handleScroll, options);
+    document.addEventListener('scroll', handleScroll, options);
+    
+    // Para dispositivos móviles
+    if ('ontouchstart' in window) {
+      window.addEventListener('touchmove', handleScroll, options);
+    }
     
     // Llamar una vez para establecer el valor inicial
     handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchmove', handleScroll);
-      window.removeEventListener('wheel', handleScroll);
       document.removeEventListener('scroll', handleScroll);
+      if ('ontouchstart' in window) {
+        window.removeEventListener('touchmove', handleScroll);
+      }
     };
   }, [speed, enabled, direction]);
 

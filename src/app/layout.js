@@ -99,7 +99,7 @@ export default function RootLayout({ children }) {
         <link rel="canonical" href="https://unmannedunited.com" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased w-screen overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased`}
       >
         <FontLoader />
         {children}

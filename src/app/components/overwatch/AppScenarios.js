@@ -19,14 +19,28 @@ function AppScenarios() {
 
 
   return (
-    <div className="w-full bg-white border-b border-dashed border-foreground relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0">
+    <div className="w-full bg-white border-b border-dashed border-foreground relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0"
+    style={{ zIndex: 1000 }}>
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12 mb-36 mt-16">
         <h2 className="text-[72px] text-blue font-coulson w-1/2 mb-40" 
         style={{ lineHeight: '72px' }}>APPLICATION SCENARIOS</h2>
-        <ScenarioCard title="EW & RF NEUTRALIZATION" description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." image={getImageUrl("/product/product-scenarios-1.png")} /> 
-        <ScenarioCard  title="ANTI-ACCESS AREA DENIAL" description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." image={getImageUrl("/product/product-scenarios-2.png")} inverted={true} /> 
-        <ScenarioCard title="MARITIME / BORDER ISR" description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." image={getImageUrl("/product/product-scenarios-3.png")} /> 
-        <ScenarioCard title="EQUIPMENT & SUPPLY DEPLOYMENT" description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." image={getImageUrl("/product/product-scenarios-4.png")} inverted={true} /> 
+        <ScenarioCard 
+          title="EW & RF NEUTRALIZATION" 
+          description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." 
+          image={getImageUrl("/product/product-scenarios-1.png")}  /> 
+        <ScenarioCard  
+          title="ANTI-ACCESS AREA DENIAL" 
+          description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." 
+          image={getImageUrl("/product/product-scenarios-2.png")} 
+          inverted={true} big={true} /> 
+        <ScenarioCard 
+          title="MARITIME / BORDER ISR" 
+          description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." 
+          image={getImageUrl("/product/product-scenarios-3.png")} /> 
+        <ScenarioCard 
+          title="EQUIPMENT & SUPPLY DEPLOYMENT" 
+          description="Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today." 
+          image={getImageUrl("/product/product-scenarios-4.png")} inverted={true} /> 
       </div>
 
       <div className="w-full max-w-[1200px] mx-auto pb-36">
@@ -52,9 +66,6 @@ function AppScenarios() {
 
         
       </div>
-
-
-
 
       <img
         src={getImageUrl("/textures/unmanned-text-right.png")}
@@ -112,10 +123,10 @@ function AppScenarios() {
   )
 }
 
-const ScenarioCard = ({ title, description, image, inverted }) => {
+const ScenarioCard = ({ title, description, image, inverted, big }) => {
   return (
     <div className="flex gap-12 items-center mb-16">
-          { inverted ? <img src={getImageUrl(image)} alt="Application Scenarios" className={`w-1/2 max-h-[300px] object-contain`} /> : '' }
+          { inverted ? <img src={getImageUrl(image)} alt="Application Scenarios" className={`w-1/2 ${big ? "max-h-[450px]" : "max-h-[300px]"} object-contain`} /> : '' }
 
           <div className="flex flex-col gap-8 justify-center w-1/2">
             <h2 className="text-[50px] text-palegray font-coulson " 
@@ -124,7 +135,7 @@ const ScenarioCard = ({ title, description, image, inverted }) => {
               {description}
             </p>
           </div>
-          { inverted ? '' : <img src={getImageUrl(image)} alt="Application Scenarios" className={`w-1/2 max-h-[300px] object-contain`} />}
+          { inverted ? '' : <img src={getImageUrl(image)} alt="Application Scenarios" className={`w-1/2 ${big ? "max-h-[450px]" : "max-h-[300px]"} object-contain`} />}
           
         </div>
   )

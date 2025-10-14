@@ -26,7 +26,7 @@ export default function WhatWe({ }) {
     direction: 'up-left' 
   });
   const parallax = useAdvancedParallax({ 
-    speed: 0.2, 
+    speed: 0.1, 
     enabled: true, 
     direction: 'up' 
   });
@@ -73,7 +73,7 @@ export default function WhatWe({ }) {
     <div className="relative">
       <div className="w-full max-w-[1200px] mx-auto flex flex-col lg:flex-row md:gap-16 gap-8 z-30">
         <h3 className="absolute text-white text-[113px] font-coulson" 
-          style={{ lineHeight: '120px', zIndex: 1000, top: -460 - parallax.y
+          style={{ lineHeight: '120px', zIndex: 1000, top: -360 - parallax.y
            }}>What<br/>We<br/>Believe</h3>
       </div>
       <div className="w-full relative  overflow-hidden pt-20 pb-36 bg-[#174F94] max-h-content border-t border-dashed border-white" style={{ zIndex: 50 }}>

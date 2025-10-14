@@ -9,6 +9,7 @@ import ProductHero from "../components/overwatch/ProductHero";
 import ProductDetail from "../components/overwatch/ProductDetail";
 import AppScenarios from "../components/overwatch/AppScenarios";
 import LastPic from "../components/overwatch/LastPic";
+import { getImageUrl } from "@/lib/utils";
 
 export default function About() {
   // Estado para parallax global
@@ -37,6 +38,13 @@ export default function About() {
   return (
     <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
       <Navigation />
+      <video
+        src={getImageUrl("/UU_vid_sm.mp4")}
+        autoPlay
+        muted
+        playsInline
+        className="w-full h-screen object-cover"
+      />
       
       <div className="md:pt-0 pt-16 border-black border-b">
         <ProductHero scrollY={scrollY} />

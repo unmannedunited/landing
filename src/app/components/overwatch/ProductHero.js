@@ -39,7 +39,7 @@ export default function HeroSection({ scrollY = 0 }) {
   }, []);
 
   return (
-    <div className="w-full relative overflow-hidden">
+    <div className="w-full relative overflow-hidden" style={{ zIndex: 1000 }} >
       <div className="max-w-[1200px] w-full h-full mx-auto relative overflow-visible" style={{ zIndex: 1000 }}>
         <p className="text-white text-xl uppercase font-syncopate absolute tracking-widest" style={{ top: 150 }}>Overwatch isn’t <br/> like other drones</p>
         <p className="text-white text-right text-xl uppercase font-syncopate absolute right-0 tracking-widest" style={{ top: "calc(100vh + 50px)" }}>it’s what those other <br/> drones wish they were</p>

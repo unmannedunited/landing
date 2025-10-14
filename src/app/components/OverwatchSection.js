@@ -37,6 +37,15 @@ export default function OverwatchSection({ scrollY = 0 }) {
   return (
     <div className="w-full relative">
       <div className="hidden md:block w-full relative overflow-hidden">
+      <video
+        ref={videoRef}
+        src={getImageUrl("/UU_vid_sm.mp4")}
+        autoPlay
+        muted
+        playsInline
+        className="w-full h-screen object-cover"
+        // onEnded={handleEnded}
+      />
         <div className="w-full h-fit mx-auto relative mt-20">
 
           <div className="max-w-[1200px] mx-auto relative h-[38vw]">

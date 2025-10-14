@@ -22,27 +22,25 @@ export default function About() {
       setScrollY(currentScrollY);
     };
 
-    // Agregar listeners
+    // Solo un listener de scroll
     window.addEventListener('scroll', handleScroll, { passive: true });
-    document.addEventListener('scroll', handleScroll, { passive: true });
     
     // Llamar una vez para establecer valor inicial
     handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
+    <div className="relative w-full bg-white ">
       <Navigation />
       
       <div className="md:pt-0 pt-16">
         <AboutHero scrollY={scrollY} />
       </div>
-      <WhoWeAre />
+      <WhoWeAre scrollY={scrollY} />
 
 
       <EachMember />

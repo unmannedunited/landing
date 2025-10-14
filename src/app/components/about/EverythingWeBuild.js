@@ -43,37 +43,65 @@ function EverythingWeBuild() {
 
         </div>
 
-        <div className="w-full mt-[-120px] bg-white relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0">
+        <div className="w-full mt-[-120px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
 
           <div className="max-w-[800px] mx-auto flex mb-36">
-            <div className="w-1/3 px-8">
+            <div className="w-1/3 px-8 relative">
               {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
               <img
                 src={getImageUrl("/schemes/about-1.png")}
                 alt="Tactical ISR"
                 className="w-full object-cover p-6"
               />
+              <img
+                src={getImageUrl("/schemes/about-1-bis.png")}
+                alt="Tactical ISR"
+                className="absolute w-[18%] top-[32.5%] left-[49%]"
+                style={{
+                  transform: `translateY(${(300 + parallaxUS.y > 0 ? 0 : (300 + parallaxUS.y < -40 ? -40 : 300 + parallaxUS.y))/2}px) translateX(-23px)`,
+                  willChange: 'transform'
+                }}
+              />
               <p className="text-xl text-darkblue uppercase font-semibold text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 Rapid prototyping
               </p>
             </div>
-            <div className="w-1/3 px-8">
+            <div className="w-1/3 px-8 relative">
               {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
               <img
                 src={getImageUrl("/schemes/about-2.png")}
                 alt="MARITIME / BORDER ISR"
                 className="w-full object-cover p-6"
+                style={{
+                  transform: `rotate(${45 - parallaxUS.y}deg)`,
+                  willChange: 'transform'
+                }}
+              />
+              <img
+                src={getImageUrl("/schemes/about-2-bis.png")}
+                alt="MARITIME / BORDER ISR"
+                className="absolute w-[38%] top-[18%] left-[50%] transform -translate-x-1/2"
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 USA-based  /<br /> manufacturing
               </p>
             </div>
-            <div className="w-1/3 px-8">
+            <div className="w-1/3 px-8 relative">
               {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
               <img
                 src={getImageUrl("/schemes/about-3.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
                 className="w-full object-cover p-6"
+              />
+              <img
+                src={getImageUrl("/schemes/about-3-bis.png")}
+                alt="ANTI-ACCESS AREA DENIAL (A2AD)"
+                className="absolute w-[30%] top-[25%] left-[64%] transform -translate-x-1/2"
+                style={{
+                  transform: `translateY(${(-400 - parallaxUS.y > 0 ? 0 : -400 - parallaxUS.y)}px) translateX(-40px)`,
+                  willChange: 'transform'
+                }}
+
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 Field-ready,<br /> modular systems

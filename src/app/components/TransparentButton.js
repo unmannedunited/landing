@@ -3,8 +3,8 @@ const TransparentButton = ({ text, onClick, className, ...otherProps }) => {
         <button
             className={`uppercase ${className}  w-max mt-6 md:px-[120px] text-center cursor-pointer py-3.5 bg-transparent 
              border-darkblue border 
-             hover:border-0 hover:bg-darkblue hover:text-white
-             active:bg-darkblue active:text-white active:border-darkblue
+             hover:bg-darkblue hover:text-white
+             active:bg-foreground active:text-white active:border-foreground
                 text-darkblue rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] 
                 font-syncopate
             }`}
