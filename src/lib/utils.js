@@ -8,9 +8,11 @@ export function getImageUrl(src) {
   // Asegurar que src comience con /
   const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
   
-  // Para GitHub Pages, Next.js maneja automáticamente el assetPrefix
-  // Solo necesitamos devolver la ruta normalizada
-  return normalizedSrc;
+  // Si estamos en GitHub Pages (con basePath), usar el assetPrefix
+  const isGitHubPages = process.env.BASE_PATH && process.env.BASE_PATH !== '';
+  const assetPrefix = process.env.ASSET_PREFIX || '';
+  
+  return isGitHubPages ? `${assetPrefix}${normalizedSrc}` : normalizedSrc;
 }
 
 // Función para manejar URLs de enlaces
