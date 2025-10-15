@@ -23,8 +23,11 @@ export function getImageUrl(src) {
       // Si estamos en GitHub Pages (con basePath), usar el assetPrefix
     const isGitHubPages = currentUrl?.includes('github');
     const assetPrefix = process.env.ASSET_PREFIX || '';
+
+    console.log('isGitHubPages:', isGitHubPages);
+    console.log('normalizedSrc:', `/landing${normalizedSrc}`);
     
-    return isGitHubPages ? `${assetPrefix}${normalizedSrc}` : normalizedSrc;
+    return isGitHubPages ? `/landing${normalizedSrc}` : normalizedSrc;
   } else {
     return normalizedSrc;
   }
