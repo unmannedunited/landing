@@ -43,7 +43,8 @@ export default function About() {
         autoPlay
         muted
         playsInline
-        className="w-full h-screen object-cover"
+        className="w-full h-screen object-cover relative"
+        style={{ zIndex: 1000 }}
       />
       
       <div className="md:pt-0 pt-16 border-black border-b">

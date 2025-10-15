@@ -48,7 +48,7 @@ export default function HeroSection({ scrollY = 0 }) {
       <div 
         className="w-full h-full"
         style={{
-          transform: `translateY(${parallaxTransform.y}px)`,
+          transform: `translateY(${ -200 + parallaxTransform.y}px)`,
           willChange: 'transform'
         }}
       >

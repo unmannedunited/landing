@@ -18,7 +18,7 @@ export function getImageUrl(src) {
     
     return isGitHubPages && !src.includes('landing') ? `/landing${src}` : src;
   } else {
-    return src;
+    return `/landing${src}`;
   }
   
 
