@@ -46,15 +46,28 @@ function EverythingWeBuild() {
 
           <div className="max-w-[1100px] mx-auto flex mb-48 gap-20">
             <div className="w-1/3 px-8 relative">
+            <div className="absolute top-[35%] left-[38%] h-24 w-20 bg-white"
+            style={{
+              transform: `translateY(${(320 + parallaxImages.y)}px)`,
+              willChange: 'transform',
+              zIndex: 500
+            }}></div>
               <img
                 src={getImageUrl("/schemes/about-1-bis.png")}
                 alt="Rapid prototyping"
-                className="absolute w-[36%] top-[18.5%] left-[50%] transform -translate-x-1/2"
+                className="absolute w-[21%] top-[39%] left-[50%] transform -translate-x-1/2"
+                // style={{
+                //   transform: `rotate(${45 - parallaxImages.y}deg)`,
+                //   willChange: 'transform'
+                // }}
               />
               <img
                 src={getImageUrl("/schemes/about-1.png")}
                 alt="Rapid prototyping"
-                className="h-[220px] object-contain p-6 mx-auto"
+                className="h-[220px] relative object-contain p-6 mx-auto"
+                style={{
+                  zIndex: 1000
+                }}
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 Rapid prototyping
@@ -90,7 +103,7 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-3-bis.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                className="absolute w-[24.5%] top-[24.5%] left-[62%] transform -translate-x-1/2"
+                className="absolute w-[24.5%] top-[24%] left-[62%] transform -translate-x-1/2"
                 style={{
                   transform: `translateY(${(-400 - parallaxImages.y > 0 ? 0 : -400 - parallaxImages.y)}px) translateX(-40px)`,
                   willChange: 'transform'
