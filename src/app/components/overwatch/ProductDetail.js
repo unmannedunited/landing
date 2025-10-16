@@ -6,6 +6,7 @@ const ProductDetail = () => {
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [flashlightPosition, setFlashlightPosition] = useState({ x: 0, y: 0 });
+    const [flashlightPosition2, setFlashlightPosition2] = useState({ x: 0, y: 0 });
 
 
     // Efecto de seguimiento del mouse para el dron
@@ -44,6 +45,15 @@ const ProductDetail = () => {
           const y = e.clientY - rect.top;
           setFlashlightPosition({ x, y });
         }
+
+        const container2 = document.querySelector('.flashlight-container2');
+        if (container2) {
+          const rect = container2.getBoundingClientRect();
+          // Calcular posición relativa al contenedor
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          setFlashlightPosition2({ x, y });
+        }
       };
 
       window.addEventListener('mousemove', handleFlashlightMove);
@@ -69,9 +79,9 @@ const ProductDetail = () => {
 
         <div className="pb-56 relative flex flex-col gap-48">
 
-            <FirstSection mousePosition={mousePosition} />
+            <FirstSection mousePosition={mousePosition} flashlightPosition={flashlightPosition} />
 
-            <SecondSection mousePosition={mousePosition} flashlightPosition={flashlightPosition} />
+            <SecondSection mousePosition={mousePosition} flashlightPosition={flashlightPosition2} />
 
         </div>
 
@@ -81,7 +91,7 @@ const ProductDetail = () => {
   )
 }
 
-const FirstSection = ({mousePosition}) => {
+const FirstSection = ({mousePosition, flashlightPosition}) => {
   // Hooks para detectar cuando cada elemento entra en pantalla
   const [ref1, isIntersecting1, hasIntersected1] = useIntersectionObserver({
     threshold: 0.3,
@@ -100,9 +110,13 @@ const FirstSection = ({mousePosition}) => {
 
   return (
     <div className="w-full flex gap-16 relative">
+      
+      <img src={getImageUrl("/product/product-detail-model.png")} alt="Product Detail" 
+                className="absolute right-[10%] top-[0%] w-[80%]"
+                  />
         <div className="w-2/3">
             <img src={getImageUrl("/product/product-detail-title.png")} alt="Product Detail" 
-                    className="w-full object-cover mb-16" />
+                    className="relative z-10 w-full object-cover mb-16" />
 
             <img src={getImageUrl("/product/product-detail-camera.png")} alt="Product Detail" 
                 className="mb-16" />
@@ -153,11 +167,21 @@ const FirstSection = ({mousePosition}) => {
             </div>
         
         </div>
-        <img src={getImageUrl("/product/product-detail-model.png")} alt="Product Detail" 
-                className="absolute right-[10%] top-[0%] w-[80%]"
-                style={{
-                    transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
-                  }} 
+
+      <img src={getImageUrl("/product/product-detail-model-dodge.png")} alt="Product Detail" 
+                className="absolute right-[10%] top-[0%] w-[80%] flashlight-container overflow-hidden"
+                    style={{
+                        maskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
+                        WebkitMaskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
+                        maskSize: '100% 100%',
+                        WebkitMaskSize: '100% 100%',
+                        maskRepeat: 'no-repeat',
+                        WebkitMaskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskPosition: 'center',
+                        zIndex: 1000,
+                        transition: 'mask-image 0.1s ease-out, -webkit-mask-image 0.1s ease-out'
+                    }}
                   />
     </div>
   )
@@ -184,7 +208,15 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                 
                 </div>
                 <div 
-                    className="flashlight-container absolute left-[15%] top-[-7%] w-[80%] overflow-hidden"
+                    className="flashlight-container absolute left-[15%] top-[-7%] w-[80%] 
+                    overflow-hidden opacity-10"
+                >
+                    <img src={getImageUrl("/product/product-detail-model2.png")} alt="Product Detail" 
+                        className="w-full h-full object-cover" 
+                        />
+                </div>
+                <div 
+                    className="flashlight-container2 absolute left-[15%] top-[-7%] w-[80%] overflow-hidden"
                     style={{
                         maskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
                         WebkitMaskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
@@ -197,18 +229,11 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                         transition: 'mask-image 0.1s ease-out, -webkit-mask-image 0.1s ease-out'
                     }}
                 >
-                    <img src={getImageUrl("/product/product-detail-model2.png")} alt="Product Detail" 
+                    <img src={getImageUrl("/product/product-detail-model2-dodge.png")} alt="Product Detail" 
                         className="w-full h-full object-cover" 
                         />
                 </div>
-                <div 
-                    className="flashlight-container absolute left-[15%] top-[-7%] w-[80%] 
-                    overflow-hidden opacity-30"
-                >
-                    <img src={getImageUrl("/product/product-detail-model2.png")} alt="Product Detail" 
-                        className="w-full h-full object-cover" 
-                        />
-                </div>
+                
 
             </div>
             <div className="w-full flex gap-24 relative mt-32">

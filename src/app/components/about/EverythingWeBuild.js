@@ -10,26 +10,25 @@ function EverythingWeBuild() {
     enabled: true,
     direction: 'up'
   });
-  const parallaxLeft = useAdvancedParallax({
-    speed: 0.2,
-    enabled: true,
-    direction: 'up'
-  });
-
   const parallaxUS = useAdvancedParallax({
     speed: 0.1,
     enabled: true,
     direction: 'up'
   });
 
+  const parallaxImages = useAdvancedParallax({
+    speed: 0.1,
+    enabled: true,
+    direction: 'up'
+  });
 
   return (
     <div className="relative">
-      <div className="w-full max-w-[1200px] mx-auto mb-8 mt-12">
+      <div className="w-full max-w-[1200px] mx-auto mb-28 mt-12">
         <div className="flex justify-between gap-12 relative">
           <div className="w-1/2 p-12 relative top-[-180px]"
           style={{
-            transform: `translate3d(0px, ${600 + parallaxLeft.y}px, 0)`,
+            transform: `translate3d(0px, ${250 + parallaxUS.y}px, 0)`,
             willChange: 'transform', zIndex: 800
           }}>
             <img src={getImageUrl("/about/about-usa.png")} alt="Everything We Build" className="w-full object-cover" />
@@ -43,26 +42,17 @@ function EverythingWeBuild() {
 
         </div>
 
-        <div className="w-full mt-[-120px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
+        <div className="w-full mt-[-150px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
 
-          <div className="max-w-[800px] mx-auto flex mb-36">
+          <div className="max-w-[1100px] mx-auto flex mb-48 gap-20">
             <div className="w-1/3 px-8 relative">
               {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
               <img
                 src={getImageUrl("/schemes/about-1.png")}
                 alt="Tactical ISR"
-                className="w-full object-cover p-6"
+                className="h-[220px] object-contain p-6 mx-auto"
               />
-              <img
-                src={getImageUrl("/schemes/about-1-bis.png")}
-                alt="Tactical ISR"
-                className="absolute w-[18%] top-[32.5%] left-[49%]"
-                style={{
-                  transform: `translateY(${(300 + parallaxUS.y > 0 ? 0 : (300 + parallaxUS.y < -40 ? -40 : 300 + parallaxUS.y))/2}px) translateX(-23px)`,
-                  willChange: 'transform'
-                }}
-              />
-              <p className="text-xl text-darkblue uppercase font-semibold text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+              <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 Rapid prototyping
               </p>
             </div>
@@ -71,18 +61,18 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-2.png")}
                 alt="MARITIME / BORDER ISR"
-                className="w-full object-cover p-6"
+                className="h-[220px] object-contain p-6 mx-auto"
                 style={{
-                  transform: `rotate(${45 - parallaxUS.y}deg)`,
+                  transform: `rotate(${45 - parallaxImages.y}deg)`,
                   willChange: 'transform'
                 }}
               />
               <img
                 src={getImageUrl("/schemes/about-2-bis.png")}
                 alt="MARITIME / BORDER ISR"
-                className="absolute w-[38%] top-[18%] left-[50%] transform -translate-x-1/2"
+                className="absolute w-[36%] top-[18.5%] left-[50%] transform -translate-x-1/2"
               />
-              <p className="text-xl text-darkblue uppercase font-semibold text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+              <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 USA-based  /<br /> manufacturing
               </p>
             </div>
@@ -91,19 +81,19 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-3.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                className="w-full object-cover p-6"
+                className="h-[220px] object-contain p-6 mx-auto"
               />
               <img
                 src={getImageUrl("/schemes/about-3-bis.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                className="absolute w-[30%] top-[25%] left-[64%] transform -translate-x-1/2"
+                className="absolute w-[24.5%] top-[24.5%] left-[62%] transform -translate-x-1/2"
                 style={{
-                  transform: `translateY(${(-400 - parallaxUS.y > 0 ? 0 : -400 - parallaxUS.y)}px) translateX(-40px)`,
+                  transform: `translateY(${(-400 - parallaxImages.y > 0 ? 0 : -400 - parallaxImages.y)}px) translateX(-40px)`,
                   willChange: 'transform'
                 }}
 
               />
-              <p className="text-xl text-darkblue uppercase font-semibold text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+              <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 Field-ready,<br /> modular systems
               </p>
             </div>
@@ -118,7 +108,7 @@ function EverythingWeBuild() {
 
             </div>
             <img src={getImageUrl("/overview-logo.png")} alt="Unmanned United Overview"
-              className="w-1/5 p-10 mx-auto mb-6" style={{ transform: `rotate(25deg)` }} />
+              className="w-1/5 p-4 mx-auto mb-6" style={{ transform: `rotate(25deg)` }} />
 
           </div>
         </div>
@@ -136,9 +126,9 @@ function EverythingWeBuild() {
         <img
           src={getImageUrl("/textures/unmanned-text-right.png")}
           alt="Background pattern"
-          className="w-[30%] absolute left-[-7%] top-[0%] z-10" 
+          className="w-[30%] absolute left-[-7%] top-[20%] z-10" 
           style={{
-            transform: `rotateY(180deg) translate3d(0px, ${parallaxLeft.y}px, 0)`,
+            transform: `rotateY(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,
             willChange: 'transform'
           }}
         />

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getImageUrl, getLinkUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 import ActionButton from "./ActionButton";
+import SendButton from "./SendButton";
 
 export default function ContactForm({ scrollY = 0 }) {
   const [formData, setFormData] = useState({
@@ -85,10 +86,10 @@ export default function ContactForm({ scrollY = 0 }) {
       />
 
       <div className="w-full max-w-[1200px] md:p-0 p-12 mx-auto flex flex-col lg:flex-row md:gap-16 gap-8 z-30">
-        <div className="flex-1 text-white space-y-8">
-          <div className="space-y-4 mb-12">
+        <div className="flex-1 text-white space-y-4">
+          <div className="mb-6">
               <p className="text-white text-[16px] md:text-[22px] uppercase font-thabit" style={{ lineHeight: '26px' }}>Got a question?</p>
-          <div className="space-y-2 mt-12">
+          <div className="space-y-2">
               <p className="hidden md:block text-white text-[78px] font-coulson" style={{ lineHeight: '88px' }}>Send us a message</p>
               <p className="block md:hidden text-white text-[46px] font-coulson" style={{ lineHeight: '50px' }}>Leave a message</p>
             </div>
@@ -135,7 +136,7 @@ export default function ContactForm({ scrollY = 0 }) {
               />
             </div>
 
-            <ActionButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
+            <SendButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
 
             {submitStatus === 'success' && (
               <p className="font-bold text-sm  text-white text-center" style={{ fontFamily: 'var(--font-nunito-sans)', fontSize: '16px', lineHeight: '26px' }}>

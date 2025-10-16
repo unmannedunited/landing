@@ -22,12 +22,13 @@ function WhoWeAre() {
         </div>
       <div className="h-2 border-t border-b border-white border-dashed"></div>
       <div className="flex">
-        <div className="p-8">
-          <img src={getImageUrl("/about/about-logo.png")} alt="Who We Are" className="w-32 h-32 object-cover" />
+        <div className="w-1/5 p-8">
+          <img src={getImageUrl("/about/about-logo.png")} alt="Who We Are" 
+          className="w-full object-cover" />
         </div>
-        <div className="flex-1 px-12 py-5 border-l border-white border-dashed">
-          <p className="text-white text-sm font-thabit font-bold" style={{ lineHeight: '36px' }}>Who We Are</p>
-          <p className="text-white text-sm font-thabit" style={{ lineHeight: '16px' }}>We are a coalition of proven technologists, defense strategists, corporate advisors, and global operators. Our core leadership has decades of combined experience spanning autonomous systems, advanced UAS design, law enforcement, military operations, investment banking, venture scaling, and international corporate governance. Together, our team has led mission-critical programs, navigated the most complex regulatory landscapes, and successfully taken multiple ventures from startup to strategic exit.</p>
+        <div className="w-4/5 flex flex-col justify-center px-12 gap-2 items-left border-l border-white border-dashed">
+          <p className="text-white text-sm font-thabit font-bold">Who We Are</p>
+          <p className="text-white text-sm font-thabit mb-4" style={{ lineHeight: '16px' }}>We are a coalition of proven technologists, defense strategists, corporate advisors, and global operators. Our core leadership has decades of combined experience spanning autonomous systems, advanced UAS design, law enforcement, military operations, investment banking, venture scaling, and international corporate governance. Together, our team has led mission-critical programs, navigated the most complex regulatory landscapes, and successfully taken multiple ventures from startup to strategic exit.</p>
         </div>
       </div>
       <div className="h-2 border-t border-white border-dashed"></div>

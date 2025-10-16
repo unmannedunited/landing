@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getImageUrl, getLinkUrl } from "../../../lib/utils";
 import { useAdvancedParallax } from "../../../hooks/useParallax";
 import ActionButton from "../ActionButton";
+import SendButton from "../SendButton";
 
 export default function ContactForm({ scrollY = 0 }) {
   const [formData, setFormData] = useState({
@@ -135,7 +136,7 @@ export default function ContactForm({ scrollY = 0 }) {
               />
             </div>
 
-            <ActionButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
+            <SendButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
 
             {submitStatus === 'success' && (
               <p className="font-bold text-sm  text-white text-center" style={{ fontFamily: 'var(--font-nunito-sans)', fontSize: '16px', lineHeight: '26px' }}>

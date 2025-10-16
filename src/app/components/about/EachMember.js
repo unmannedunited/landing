@@ -5,7 +5,7 @@ function EachMember() {
   return (
     <div className="max-w-[1150px] mt-12 mb-24 mx-auto flex gap-24" >
       <h3 className="w-2/3 text-palegray text-[71px] font-coulson" style={{ lineHeight: '66px' }}>Each member of our team brings over a decade of specialized expertise in:</h3>
-      <ul className="w-1/3 flex flex-col justify-between font-nunito list-disc text-darkblue pt-4">
+      <ul className="w-1/3 flex flex-col gap-2 font-nunito list-disc text-darkblue pt-4">
         <li>UAS and Robotics Engineering</li>
         <li>Autonomous Flight Systems</li>
         <li>ISR and Electronic Warfare</li>
@@ -17,5 +17,7 @@ function EachMember() {
     </div>
   )
 }
+
+
 
 export default EachMember;
