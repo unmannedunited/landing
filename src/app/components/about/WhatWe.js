@@ -81,7 +81,7 @@ export default function WhatWe({ }) {
         <img 
           src={getImageUrl("/footer-text2.png")} 
           alt="Footer text" 
-          className="md:w-[30%] w-[50%] absolute md:right-[-7%] right-[0%] bottom-[0%] md:bottom-[-120%] z-10" 
+          className="md:w-[20%] w-[50%] absolute md:right-[-5%] right-[0%] bottom-[0%] md:bottom-[-100%] z-10" 
           style={{ 
             transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterRight.y}px, 0)`,
             willChange: 'transform'
@@ -90,7 +90,7 @@ export default function WhatWe({ }) {
         <img 
           src={getImageUrl("/footer-text.png")} 
           alt="Footer text" 
-          className="w-[30%] absolute left-[-7%] top-[-20%] z-10" 
+          className="w-[20%] absolute left-[-5%] top-[25%] z-10" 
           style={{ 
             transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterLeft.y}px, 0)`,
             willChange: 'transform'

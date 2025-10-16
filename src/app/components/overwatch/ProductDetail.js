@@ -122,11 +122,11 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 className="mb-16" />
 
             <p className="text-white text-lg font-nunito font-light w-1/2">
-                Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today.
+            A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
             </p>
 
         </div>
-        <div className="w-1/3 flex flex-col gap-10">
+        <div className="w-1/3 flex flex-col gap-4 mt-[-32px]">
             <div 
               ref={ref1}
               className={`flex flex-col gap-2 transition-opacity duration-500 ${
@@ -198,7 +198,7 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                             className="w-full object-cover mb-16" />
 
                     <p className="text-white text-lg font-nunito font-light w-1/2">
-                        Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today.
+                    A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
                     </p>
         
                 </div>
@@ -244,7 +244,7 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                 <div className="w-1/3 flex flex-col pt-28">
 
                     <p className="text-white text-lg font-nunito font-light">
-                    Unmanned United was founded with one unflinching goal: to restore American and allied dominance in autonomous robotics, advanced manufacturing, and rapid defense innovation. In a world where conventional weapon systems are quickly outpaced by AI-driven threats, Unmanned United delivers the future of defense today.
+                    A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
                     </p>                
                 </div>
             </div>

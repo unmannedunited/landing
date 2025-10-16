@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getImageUrl, getLinkUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
-import ActionButton from "./ActionButton";
 import SendButton from "./SendButton";
 
-export default function ContactForm({ scrollY = 0 }) {
+export default function ContactForm({ offset }) {
   const [formData, setFormData] = useState({
     message: "",
     email: ""
@@ -18,12 +17,14 @@ export default function ContactForm({ scrollY = 0 }) {
   const parallaxFooterRight = useAdvancedParallax({ 
     speed: 0.25, 
     enabled: true, 
-    direction: 'up-right' 
+    direction: 'up-right', 
+    offset: scrollY
   });
   const parallaxFooterLeft = useAdvancedParallax({ 
     speed: 0.2, 
     enabled: true, 
-    direction: 'up-left' 
+    direction: 'up-left',
+    offset: scrollY
   });
 
   const handleInputChange = (e) => {
@@ -69,19 +70,21 @@ export default function ContactForm({ scrollY = 0 }) {
         <img 
           src={getImageUrl("/footer-text2.png")} 
           alt="Footer text" 
-          className="md:w-[30%] w-[50%] absolute md:right-[-5%] right-[0%] bottom-[-60%] md:bottom-[-200%] z-10" 
+          className="md:w-[20%] w-[50%] absolute md:right-[-5%] right-[0%] z-10" 
           style={{ 
             transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterRight.y}px, 0)`,
-            willChange: 'transform'
+            willChange: 'transform',
+            bottom: `calc(${offset}px - 250%)`
           }} 
         />
       <img 
         src={getImageUrl("/footer-text.png")} 
         alt="Footer text" 
-        className="w-[30%] absolute left-[-5%] top-[-20%] z-10" 
+        className="w-[20%] absolute left-[-5%] z-10" 
         style={{ 
           transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterLeft.y}px, 0)`,
-          willChange: 'transform'
+          willChange: 'transform',
+          bottom: `calc(${offset}px - 120%)`
         }} 
       />
 

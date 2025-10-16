@@ -21,8 +21,8 @@ function AppScenarios() {
   return (
     <div className="w-full bg-white border-b border-dashed border-foreground relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0"
     style={{ zIndex: 1000 }}>
-      <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12 mb-36 mt-16">
-        <h2 className="text-[72px] text-blue font-coulson w-1/2 mb-40" 
+      <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12 mb-36 mt-36">
+        <h2 className="text-[72px] text-blue font-coulson w-1/2 mb-36" 
         style={{ lineHeight: '72px' }}>APPLICATION SCENARIOS</h2>
         <ScenarioCard 
           title="EW & RF NEUTRALIZATION" 
@@ -43,24 +43,24 @@ function AppScenarios() {
           image={getImageUrl("/product/product-scenarios-4.png")} inverted={true} /> 
       </div>
 
-      <div className="w-full max-w-[1200px] mx-auto pb-36">
+      <div className="w-full max-w-[1400px] mx-auto pb-36">
         <img src={getImageUrl("/product/product-detail-title4.png")} alt="Application Scenarios" 
         className="w-2/3 mx-auto object-cover" />
-        <div className="flex gap-12 mb-36 mt-16 relative">
+        <div className="flex gap-24 mb-36 mt-16 relative">
           <div className="w-1/3 flex flex-col justify-between">
-            <img src={getImageUrl("/product/product-doc-1.png")} alt="Application Scenarios" className="w-full object-cover" />
+            <img src={getImageUrl("/product/product-doc-1.png")} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
             <p className="text-center text-md font-bold text-blue w-2/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>OVERWATCH: Comparisson Overview</p>
-            <TransparentButton text="DOWNLOAD" onClick={() => {}} />
+            <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />
           </div>
           <div className="w-1/3 flex flex-col justify-between">
-            <img src={getImageUrl("/product/product-doc-2.png")} alt="Application Scenarios" className="w-full object-cover" />
+            <img src={getImageUrl("/product/product-doc-2.png")} alt="Application Scenarios" className="w-4/5 mx-auto  object-cover" />
             <p className="text-center text-md font-bold text-blue w-2/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>OVERWATCH: Technical Specifications</p>
-            <TransparentButton text="DOWNLOAD" onClick={() => {}} />
+            <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />
           </div>
           <div className="w-1/3 flex flex-col justify-between">
-            <img src={getImageUrl("/product/product-doc-3.png")} alt="Application Scenarios" className="w-full object-cover" />
+            <img src={getImageUrl("/product/product-doc-3.png")} alt="Application Scenarios" className="w-4/5 mx-auto  object-cover" />
             <p className="text-center text-md font-bold text-blue w-2/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>Warranty & Service Level Agreement</p>
-            <TransparentButton text="DOWNLOAD" onClick={() => {}} />
+            <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />
           </div>
         </div>
 

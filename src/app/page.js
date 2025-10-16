@@ -65,7 +65,7 @@ export default function Home() {
 
         <OverwatchSection scrollY={scrollY} />
 
-        <ContactForm scrollY={scrollY} />
+        <ContactForm offset={300} />
       </div>
 
       <Footer />

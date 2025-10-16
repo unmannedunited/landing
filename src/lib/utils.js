@@ -8,13 +8,13 @@ export function getImageUrl(src) {
   if (typeof window !== 'undefined') {
     const currentUrl = window.location.href; // URL completa
     
-    console.log('URL completa:', currentUrl);
+    // console.log('URL completa:', currentUrl);
 
       // Si estamos en GitHub Pages (con basePath), usar el assetPrefix
     const isGitHubPages = currentUrl?.includes('github');
 
-    console.log('isGitHubPages:', isGitHubPages);
-    console.log('normalizedSrc:', `/landing${src}`);
+    // console.log('isGitHubPages:', isGitHubPages);
+    // console.log('normalizedSrc:', `/landing${src}`);
     
     return isGitHubPages && !src.includes('landing') ? `/landing${src}` : src;
   } else {

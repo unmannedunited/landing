@@ -25,8 +25,8 @@ function EverythingWeBuild() {
   return (
     <div className="relative">
       <div className="w-full max-w-[1200px] mx-auto mb-28 mt-12">
-        <div className="flex justify-between gap-12 relative">
-          <div className="w-1/2 p-12 relative top-[-180px]"
+        <div className="flex justify-between gap-20 relative">
+          <div className="w-1/2 relative top-[-180px]"
           style={{
             transform: `translate3d(0px, ${250 + parallaxUS.y}px, 0)`,
             willChange: 'transform', zIndex: 800
@@ -42,7 +42,7 @@ function EverythingWeBuild() {
 
         </div>
 
-        <div className="w-full mt-[-150px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
+        <div className="w-full mt-[-60px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
 
           <div className="max-w-[1100px] mx-auto flex mb-48 gap-20">
             <div className="w-1/3 px-8 relative">
@@ -116,7 +116,7 @@ function EverythingWeBuild() {
         <img
           src={getImageUrl("/textures/unmanned-text-left.png")}
           alt="Background pattern"
-          className="md:w-[30%] w-[50%] absolute md:right-[-7%] right-[0%] bottom-[-180%] z-10" 
+          className="md:w-[20%] w-[50%] absolute md:right-[-7%] right-[0%] bottom-[-150%] z-10" 
           style={{
             transform: `rotateY(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,
             willChange: 'transform'
@@ -126,7 +126,7 @@ function EverythingWeBuild() {
         <img
           src={getImageUrl("/textures/unmanned-text-right.png")}
           alt="Background pattern"
-          className="w-[30%] absolute left-[-7%] top-[20%] z-10" 
+          className="w-[20%] absolute left-[-7%] top-[60%] z-10" 
           style={{
             transform: `rotateY(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,
             willChange: 'transform'

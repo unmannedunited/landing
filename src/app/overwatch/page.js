@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import TeamPic from "../components/overwatch/TeamPic";
-import ContactForm from "../components/overwatch/ContactForm";
+import ContactForm from "../components/ContactForm";
 import ProductHero from "../components/overwatch/ProductHero";
 import ProductDetail from "../components/overwatch/ProductDetail";
 import AppScenarios from "../components/overwatch/AppScenarios";
@@ -38,14 +38,20 @@ export default function About() {
   return (
     <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
       <Navigation />
+      <div  className="bg-black relative z-10">
+      <div className="w-full max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
       <video
         src={getImageUrl("/UU_vid_sm.mp4")}
         autoPlay
         muted
         playsInline
-        className="w-full h-screen object-cover relative"
+        className="w-full h-fit bg-black object-contain relative"
         style={{ zIndex: 1000 }}
       />
+      
+      </div>
+
+      </div>
       
       <div className="md:pt-0 pt-16 border-black border-b">
         <ProductHero scrollY={scrollY} />
@@ -57,7 +63,7 @@ export default function About() {
       <AppScenarios />
       <LastPic />
 
-      <ContactForm />
+      <ContactForm offset={-1000} />
       <Footer />
     </div>
   );
