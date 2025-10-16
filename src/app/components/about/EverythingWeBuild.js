@@ -46,10 +46,14 @@ function EverythingWeBuild() {
 
           <div className="max-w-[1100px] mx-auto flex mb-48 gap-20">
             <div className="w-1/3 px-8 relative">
-              {/* <div className="w-full h-36 border border-darkblue mb-8"></div> */}
+              <img
+                src={getImageUrl("/schemes/about-1-bis.png")}
+                alt="Rapid prototyping"
+                className="absolute w-[36%] top-[18.5%] left-[50%] transform -translate-x-1/2"
+              />
               <img
                 src={getImageUrl("/schemes/about-1.png")}
-                alt="Tactical ISR"
+                alt="Rapid prototyping"
                 className="h-[220px] object-contain p-6 mx-auto"
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>

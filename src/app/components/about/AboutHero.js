@@ -3,7 +3,7 @@
 import { getImageUrl } from "../../../lib/utils";
 import { useAdvancedParallax } from "../../../hooks/useParallax";
 
-function AboutHero() {
+function AboutHero({ scrollY = 0 }) {
   // Efectos de parallax para las imágenes de fondo
   const parallaxRight = useAdvancedParallax({
     speed: 0.3,

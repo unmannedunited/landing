@@ -63,7 +63,7 @@ export default function About() {
       <AppScenarios />
       <LastPic />
 
-      <ContactForm offset={-1000} />
+      <ContactForm offset={-1000} scrollY={scrollY} />
       <Footer />
     </div>
   );

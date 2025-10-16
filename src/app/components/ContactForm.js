@@ -5,7 +5,7 @@ import { getImageUrl, getLinkUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 import SendButton from "./SendButton";
 
-export default function ContactForm({ offset }) {
+export default function ContactForm({ offset, scrollY = 0 }) {
   const [formData, setFormData] = useState({
     message: "",
     email: ""

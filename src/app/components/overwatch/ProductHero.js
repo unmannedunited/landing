@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { getImageUrl } from "../../../lib/utils";
 import { useAdvancedParallax } from "../../../hooks/useParallax";
 
-export default function HeroSection({ }) {
+export default function HeroSection({ scrollY = 0 }) {
   
   // Hook de parallax para la imagen principal
   const parallaxTransform = useAdvancedParallax({ 
