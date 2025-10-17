@@ -10,6 +10,7 @@ import TeamPic from "../components/about/TeamPic";
 import WhatWe from "../components/about/WhatWe";
 import ContactForm from "../components/ContactForm";
 import EverythingWeBuild from "../components/about/EverythingWeBuild";
+import LogoLoader from "../../components/LogoLoader";
 
 export default function About() {
   // Estado para parallax global
@@ -36,23 +37,25 @@ export default function About() {
   }, []);
 
   return (
-    <div className="relative w-full bg-white ">
-      <Navigation />
-      
-      <div className="md:pt-0 pt-16">
-        <AboutHero scrollY={scrollY} />
+    <LogoLoader>
+      <div className="relative w-full bg-white ">
+        <Navigation />
+        
+        <div className="md:pt-0 pt-16">
+          <AboutHero scrollY={scrollY} />
+        </div>
+        <WhoWeAre scrollY={scrollY} />
+
+
+        <EachMember />
+
+        <TeamPic />
+        <WhatWe />
+        <EverythingWeBuild />
+
+        <ContactForm offset={0} scrollY={scrollY} />
+        <Footer />
       </div>
-      <WhoWeAre scrollY={scrollY} />
-
-
-      <EachMember />
-
-      <TeamPic />
-      <WhatWe />
-      <EverythingWeBuild />
-
-      <ContactForm offset={0} scrollY={scrollY} />
-      <Footer />
-    </div>
+    </LogoLoader>
   );
 }

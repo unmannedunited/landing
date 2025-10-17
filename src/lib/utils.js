@@ -5,23 +5,25 @@ export function getImageUrl(src) {
     return src;
   }
 
-  if (typeof window !== 'undefined') {
-    const currentUrl = window.location.href; // URL completa
-    
-    // console.log('URL completa:', currentUrl);
-
-      // Si estamos en GitHub Pages (con basePath), usar el assetPrefix
-    const isGitHubPages = currentUrl?.includes('github');
-
-    // console.log('isGitHubPages:', isGitHubPages);
-    // console.log('normalizedSrc:', `/landing${src}`);
-    
-    return isGitHubPages && !src.includes('landing') ? `/landing${src}` : src;
-  } else {
-    return `/landing${src}`;
+  // Normalizar la ruta de la imagen (asegurar que empiece con /)
+  const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
+  
+  // Usar variables de entorno para determinar el prefijo
+  const basePath = process.env.BASE_PATH || '';
+  const assetPrefix = process.env.ASSET_PREFIX || '';
+  
+  // En desarrollo local, usar la ruta normal
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return normalizedSrc;
   }
   
-
+  // Para GitHub Pages, usar el assetPrefix
+  if (basePath || assetPrefix) {
+    return `${assetPrefix}${normalizedSrc}`;
+  }
+  
+  // Fallback para otros entornos
+  return normalizedSrc;
 }
 
 // Función para manejar URLs de enlaces

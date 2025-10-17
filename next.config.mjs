@@ -11,6 +11,11 @@ const nextConfig = {
         unoptimized: isGitHubPages,
         loader: isGitHubPages ? 'custom' : 'default',
         path: isGitHubPages ? `${process.env.ASSET_PREFIX || ''}/_next/image` : '/_next/image',
+        // Configuración para optimización de imágenes
+        formats: ['image/webp', 'image/avif'],
+        minimumCacheTTL: 60,
+        dangerouslyAllowSVG: true,
+        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
     
     // Configuración de salida estática para GitHub Pages
@@ -23,6 +28,24 @@ const nextConfig = {
         distDir: 'out',
         generateBuildId: () => 'build',
     }),
+    
+    // Configuración de compresión y optimización
+    compress: true,
+    
+    // Configuración de headers para cache
+    async headers() {
+        return [
+            {
+                source: '/public/:path*',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
+                ],
+            },
+        ];
+    },
 };
 
 export default nextConfig;

@@ -8,6 +8,7 @@ import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
 import LinkScrollButton from "./components/LinkScrollButton";
 import OverwatchSection from "./components/OverwatchSection";
+import LogoLoader from "../components/LogoLoader";
 
 export default function Home() {
   // Estado para la sección de overview y botón
@@ -49,26 +50,28 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
-      <Navigation />
-      <div className="md:pt-0 pt-16">
-        <HeroSection scrollY={scrollY} />
+    <LogoLoader>
+      <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
+        <Navigation />
+        <div className="md:pt-0 pt-16">
+          <HeroSection scrollY={scrollY} />
+        </div>
+
+        <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
+          <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} />
+          
+
+          <Overview />
+          <LinkScrollButton text="Learn more about us" href="#contact-form" showButton={true} />
+
+
+          <OverwatchSection scrollY={scrollY} />
+
+          <ContactForm offset={300} />
+        </div>
+
+        <Footer />
       </div>
-
-      <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
-        <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} />
-        
-
-        <Overview />
-        <LinkScrollButton text="Learn more about us" href="#contact-form" showButton={true} />
-
-
-        <OverwatchSection scrollY={scrollY} />
-
-        <ContactForm offset={300} />
-      </div>
-
-      <Footer />
-    </div>
+    </LogoLoader>
   );
 }

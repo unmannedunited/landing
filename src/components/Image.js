@@ -1,28 +1,40 @@
-import Image from 'next/image';
+import { useState } from 'react';
+import { getImageUrl } from '../lib/utils';
 
-export default function CustomImage({ src, alt, className, ...props }) {
-  // Si estamos en GitHub Pages (con basePath), usar el assetPrefix
-  const isGitHubPages = process.env.BASE_PATH && process.env.BASE_PATH !== '';
-  const imageSrc = isGitHubPages ? `${process.env.ASSET_PREFIX || ''}${src}` : src;
+export default function CustomImage({ src, alt, className, priority = false, ...props }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  
+  const imageSrc = getImageUrl(src);
 
-  // Para GitHub Pages, usar img normal ya que Next.js Image no funciona bien con export estático
-  if (isGitHubPages) {
-    return (
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
+
+  return (
+    <div className={`relative ${className}`}>
+      {isLoading && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
+      )}
       <img
         src={imageSrc}
         alt={alt}
-        className={className}
+        className={`${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+        onLoad={handleLoad}
+        onError={handleError}
+        loading={priority ? 'eager' : 'lazy'}
         {...props}
       />
-    );
-  }
-
-  return (
-    <Image
-      src={imageSrc}
-      alt={alt}
-      className={className}
-      {...props}
-    />
+      {hasError && (
+        <div className="absolute inset-0 bg-gray-100 flex items-center justify-center text-gray-400">
+          Error cargando imagen
+        </div>
+      )}
+    </div>
   );
 }

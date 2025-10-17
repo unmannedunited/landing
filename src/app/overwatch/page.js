@@ -11,6 +11,7 @@ import AppScenarios from "../components/overwatch/AppScenarios";
 import LastPic from "../components/overwatch/LastPic";
 import { getImageUrl } from "@/lib/utils";
 import VideoPlayer from "../components/VideoPlayer";
+import LogoLoader from "../../components/LogoLoader";
 
 export default function About() {
   // Estado para parallax global
@@ -37,30 +38,32 @@ export default function About() {
   }, []);
 
   return (
-    <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
-      <Navigation />
-      <div className="bg-black relative z-10">
-        <div className="w-full max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
-          <VideoPlayer 
-            src={getImageUrl("/UU_vid_sm.mp4")}
-            className="w-full h-fit bg-black object-contain relative"
-            volume={0.3}
-          />
+    <LogoLoader>
+      <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
+        <Navigation />
+        <div className="bg-black relative z-10">
+          <div className="w-full max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
+            <VideoPlayer 
+              src={getImageUrl("/UU_vid_sm.mp4")}
+              className="w-full h-fit bg-black object-contain relative"
+              volume={0.3}
+            />
+          </div>
         </div>
+        
+        <div className="md:pt-0 pt-16 border-black border-b">
+          <ProductHero scrollY={scrollY} />
+        </div>
+        <ProductDetail />
+
+        <TeamPic />
+
+        <AppScenarios />
+        <LastPic />
+
+        <ContactForm offset={-1000} scrollY={scrollY} />
+        <Footer />
       </div>
-      
-      <div className="md:pt-0 pt-16 border-black border-b">
-        <ProductHero scrollY={scrollY} />
-      </div>
-      <ProductDetail />
-
-      <TeamPic />
-
-      <AppScenarios />
-      <LastPic />
-
-      <ContactForm offset={-1000} scrollY={scrollY} />
-      <Footer />
-    </div>
+    </LogoLoader>
   );
 }

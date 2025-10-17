@@ -69,6 +69,9 @@ module.exports = {
         'flicker': 'flicker 1.5s ease-in',
         'flicker2': 'flicker2 2s ease-in',
         'flicker3': 'flicker3 2.5s ease-in',
+        'loading': 'loading 1.5s ease-in-out infinite',
+        'loading2': 'loading2 1.5s ease-in-out infinite',
+        'loading3': 'loading3 1.5s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -159,6 +162,20 @@ module.exports = {
           '92%': { opacity: 0.2 },
           '100%': { opacity: 1 },
         },
+
+        loading: {
+          '0%': { opacity: 0.2 }, '30%': { opacity: 1 },  
+          '90%': { opacity: 1 }, '100%': { opacity: 0.2 }
+        },
+        loading2: {
+          '0%': { opacity: 0.2 }, '10%': { opacity: 0.2 }, '40%': { opacity: 1 }, 
+          '80%': { opacity: 1 }, '90%': { opacity: 0.2 }, '100%': { opacity: 0.2 }
+        },
+        loading3: {
+          '0%': { opacity: 0.2 }, '20%': { opacity: 0.2 }, '50%': { opacity: 1 }, 
+          '70%': { opacity: 1 }, '80%': { opacity: 0.2 }, '100%': { opacity: 0.2 }
+        },
+
       },
     },
   },

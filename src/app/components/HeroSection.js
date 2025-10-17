@@ -3,9 +3,12 @@
 import { useState, useEffect } from "react";
 import { getImageUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
+import { useHeroImagePreload } from "../../hooks/useImagePreload";
+import CustomImage from "../../components/Image";
 
 export default function HeroSection({ scrollY = 0 }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { isLoading: imagesLoading } = useHeroImagePreload();
   
   // Hook de parallax para la imagen principal
   const parallaxTransform = useAdvancedParallax({ 
@@ -50,7 +53,8 @@ export default function HeroSection({ scrollY = 0 }) {
         <img 
           src={getImageUrl("/home/hero.png")} 
           alt="Hero" 
-          className="w-full h-full object-cover" 
+          className="w-full h-full object-cover"
+          priority={true}
         />
       </div>
       <div className="absolute top-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
