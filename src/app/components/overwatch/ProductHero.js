@@ -36,8 +36,8 @@ export default function HeroSection({ scrollY = 0 }) {
       </div>
       <div className="absolute top-0 left-0 w-full h-[250px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
       <div className="absolute bottom-0 left-0 w-full h-[250px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
-      <img src={getImageUrl("/home/hero-logo.png")} alt="Hero" 
-        className="absolute right-[18%] top-[50%] w-[17%]" 
+      <img src={getImageUrl("/about/about-logo.png")} alt="Hero" 
+        className="absolute right-[18%] top-[55%] w-[12%]" 
         style={{ transform: `rotate(${- 30 + (parallaxTransform.y)*0.2}deg)`, willChange: 'transform' }} />
 
     </div>

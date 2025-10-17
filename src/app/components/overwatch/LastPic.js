@@ -14,7 +14,7 @@ function LastPic() {
   return (
     <div className="relative" style={{ zIndex: 1000 }}>
       <div className="w-full max-w-[1200px] mx-auto relative"> 
-        <div className="absolute top-0 left-0 flex gap-6 pt-24">
+        <div className="absolute top-0 left-0 flex gap-6 pt-14">
           <img src={getImageUrl("/about/about-logo.png")} alt="Team Pic" 
             className="w-[15%] object-contain" 
             style={{ transform: `rotate(15deg)`, willChange: 'transform'}} />

@@ -27,8 +27,8 @@ function WhoWeAre({ scrollY = 0 }) {
           className="w-full object-cover" />
         </div>
         <div className="w-4/5 flex flex-col justify-center px-12 gap-2 items-left border-l border-white border-dashed">
-          <p className="text-white text-sm font-thabit font-bold">Who We Are</p>
-          <p className="text-white text-sm font-thabit mb-4" style={{ lineHeight: '16px' }}>We are a coalition of proven technologists, defense strategists, corporate advisors, and global operators. Our core leadership has decades of combined experience spanning autonomous systems, advanced UAS design, law enforcement, military operations, investment banking, venture scaling, and international corporate governance. Together, our team has led mission-critical programs, navigated the most complex regulatory landscapes, and successfully taken multiple ventures from startup to strategic exit.</p>
+          <p className="text-white text-md font-thabit font-bold">Who We Are</p>
+          <p className="text-white text-md font-thabit mb-4" style={{ lineHeight: '21px' }}>We are a coalition of proven technologists, defense strategists, corporate advisors, and global operators. Our core leadership has decades of combined experience spanning autonomous systems, advanced UAS design, law enforcement, military operations, investment banking, venture scaling, and international corporate governance. Together, our team has led mission-critical programs, navigated the most complex regulatory landscapes, and successfully taken multiple ventures from startup to strategic exit.</p>
         </div>
       </div>
       <div className="h-2 border-t border-white border-dashed"></div>

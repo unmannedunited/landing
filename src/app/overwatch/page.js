@@ -10,6 +10,7 @@ import ProductDetail from "../components/overwatch/ProductDetail";
 import AppScenarios from "../components/overwatch/AppScenarios";
 import LastPic from "../components/overwatch/LastPic";
 import { getImageUrl } from "@/lib/utils";
+import VideoPlayer from "../components/VideoPlayer";
 
 export default function About() {
   // Estado para parallax global
@@ -38,19 +39,14 @@ export default function About() {
   return (
     <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
       <Navigation />
-      <div  className="bg-black relative z-10">
-      <div className="w-full max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
-      <video
-        src={getImageUrl("/UU_vid_sm.mp4")}
-        autoPlay
-        muted
-        playsInline
-        className="w-full h-fit bg-black object-contain relative"
-        style={{ zIndex: 1000 }}
-      />
-      
-      </div>
-
+      <div className="bg-black relative z-10">
+        <div className="w-full max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
+          <VideoPlayer 
+            src={getImageUrl("/UU_vid_sm.mp4")}
+            className="w-full h-fit bg-black object-contain relative"
+            volume={0.3}
+          />
+        </div>
       </div>
       
       <div className="md:pt-0 pt-16 border-black border-b">
