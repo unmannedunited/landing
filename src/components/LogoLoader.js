@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getImageUrl } from '../lib/utils';
+import { getImageUrlSimple } from '../lib/utils';
 
 export default function LogoLoader({ children, logoPath = "/unmanned-logo.png" }) {
   const [isLoading, setIsLoading] = useState(true);

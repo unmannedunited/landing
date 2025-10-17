@@ -8,22 +8,37 @@ export function getImageUrl(src) {
   // Normalizar la ruta de la imagen (asegurar que empiece con /)
   const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
   
-  // Usar variables de entorno para determinar el prefijo
-  const basePath = process.env.BASE_PATH || '';
-  const assetPrefix = process.env.ASSET_PREFIX || '';
-  
-  // En desarrollo local, usar la ruta normal
-  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-    return normalizedSrc;
+  // Detectar si estamos en GitHub Pages basándose en la URL actual
+  if (typeof window !== 'undefined') {
+    const currentUrl = window.location.href;
+    
+    // Si estamos en localhost, usar ruta normal
+    if (window.location.hostname === 'localhost') {
+      return normalizedSrc;
+    }
+    
+    // Si estamos en GitHub Pages (unmannedunited.github.io), agregar /landing
+    if (currentUrl.includes('unmannedunited.github.io')) {
+      return `/landing${normalizedSrc}`;
+    }
   }
   
-  // Para GitHub Pages, usar el assetPrefix
-  if (basePath || assetPrefix) {
-    return `${assetPrefix}${normalizedSrc}`;
+  // Fallback: asumir que estamos en GitHub Pages
+  return `/landing${normalizedSrc}`;
+}
+
+// Función alternativa más simple para GitHub Pages
+export function getImageUrlSimple(src) {
+  // Si la imagen ya tiene el prefijo, no lo agregues de nuevo
+  if (src.startsWith('http') || src.startsWith('//')) {
+    return src;
   }
+
+  // Normalizar la ruta de la imagen (asegurar que empiece con /)
+  const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
   
-  // Fallback para otros entornos
-  return normalizedSrc;
+  // Siempre agregar /landing para GitHub Pages
+  return `/landing${normalizedSrc}`;
 }
 
 // Función para manejar URLs de enlaces

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { getImageUrl } from "../../lib/utils";
+import { getImageUrlSimple } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 import { useHeroImagePreload } from "../../hooks/useImagePreload";
 import CustomImage from "../../components/Image";
@@ -51,19 +51,18 @@ export default function HeroSection({ scrollY = 0 }) {
         }}
       >
         <img 
-          src={getImageUrl("/home/hero.png")} 
+          src={getImageUrlSimple("/home/hero.png")} 
           alt="Hero" 
           className="w-full h-full object-cover"
-          priority={true}
         />
       </div>
       <div className="absolute top-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
       <div className="absolute bottom-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
-      <img src={getImageUrl("/home/hero-text.png")} alt="Hero" 
+      <img src={getImageUrlSimple("/home/hero-text.png")} alt="Hero" 
         className="absolute right-[10%] top-[35%] w-[40%]" />
-      <img src={getImageUrl("/home/hero-text-sm.png")} alt="Hero" 
+      <img src={getImageUrlSimple("/home/hero-text-sm.png")} alt="Hero" 
         className="absolute right-[30%] top-[60%] w-[15%]" />
-      <img src={getImageUrl("/home/hero-logo.png")} alt="Hero" 
+      <img src={getImageUrlSimple("/home/hero-logo.png")} alt="Hero" 
         className="absolute right-[14%] top-[45%] w-[10%]" />
 
     </div>

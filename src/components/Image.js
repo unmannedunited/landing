@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { getImageUrl } from '../lib/utils';
+import { getImageUrlSimple } from '../lib/utils';
 
 export default function CustomImage({ src, alt, className, priority = false, ...props }) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   
-  const imageSrc = getImageUrl(src);
+  const imageSrc = getImageUrlSimple(src);
 
   const handleLoad = () => {
     setIsLoading(false);
