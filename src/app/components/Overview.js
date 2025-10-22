@@ -18,10 +18,10 @@ function Overview() {
 
   
     return (
-        <div className="w-full bg-white border-b border-dashed border-foreground relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0">
+        <div className="w-full bg-white border-b pt-28 md:pt-0 border-dashed border-foreground relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0">
             <div className="w-full max-w-[1200px] mx-auto md:mt-48 md:mb-4 mt-0 mb-8 ">
-                <img src={getImageUrl("/overview-logo.png")} alt="Unmanned United Overview" className="w-24 h-24 mx-auto mb-6" />
-                {/* <h1 className="text-xl text-blue font-bold" style={{ fontFamily: 'var(--font-nunito-sans)' }}>Company OVERVIEW</h1> */}
+                <img src={getImageUrl("/overview-logo.png")} alt="Unmanned United Overview" 
+                className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6" />
             </div>
             <div className="w-full max-w-[1200px] mx-auto flex md:flex-row flex-col gap-12 mb-48 mt-16">
             
@@ -38,7 +38,9 @@ function Overview() {
         <img
           src={getImageUrl("/textures/unmanned-text-right.png")}
           alt="Background pattern"
-          className={`absolute md:w-[15%] md:bottom-[-60%] md:right-0 right-0 bottom-[-55%] w-[50%] transition-opacity duration-1000 ease-in-out}`}
+          className={`absolute md:w-[15%] md:bottom-[-60%] md:right-0 
+            right-0 bottom-[-40%] w-[50%] 
+            transition-opacity duration-1000 ease-in-out}`}
           style={{
             transform: `translate3d(0px, ${parallaxLeft.y}px, 0) rotateX(180deg)`,
             willChange: 'transform'
@@ -48,7 +50,8 @@ function Overview() {
         <img
           src={getImageUrl("/textures/unmanned-text-left.png")}
           alt="Background pattern"
-          className={`absolute md:w-[15%] md:top-[0%] bottom-[-45%] left-0 w-[50%] transition-opacity duration-1000 ease-in-out}`}
+          className={`absolute md:w-[15%] top-[-15%] md:top-[0%]
+            left-0 w-[50%] transition-opacity duration-1000 ease-in-out}`}
           style={{
             transform: `translate3d(0px, ${parallaxRight.y}px, 0) rotateX(180deg)`,
             willChange: 'transform'

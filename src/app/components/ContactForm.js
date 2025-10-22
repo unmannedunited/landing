@@ -80,7 +80,7 @@ export default function ContactForm({ offset, scrollY = 0 }) {
       <img 
         src={getImageUrl("/footer-text.png")} 
         alt="Footer text" 
-        className="w-[20%] absolute left-[-5%] z-10" 
+        className="md:w-[20%] w-[50%] absolute left-[-5%] z-10" 
         style={{ 
           transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterLeft.y}px, 0)`,
           willChange: 'transform',

@@ -32,7 +32,6 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      console.log('Scroll detected in page.js:', currentScrollY);
       setScrollY(currentScrollY);
     };
 
@@ -62,12 +61,12 @@ export default function Home() {
           
 
           <Overview />
-          <LinkScrollButton text="Learn more about us" href="#contact-form" showButton={true} />
+          <LinkScrollButton text={window.innerWidth < 768 ? "Learn more" : "Learn more about us"} href="#contact-form" showButton={true} />
 
 
           <OverwatchSection scrollY={scrollY} />
 
-          <ContactForm offset={300} />
+          <ContactForm offset={window.innerWidth < 768 ? 900 : 300} />
         </div>
 
         <Footer />

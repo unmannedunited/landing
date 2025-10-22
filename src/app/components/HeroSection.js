@@ -1,14 +1,9 @@
 'use client';
 
-import { useState, useEffect } from "react";
-import { getImageUrlSimple } from "../../lib/utils";
+import { getImageUrl, getImageUrlSimple } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
-import { useHeroImagePreload } from "../../hooks/useImagePreload";
-import CustomImage from "../../components/Image";
 
 export default function HeroSection({ scrollY = 0 }) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const { isLoading: imagesLoading } = useHeroImagePreload();
   
   // Hook de parallax para la imagen principal
   const parallaxTransform = useAdvancedParallax({ 
@@ -16,30 +11,6 @@ export default function HeroSection({ scrollY = 0 }) {
     enabled: true, 
     direction: 'down' 
   });
-
-  // Efecto de seguimiento del mouse para el dron
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const innerWidth = window.innerWidth || document.documentElement.clientWidth;
-      const innerHeight = window.innerHeight || document.documentElement.clientHeight;
-      
-      // Validar que tenemos dimensiones válidas
-      if (innerWidth > 0 && innerHeight > 0) {
-        // Calcular posición relativa del mouse (0 a 1)
-        const x = (clientX / innerWidth - 0.5) * 5; // -1 a 1
-        const y = (clientY / innerHeight - 0.5) * 5; // -1 a 1
-
-        setMousePosition({ y, x });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
   return (
     <div className="w-full relative overflow-hidden">
@@ -51,19 +22,20 @@ export default function HeroSection({ scrollY = 0 }) {
         }}
       >
         <img 
-          src={getImageUrlSimple("/home/hero.png")} 
+          src={getImageUrl(`/home/hero${window.innerWidth < 768 ? '-mobile' : ''}.png`)} 
           alt="Hero" 
-          className="w-full h-full object-cover"
+          className="w-full md:h-full h-[450px] object-cover"
+          style={{ objectPosition: '10% center' }}
         />
       </div>
-      <div className="absolute top-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
-      <div className="absolute bottom-0 left-0 w-full h-[200px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
-      <img src={getImageUrlSimple("/home/hero-text.png")} alt="Hero" 
-        className="absolute right-[10%] top-[35%] w-[40%]" />
-      <img src={getImageUrlSimple("/home/hero-text-sm.png")} alt="Hero" 
-        className="absolute right-[30%] top-[60%] w-[15%]" />
-      <img src={getImageUrlSimple("/home/hero-logo.png")} alt="Hero" 
-        className="absolute right-[14%] top-[45%] w-[10%]" />
+      <div className="absolute top-0 left-0 w-full md:h-[200px] h-[120px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
+      <div className="absolute bottom-0 left-0 w-full md:h-[200px] h-[120px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
+      <img src={getImageUrl("/home/hero-text.png")} alt="Hero" 
+        className="absolute right-[10%] md:top-[35%] top-[10%] md:w-[40%] w-[80%]" />
+      <img src={getImageUrl("/home/hero-text-sm.png")} alt="Hero" 
+        className="absolute md:right-[30%] right-[10%] md:top-[60%] top-[72%] md:w-[15%] w-[45%]" />
+      <img src={getImageUrl("/home/hero-logo.png")} alt="Hero" 
+        className="absolute md:right-[14%] right-[60%] md:top-[45%] top-[60%] md:w-[10%] w-[35%]" />
 
     </div>
   );

@@ -1,7 +1,8 @@
 const LinkButton = ({ text, href, showButton, className, ...otherProps }) => {
     return (
         <a
-            className={`uppercase w-max md:px-[120px] text-center cursor-pointer py-3.5 bg-blue 
+            className={`uppercase w-max px-[48px] md:px-[120px] text-center cursor-pointer 
+                py-2 md:py-3.5 bg-blue 
              hover:border-white border-0 hover:border 
              active:bg-white active:text-blue active:border-darkblue
             left-1/2 absolute -translate-x-1/2 -translate-y-1/2 
