@@ -17,6 +17,9 @@ export default function Home() {
   
   // Estado para parallax global
   const [scrollY, setScrollY] = useState(0);
+  
+  // Estado para el ancho de la ventana
+  const [windowWidth, setWindowWidth] = useState(0);
 
   // Efecto para la sección de overview y botón
   useEffect(() => {
@@ -48,6 +51,23 @@ export default function Home() {
     };
   }, []);
 
+  // Listener para el ancho de la ventana
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Establecer el ancho inicial
+    handleResize();
+
+    // Agregar listener
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <LogoLoader>
       <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
@@ -61,12 +81,12 @@ export default function Home() {
           
 
           <Overview />
-          <LinkScrollButton text={window.innerWidth < 768 ? "Learn more" : "Learn more about us"} href="#contact-form" showButton={true} />
+          <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href="#contact-form" showButton={true} />
 
 
           <OverwatchSection scrollY={scrollY} />
 
-          <ContactForm offset={window.innerWidth < 768 ? 900 : 300} />
+          <ContactForm offset={windowWidth < 768 ? 900 : 300} />
         </div>
 
         <Footer />
