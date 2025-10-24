@@ -51,14 +51,14 @@ function EverythingWeBuild() {
             <div className="md:w-1/3 w-full px-8 relative">
               <div className="absolute top-[35%] left-[38%] h-24 w-20 bg-white"
               style={{
-                transform: `translateY(${(window.innerWidth < 768 ? 830 + (parallaxImages.y)*2 : 320 + (parallaxImages.y)) }px)`,
+                transform: `translateY(${(window.innerWidth < 768 ? 800 + (parallaxImages.y)*2 : 320 + (parallaxImages.y)) }px)`,
                 willChange: 'transform',
                 zIndex: 500
               }}></div>
               <img
                 src={getImageUrl("/schemes/about-1-bis.png")}
                 alt="Rapid prototyping"
-                className="absolute w-[21%] md:top-[39%] top-[43%] left-[50%] transform -translate-x-1/2"
+                className="absolute h-[80px] md:top-[39%] top-[43%] left-[50%] transform -translate-x-1/2"
               />
               <img
                 src={getImageUrl("/schemes/about-1.png")}
@@ -86,7 +86,7 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-2-bis.png")}
                 alt="MARITIME / BORDER ISR"
-                className="absolute w-[35%] md:w-[36%] top-[18.5%] left-[50%] transform -translate-x-1/2"
+                className="absolute h-[112px] md:w-[36%] top-[18.5%] left-[50%] transform -translate-x-1/2"
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 USA-based  /<br /> manufacturing
@@ -102,9 +102,10 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-3-bis.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                className="absolute w-[24.5%] top-[24%] left-[62%] transform -translate-x-1/2"
+                className="absolute h-[87px] top-[24%] md:left-[62%] left-[60.5%] transform -translate-x-1/2"
                 style={{
-                  transform: `translateY(${(-400 - parallaxImages.y > 0 ? 0 : -400 - parallaxImages.y)}px) translateX(-40px)`,
+                  transform: `translateY(${((window.innerWidth < 768 ? -500 : -400) - parallaxImages.y > 0 ? 0 : 
+                    (window.innerWidth < 768 ? -500 : -400) - parallaxImages.y)}px) translateX(-40px)`,
                   willChange: 'transform'
                 }}
 
@@ -136,7 +137,7 @@ function EverythingWeBuild() {
         <img
           src={getImageUrl("/textures/unmanned-text-left.png")}
           alt="Background pattern"
-          className="md:w-[20%] w-[30%] absolute md:right-[-7%] right-[0%] bottom-[-80%] md:bottom-[-150%] z-10" 
+          className="md:w-[20%] w-[30%] absolute md:right-[-7%] right-[0%] bottom-[-85%] md:bottom-[-150%] z-10" 
           style={{
             transform: `rotateY(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,
             willChange: 'transform'
