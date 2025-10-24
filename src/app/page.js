@@ -68,6 +68,14 @@ export default function Home() {
     };
   }, []);
 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    document.getElementById('contact-form')?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
   return (
     <LogoLoader>
       <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
@@ -77,11 +85,11 @@ export default function Home() {
         </div>
 
         <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
-          <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} />
+          <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} onClick={handleContactClick} />
           
 
           <Overview />
-          <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href="#contact-form" showButton={true} />
+          <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href="/about" showButton={true} />
 
 
           <OverwatchSection scrollY={scrollY} />

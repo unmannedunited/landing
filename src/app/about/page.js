@@ -15,7 +15,7 @@ import LogoLoader from "../../components/LogoLoader";
 export default function About() {
   // Estado para parallax global
   const [scrollY, setScrollY] = useState(0);
-
+  const [windowWidth, setWindowWidth] = useState(0);
   // Listener de scroll global
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +36,24 @@ export default function About() {
     };
   }, []);
 
+
+  // Listener para el ancho de la ventana
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Establecer el ancho inicial
+    handleResize();
+
+    // Agregar listener
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <LogoLoader>
       <div className="relative w-full bg-white ">
@@ -53,7 +71,7 @@ export default function About() {
         <WhatWe />
         <EverythingWeBuild />
 
-        <ContactForm offset={0} scrollY={scrollY} />
+        <ContactForm offset={windowWidth < 768 ? 300 : 0} scrollY={scrollY} />
         <Footer />
       </div>
     </LogoLoader>

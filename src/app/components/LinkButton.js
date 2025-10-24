@@ -1,4 +1,4 @@
-const LinkButton = ({ text, href, showButton, className, ...otherProps }) => {
+const LinkButton = ({ text, href, showButton, className, onClick, ...otherProps }) => {
     return (
         <a
             className={`uppercase w-max px-[48px] md:px-[120px] text-center cursor-pointer 
@@ -11,14 +11,9 @@ const LinkButton = ({ text, href, showButton, className, ...otherProps }) => {
                 font-syncopate ${showButton ? 'opacity-100' : 'opacity-0'
             }`}
             href={href}
+            onClick={onClick}
             {...otherProps}
-            onClick={(e) => {
-            e.preventDefault();
-            document.getElementById(href)?.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-            }}>
+            >
             {text}
         </a>
     );
