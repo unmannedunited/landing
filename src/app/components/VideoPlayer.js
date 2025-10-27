@@ -5,7 +5,7 @@ import { getImageUrl } from "@/lib/utils";
 
 export default function VideoPlayer({ src, className = "", volume = 0.2 }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef(null);
 
   const togglePlayPause = () => {
@@ -29,10 +29,20 @@ export default function VideoPlayer({ src, className = "", volume = 0.2 }) {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.volume = volume;
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.muted = true; // Asegurar que esté silenciado para autoplay
+      
+      // Intentar reproducir automáticamente
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsPlaying(true);
+        }).catch((error) => {
+          console.log("Autoplay falló:", error);
+          setIsPlaying(false);
+        });
+      }
     }
-  }, [videoRef]);
+  }, [volume]);
 
   return (
     <div className={`relative w-full ${className}`}>
@@ -59,7 +69,7 @@ export default function VideoPlayer({ src, className = "", volume = 0.2 }) {
             <img
               src={getImageUrl("/controls/play.png")}
               alt="Play"
-              className="h-18 relative"
+              className="md:h-18 h-10 relative"
               style={{ zIndex: 1200 }}
             />
           </button>
@@ -76,7 +86,7 @@ export default function VideoPlayer({ src, className = "", volume = 0.2 }) {
           <img
             src={getImageUrl(isMuted ? "/controls/unmute.png" : "/controls/mute.png")}
             alt={isMuted ? "Unmute" : "Mute"}
-            className="h-18 relative"
+            className="md:h-18 h-10 relative"
             style={{ zIndex: 1200 }}
           />
         </button>

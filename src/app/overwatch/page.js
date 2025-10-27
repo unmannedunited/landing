@@ -42,7 +42,7 @@ export default function About() {
       <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
         <Navigation />
         <div className="bg-black relative z-10">
-          <div className="w-full max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
+          <div className="w-full md:mt-0 mt-16 max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
             <VideoPlayer 
               src={getImageUrl("/UU_vid_sm.mp4")}
               className="w-full h-fit bg-black object-contain relative"
@@ -51,7 +51,7 @@ export default function About() {
           </div>
         </div>
         
-        <div className="md:pt-0 pt-16 border-black border-b">
+        <div className="md:pt-0 pt-36 bg-black border-black border-b">
           <ProductHero scrollY={scrollY} />
         </div>
         <ProductDetail />

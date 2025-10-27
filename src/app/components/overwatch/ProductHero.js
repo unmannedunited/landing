@@ -15,16 +15,16 @@ export default function HeroSection({ scrollY = 0 }) {
 
 
   return (
-    <div className="w-full relative overflow-hidden" style={{ zIndex: 1000 }} >
+    <div className="w-full relative md:overflow-hidden" style={{ zIndex: 1000 }} >
       <div className="max-w-[1200px] w-full h-full mx-auto relative overflow-visible" style={{ zIndex: 1000 }}>
-        <p className="text-white text-xl uppercase font-syncopate absolute tracking-[4px]" style={{ lineHeight: '36px', top: 150 }}>Overwatch isn’t <br/> like other drones</p>
-        <p className="text-white text-right text-xl uppercase font-syncopate absolute right-0 tracking-[4px]" style={{ lineHeight: '36px', top: "calc(100vh + 50px)" }}>it’s what those other <br/> drones wish they were</p>
+        <p className="text-white md:text-left text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] md:top-[150px] top-[-20px] uppercase font-syncopate absolute tracking-[4px]">Overwatch isn’t <br/> like other drones</p>
+        <p className="text-white md:text-right text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] uppercase font-syncopate absolute right-0 tracking-[4px]" style={{ top:window.innerWidth < 768 ? "420px" : "calc(100vh + 50px)" }}>it’s what those other <br/> drones wish they were</p>
       </div>
 
       <div 
-        className="w-full h-full"
+        className="w-full md:h-full h-[400px]"
         style={{
-          transform: `translateY(${ -200 + parallaxTransform.y}px)`,
+          transform: `translateY(${ window.innerWidth < 768 ? 0 : -200 + parallaxTransform.y}px)`,
           willChange: 'transform'
         }}
       >
@@ -34,11 +34,11 @@ export default function HeroSection({ scrollY = 0 }) {
           className="w-full h-full object-cover" 
         />
       </div>
-      <div className="absolute top-0 left-0 w-full h-[250px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
-      <div className="absolute bottom-0 left-0 w-full h-[250px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
+      <div className="absolute top-0 left-0 w-full md:h-[250px] h-[100px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
+      <div className="absolute bottom-0 left-0 w-full md:h-[250px] h-[100px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
       <img src={getImageUrl("/about/about-logo.png")} alt="Hero" 
-        className="absolute right-[18%] top-[55%] w-[12%]" 
-        style={{ transform: `rotate(${- 30 + (parallaxTransform.y)*0.2}deg)`, willChange: 'transform' }} />
+        className="absolute md:left-[70%] left-[10%] md:top-[55%] top-[70%] w-[20%] md:w-[12%]" 
+        style={{ transform: `rotate(${- 30 + (parallaxTransform.y)*(window.innerWidth < 768 ? 0.4 : 0.2)}deg)`, willChange: 'transform' }} />
 
     </div>
   );

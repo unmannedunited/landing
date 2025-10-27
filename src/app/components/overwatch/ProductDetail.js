@@ -65,14 +65,14 @@ const ProductDetail = () => {
   return (
     <div className="w-full bg-black border-black border-b relative" style={{  }}>
       {/* <div className="w-full h-full" style={{ backgroundImage: `url(${getImageUrl("/product/product-bg.png")})`, backgroundSize: 'contain', backgroundAttachment: 'fixed', backgroundPosition: 'center top', backgroundRepeat: 'no-repeat' }}></div> */}
-      <img src={getImageUrl("/product/product-bg.png")} alt="Product Detail" 
-      className="w-full h-full object-cover fixed top-0 left-0 z-9 opacity-50"/>
+      <img src={getImageUrl(window.innerWidth < 768 ? "/product/product-bg-m.png" : "/product/product-bg.png")} alt="Product Detail" 
+      className="w-full h-full object-cover fixed top-0 left-0 z-9 md:opacity-50 opacity-100"/>
       <div className="absolute top-0 left-0 w-full h-[250px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))' }}></div>
       <div className="absolute bottom-0 left-0 w-full h-[250px]" style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1))' }}></div>
 
         <div className="w-full max-w-[1200px] mx-auto">
 
-        <div className="w-full max-w-[700px] mx-auto pt-40 pb-40 relative z-10">
+        <div className="md:w-full w-fit max-w-[700px] md:mx-auto mx-16 pt-40 pb-40 relative z-10">
             <p className="text-white text-lg font-nunito font-light">Overwatch is a Category II UAS that merges endurance, autonomy, payload flexibility, and battlefield survivability in a way that simply doesn’t exist anywhere else in the current market.</p>
             
         </div>
@@ -109,24 +109,28 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
   });
 
   return (
-    <div className="w-full flex gap-16 relative">
+    <div className="w-full flex gap-16 relative md:flex-row flex-col">
       
       <img src={getImageUrl("/product/product-detail-model.png")} alt="Product Detail" 
-                className="absolute right-[10%] top-[0%] w-[80%]"
+                className="absolute right-[10%] top-[0%] w-[80%] "
                   />
-        <div className="w-2/3">
+        <div className="md:w-2/3 w-full md:px-0 px-16">
             <img src={getImageUrl("/product/product-detail-title.png")} alt="Product Detail" 
-                    className="relative z-10 w-full object-cover mb-16" />
+              className="relative z-10 md:w-full mt-56 md:mt-0 w-fit object-contain mb-16" />
 
-            <img src={getImageUrl("/product/product-detail-camera.png")} alt="Product Detail" 
-                className="mb-16" />
+              <div className="md:block flex gap-8 align-middle justify-center">
+                <img src={getImageUrl("/product/product-detail-camera.png")} alt="Product Detail" 
+                className="md:mb-16 w-1/3 object-contain" />
 
-            <p className="text-white text-lg font-nunito font-light w-1/2">
-            A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
-            </p>
+                <p className="text-white text-[17px] md:text-lg font-nunito font-light md:w-1/2 w-2/3">
+                  A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
+                </p>
+
+              </div>
+
 
         </div>
-        <div className="w-1/3 flex flex-col gap-4 mt-[-32px]">
+        <div className="md:w-1/3 w-full md:px-0 px-24 flex flex-col gap-4 mt-[-32px]">
             <div 
               ref={ref1}
               className={`flex flex-col gap-2 transition-opacity duration-500 ${
@@ -191,24 +195,24 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
 const SecondSection = ({mousePosition, flashlightPosition}) => {
     return (
         <div>
-            <div className="w-full flex gap-16 relative">
-                <div className="w-2/3">
+            <div className="w-full flex gap-16 relative md:flex-row flex-col">
+                <div className="w-3/5 md:mx-0 mx-12">
                     
-                    <img src={getImageUrl("/product/product-detail-title2.png")} alt="Product Detail" 
+                    <img src={getImageUrl(window.innerWidth < 768 ? "/product/product-detail-title2-m.png" : "/product/product-detail-title2.png")} alt="Product Detail" 
                             className="w-full object-cover mb-16" />
 
-                    <p className="text-white text-lg font-nunito font-light w-1/2">
+                    <p className="hidden md:block text-white text-lg font-nunito font-light w-1/2">
                     A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
                     </p>
         
                 </div>
                 <div className="w-1/3 flex flex-col gap-10">
                     <img src={getImageUrl("/home/hero-logo.png")} alt="Product Detail" 
-                        className="w-2/3 mr-12 object-cover ml-auto" />
+                        className="md:w-2/3 w-full ml-8 md:ml-0 mt-[-80px] md:mt-0 object-cover ml-auto" />
                 
                 </div>
                 <div 
-                    className="flashlight-container absolute left-[15%] top-[-7%] w-[80%] 
+                    className="flashlight-container absolute md:left-[15%] left-0 md:top-[-7%] top-[12%] md:w-[80%] w-full 
                     overflow-hidden opacity-10"
                 >
                     <img src={getImageUrl("/product/product-detail-model2.png")} alt="Product Detail" 
@@ -216,7 +220,7 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                         />
                 </div>
                 <div 
-                    className="flashlight-container2 absolute left-[15%] top-[-7%] w-[80%] overflow-hidden"
+                    className="flashlight-container2 absolute md:left-[15%] left-0 md:top-[-7%] top-[12%] md:w-[80%] w-full  overflow-hidden"
                     style={{
                         maskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
                         WebkitMaskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
@@ -236,12 +240,12 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                 
 
             </div>
-            <div className="w-full flex gap-24 relative mt-32">
-                <div className="w-2/3">
+            <div className="w-full flex md:gap-24 gap-12 relative md:mt-32 mt-16 md:flex-row flex-col">
+                <div className="w-4/5 md:mx-0 mx-12 pr-6">
                     <img src={getImageUrl("/product/product-detail-title3.png")} alt="Product Detail" 
-                            className="w-full object-cover mb-16" />        
+                            className="w-full object-cover md:mb-16" />        
                 </div>
-                <div className="w-1/3 flex flex-col pt-28">
+                <div className="md:w-1/3 w-3/5 mx-36 flex flex-col md:pt-28">
 
                     <p className="text-white text-lg font-nunito font-light">
                     A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
