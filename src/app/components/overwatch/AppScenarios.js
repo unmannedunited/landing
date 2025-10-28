@@ -126,7 +126,6 @@ function AppScenarios() {
         <div className="hidden md:block">
           {scenarios.map((scenario, index) => { 
             console.log(scenario.image);
-            console.log(getImageUrl(scenario.image));
             return (
             <DesktopScenarioCard 
               key={index}
@@ -150,7 +149,7 @@ function AppScenarios() {
                 <div key={index} className="w-full flex-shrink-0">
                   <ScenarioCard 
                     title={scenario.title} 
-                    image={getImageUrl(scenario.image)}
+                    image={scenario.image}
                     inverted={scenario.inverted}
                     big={scenario.big}>
                     {scenario.content}
@@ -192,7 +191,9 @@ function AppScenarios() {
         {/* Versión Desktop - Mantiene el diseño original */}
         <div className="hidden md:flex gap-24 mb-36 md:mt-36 mt-12 relative" id="documentation">
           {documents.map((doc, index) => (
+            
             <div key={index} className="w-1/3 flex flex-col justify-between">
+            {console.log(doc.image)}
               <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
               <p className="text-center text-md font-bold text-blue w-3/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>{doc.title}</p>
               <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />
