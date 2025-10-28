@@ -15,16 +15,16 @@ export default function HeroSection({ scrollY = 0 }) {
 
 
   return (
-    <div className="w-full relative md:overflow-hidden" style={{ zIndex: 1000 }} >
-      <div className="max-w-[1200px] w-full h-full mx-auto relative overflow-visible" style={{ zIndex: 1000 }}>
+    <div className="w-full relative md:overflow-hidden">
+      <div className="max-w-[1200px] w-full h-full mx-auto relative overflow-visible" style={{ zIndex: 2000 }}>
         <p className="text-white md:text-left text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] md:top-[150px] top-[-20px] uppercase font-syncopate absolute tracking-[4px]">Overwatch isn’t <br/> like other drones</p>
-        <p className="text-white md:text-right text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] uppercase font-syncopate absolute right-0 tracking-[4px]" style={{ top:window.innerWidth < 768 ? "420px" : "calc(100vh + 50px)" }}>it’s what those other <br/> drones wish they were</p>
+        <p className="text-white md:text-right text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] uppercase font-syncopate absolute right-0 tracking-[4px]" style={{ top:window.innerWidth < 768 ? "420px" : "calc(100vh - 250px)" }}>it’s what those other <br/> drones wish they were</p>
       </div>
 
       <div 
         className="w-full md:h-full h-[400px]"
         style={{
-          transform: `translateY(${ window.innerWidth < 768 ? 0 : -200 + parallaxTransform.y}px)`,
+          transform: `translateY(${ window.innerWidth < 768 ? 0 : -100 + parallaxTransform.y}px)`,
           willChange: 'transform'
         }}
       >

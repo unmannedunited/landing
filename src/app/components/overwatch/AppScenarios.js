@@ -115,9 +115,10 @@ function AppScenarios() {
 
 
   return (
-    <div className="w-full bg-white border-b border-dashed border-foreground relative overflow-hidden transition-opacity duration-1000 ease-in-out px-12 md:px-0"
+    <div className="w-full bg-white border-b border-dashed border-foreground relative 
+    overflow-hidden transition-opacity duration-1000 ease-in-out"
     style={{ zIndex: 1000 }}>
-      <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12 md:mb-36 mt-36">
+      <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12 md:mb-36 mt-36 px-12 md:px-0">
         <h2 className="md:text-[72px] md:leading-[72px] text-[32px] leading-[32px] text-blue font-coulson w-1/2 md:mb-36" >
         APPLICATION SCENARIOS</h2>
         
@@ -197,7 +198,7 @@ function AppScenarios() {
         </div>
 
         {/* Versión Móvil - Carrusel de documentos */}
-        <div className="md:hidden relative mb-36 mt-12">
+        <div className="md:hidden relative mb-36 mt-12" id="documentation">
           <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
@@ -245,7 +246,9 @@ function AppScenarios() {
       <img
         src={getImageUrl("/textures/unmanned-text-right.png")}
         alt="Background pattern"
-        className={`absolute md:w-[15%] md:top-[120vh] md:right-0 right-0 w-[50%] transition-opacity duration-1000 ease-in-out}`}
+        className={`absolute md:w-[15%] md:top-[120vh] md:right-0 
+          right-0 w-[50%] top-[40%] 
+          transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `translate3d(0px, ${parallaxRight.y}px, 0)`,
           willChange: 'transform'
@@ -255,7 +258,9 @@ function AppScenarios() {
       <img
         src={getImageUrl("/textures/unmanned-text-right.png")}
         alt="Background pattern"
-        className={`absolute md:w-[15%] md:top-[60vh] left-0 w-[50%] transition-opacity duration-1000 ease-in-out}`}
+        className={`absolute md:w-[15%] md:top-[60vh] 
+          left-0 w-[50%] top-[30%] 
+          transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `rotateY(180deg) translate3d(0px, ${parallaxLeft.y}px, 0)`,
           willChange: 'transform'
@@ -276,7 +281,9 @@ function AppScenarios() {
       <img
         src={getImageUrl("/textures/unmanned-text.png")}
         alt="Background pattern"
-        className={`absolute md:w-[15%] md:top-[300vh] md:right-0 w-[50%] transition-opacity duration-1000 ease-in-out}`}
+        className={`absolute md:w-[15%] md:top-[300vh] md:right-0 w-[50%] 
+          right-0
+          transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `rotateY(180deg) translate3d(0px, ${parallaxLeft.y}px, 0)`,
           willChange: 'transform'
@@ -286,7 +293,9 @@ function AppScenarios() {
       <img
         src={getImageUrl("/textures/unmanned-text-right.png")}
         alt="Background pattern"
-        className={`absolute md:w-[15%] md:bottom-[220vh] md:right-0 right-0 w-[50%] transition-opacity 
+        className={`absolute md:w-[15%] md:bottom-[220vh] md:right-0 
+          bottom-[70%]
+          right-0 w-[50%] transition-opacity 
           duration-1000 ease-in-out}`}
         style={{
           transform: `rotateX(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,

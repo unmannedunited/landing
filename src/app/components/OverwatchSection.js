@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
-import { getImageUrl } from "../../lib/utils";
+import { getImageUrl, getLinkUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 import Button from "./LinkButton";
 
@@ -125,7 +125,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
                 </p>
               </div>
             </div>
-            <Button text="learn more about overwatch" href="/overwatch" showButton={true} />
+            <Button text="learn more about overwatch" href={getLinkUrl("/overwatch")} showButton={true} />
             <div className="h-40"></div>
 
           </div>
@@ -232,7 +232,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
                 </p>
               </div>
             </div>
-            <Button text={window.innerWidth < 768 ? "learn more" : "learn more about overwatch"} href="/overwatch" showButton={true} />
+            <Button text={window.innerWidth < 768 ? "learn more" : "learn more about overwatch"} href={getLinkUrl("/overwatch")} showButton={true} />
             <div className="h-32"></div>
 
           </div>

@@ -213,7 +213,7 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                 </div>
                 <div 
                     className="flashlight-container absolute md:left-[15%] left-0 md:top-[-7%] top-[12%] md:w-[80%] w-full 
-                    overflow-hidden opacity-10"
+                    overflow-hidden opacity-30 md:opacity-10"
                 >
                     <img src={getImageUrl("/product/product-detail-model2.png")} alt="Product Detail" 
                         className="w-full h-full object-cover" 

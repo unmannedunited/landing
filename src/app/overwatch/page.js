@@ -12,6 +12,7 @@ import LastPic from "../components/overwatch/LastPic";
 import { getImageUrl } from "@/lib/utils";
 import VideoPlayer from "../components/VideoPlayer";
 import LogoLoader from "../../components/LogoLoader";
+import LinkScrollButton from "../components/LinkScrollButton";
 
 export default function About() {
   // Estado para parallax global
@@ -37,6 +38,19 @@ export default function About() {
     };
   }, []);
 
+  const handleDocumentationClick = (e) => {
+    e.preventDefault();
+    document.getElementById('documentation')?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
+
   return (
     <LogoLoader>
       <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
@@ -48,6 +62,9 @@ export default function About() {
               className="w-full h-fit bg-black object-contain relative"
               volume={0.3}
             />
+
+<LinkScrollButton text={windowWidth < 768 ? "Get docs" : "Get documentation"} href="#documentation" showButton={true} onClick={handleDocumentationClick} />
+
           </div>
         </div>
         
@@ -61,7 +78,7 @@ export default function About() {
         <AppScenarios />
         <LastPic />
 
-        <ContactForm offset={-1000} scrollY={scrollY} />
+        <ContactForm offset={windowWidth < 768 ? 300 : -1000} scrollY={scrollY} />
         <Footer />
       </div>
     </LogoLoader>

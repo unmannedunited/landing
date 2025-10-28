@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import LinkScrollButton from "./components/LinkScrollButton";
 import OverwatchSection from "./components/OverwatchSection";
 import LogoLoader from "../components/LogoLoader";
+import { getLinkUrl } from "@/lib/utils";
 
 export default function Home() {
   // Estado para la sección de overview y botón
@@ -89,7 +90,7 @@ export default function Home() {
           
 
           <Overview />
-          <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href="/about" showButton={true} />
+          <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href={getLinkUrl("/about")} showButton={true} />
 
 
           <OverwatchSection scrollY={scrollY} />
