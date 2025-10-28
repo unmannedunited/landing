@@ -124,7 +124,10 @@ function AppScenarios() {
         
         {/* Versión Desktop - Mantiene el diseño original */}
         <div className="hidden md:block">
-          {scenarios.map((scenario, index) => (
+          {scenarios.map((scenario, index) => { 
+            console.log(scenario.image);
+            console.log(getImageUrl(scenario.image));
+            return (
             <DesktopScenarioCard 
               key={index}
               title={scenario.title} 
@@ -133,7 +136,7 @@ function AppScenarios() {
               big={scenario.big}>
               {scenario.content}
             </DesktopScenarioCard>
-          ))}
+          )})}
         </div>
 
         {/* Versión Móvil - Carrusel */}
@@ -187,7 +190,7 @@ function AppScenarios() {
         <img src={getImageUrl("/product/product-detail-title4.png")} alt="Application Scenarios" 
         className="w-2/3 mx-auto object-cover" />
         {/* Versión Desktop - Mantiene el diseño original */}
-        <div className="hidden md:flex gap-24 mb-36 md:mt-36 mt-12 relative">
+        <div className="hidden md:flex gap-24 mb-36 md:mt-36 mt-12 relative" id="documentation">
           {documents.map((doc, index) => (
             <div key={index} className="w-1/3 flex flex-col justify-between">
               <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />

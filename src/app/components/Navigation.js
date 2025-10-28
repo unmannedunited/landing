@@ -18,7 +18,7 @@ export default function Navigation() {
       <div className="md:hidden max-w-[100vw] flex items-center justify-center h-full">
         <Link 
           className="flex items-center text-foreground gap-2 uppercase cursor-pointer text-sm font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-          href={getLinkUrl("/")}
+          href={"/"}
         >
           <img src={getImageUrl("/unmanned-logo.png")} alt="Unmanned united" className="w-10 h-10 flex-shrink-0" />
           <span className="hidden sm:inline">Unmanned united</span>
@@ -30,7 +30,7 @@ export default function Navigation() {
         <div className="items-center flex justify-between gap-4 uppercase tracking-[3px] font-regular w-full">
           <Link 
             className="flex items-center text-foreground gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-            href={getLinkUrl("/")}
+            href={"/"}
           >
             <img src={getImageUrl("/unmanned-logo.png")} alt="Unmanned united" className="w-8 h-8 flex-shrink-0" />
             Unmanned united
@@ -38,13 +38,13 @@ export default function Navigation() {
           <div className="flex items-center gap-12">
             <Link 
             className="flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-            href={getLinkUrl("/about")}
+            href={"/about"}
             >
               About us
             </Link>
             <Link 
               className="flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap"
-              href={getLinkUrl("/overwatch")}
+              href={"/overwatch"}
             >
               Overwatch-LR™
             </Link>
