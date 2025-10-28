@@ -16,6 +16,10 @@ export function getImageUrl(src) {
     if (window.location.hostname === 'localhost') {
       return normalizedSrc;
     }
+
+    if (src.startsWith('/landing')) {
+      return normalizedSrc;
+    }
     
     // Si estamos en GitHub Pages (unmannedunited.github.io), agregar /landing
     if (currentUrl.includes('unmannedunited.github.io')) {
