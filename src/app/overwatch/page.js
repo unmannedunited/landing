@@ -63,7 +63,7 @@ export default function About() {
               volume={0.3}
             />
 
-<LinkScrollButton text={windowWidth < 768 ? "Get docs" : "Get documentation"} href="#documentation" showButton={true} onClick={handleDocumentationClick} />
+            <LinkScrollButton text={windowWidth < 768 ? "Get docs" : "Get documentation"} href="#documentation" showButton={true} onClick={handleDocumentationClick} />
 
           </div>
         </div>
