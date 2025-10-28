@@ -42,7 +42,7 @@ export function getImageUrlSimple(src) {
 }
 
 // Función para manejar URLs de enlaces
-export function getLinkUrl(href) {
+export function getLinkUrl(src) {
   // Si la imagen ya tiene el prefijo, no lo agregues de nuevo
   if (src.startsWith('http') || src.startsWith('//')) {
     return src;
