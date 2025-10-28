@@ -139,17 +139,19 @@ export default function ContactForm({ offset, scrollY = 0 }) {
               />
             </div>
 
-            <SendButton text={isSubmitting ? 'SENDING...' : 'SEND'} className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
+            <SendButton text={isSubmitting ? 'SENDING...' : 
+              (submitStatus === 'success' ? 'SENT' : 'SEND')} 
+              className="w-full" disabled={isSubmitting} type="submit"  onClick={handleSubmit} />
 
             {submitStatus === 'success' && (
               <p className="font-bold text-sm  text-white text-center" style={{ fontFamily: 'var(--font-nunito-sans)', fontSize: '16px', lineHeight: '26px' }}>
-                Message sent successfully! We will reply soon.
+                Message sent successfully! <br/> We will reply soon.
               </p>
             )}
 
             {submitStatus === 'error' && (
               <p className="font-bold text-sm text-white text-center" style={{ fontFamily: 'var(--font-nunito-sans)', fontSize: '16px', lineHeight: '26px' }}>
-                Error sending message. Please try again.
+                Error sending message. <br/> Please try again.
               </p>
             )}
           </form>

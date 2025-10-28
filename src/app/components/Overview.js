@@ -23,7 +23,7 @@ function Overview() {
                 <img src={getImageUrl("/overview-logo.png")} alt="Unmanned United Overview" 
                 className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-6" />
             </div>
-            <div className="w-full max-w-[1200px] mx-auto flex md:flex-row flex-col gap-12 mb-48 mt-16">
+            <div className="w-full max-w-[1200px] mx-auto flex md:flex-row flex-col gap-12 md:mb-48 mb-20 mt-16">
             
                 <div className="flex-1">
                     <p className="text-lg font-light text-foreground" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '30px' }}>

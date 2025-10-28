@@ -28,11 +28,11 @@ function EverythingWeBuild() {
         <div className="flex justify-between gap-20 relative">
           <div className="md:w-1/2 w-full relative top-[-180px] md:mb-0 mb-[-240px]"
           style={{
-            transform: `translate3d(0px, ${250 + parallaxUS.y}px, 0)`,
+            transform: `translate3d(0px, ${280 + parallaxUS.y}px, 0)`,
             willChange: 'transform', zIndex: 800
           }}>
             <img src={getImageUrl("/about/about-usa.png")} alt="Everything We Build" className="md:w-full w-[65%] mx-auto object-cover" />
-            <h3 className="block md:hidden mt-6 w-full pl-20 pr-14 text-palegray text-[31px] leading-[35px] tracking-[-1.5px]
+            <h3 className="block md:hidden mt-6 w-full pl-[68px] pr-12 text-palegray text-[31px] leading-[35px] tracking-[-1.5px]
             font-coulson"
               >Everything we build is sourced and crafted in the Us.</h3>
             <p className="text-lg font-light text-foreground md:pl-0 md:pr-0 md:mt-12 mt-16 pl-20 pr-14" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '30px' }}>
@@ -45,9 +45,9 @@ function EverythingWeBuild() {
 
         </div>
 
-        <div className="w-full mt-[-60px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
+        <div className="w-full md:mt-[-60px] md:mt-[-40px] bg-white relative max-h-content ease-in-out px-12 md:px-0">
 
-          <div className="max-w-[1100px] mx-auto flex md:flex-row flex-col mb-48 gap-20">
+          <div className="max-w-[1100px] mx-auto flex md:flex-row flex-col mb-48 gap-10 md:gap-20">
             <div className="md:w-1/3 w-full px-8 relative">
               <div className="absolute top-[35%] left-[38%] h-24 w-20 bg-white"
               style={{
@@ -58,18 +58,19 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-1-bis.png")}
                 alt="Rapid prototyping"
-                className="absolute h-[80px] md:top-[39%] top-[43%] left-[50%] transform -translate-x-1/2"
+                className="absolute h-[74px]
+                top-[39%] left-[50%] transform -translate-x-1/2"
               />
               <img
                 src={getImageUrl("/schemes/about-1.png")}
                 alt="Rapid prototyping"
-                className="h-[220px] relative object-contain p-6 mx-auto"
+                className="h-[220px] relative object-contain p-8 mx-auto"
                 style={{
                   zIndex: 1000
                 }}
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
-                Rapid prototyping
+                Rapid <br /> prototyping
               </p>
             </div>
             <div className="md:w-1/3 w-full px-8 relative">
@@ -86,7 +87,7 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-2-bis.png")}
                 alt="MARITIME / BORDER ISR"
-                className="absolute h-[112px] md:w-[36%] top-[18.5%] left-[50%] transform -translate-x-1/2"
+                className="absolute h-[112px] top-[18.5%] left-[50%] transform -translate-x-1/2"
               />
               <p className="text-xl text-darkblue uppercase font-semibold text-center mt-5" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                 USA-based  /<br /> manufacturing
@@ -97,12 +98,12 @@ function EverythingWeBuild() {
               <img
                 src={getImageUrl("/schemes/about-3.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                className="h-[220px] object-contain p-6 mx-auto"
+                className="h-[220px] object-contain p-8 mx-auto"
               />
               <img
                 src={getImageUrl("/schemes/about-3-bis.png")}
                 alt="ANTI-ACCESS AREA DENIAL (A2AD)"
-                className="absolute h-[87px] top-[24%] md:left-[62%] left-[60.5%] transform -translate-x-1/2"
+                className="absolute h-[80px] top-[20%] md:left-[62%] left-[62.5%] transform -translate-x-1/2"
                 style={{
                   transform: `translateY(${((window.innerWidth < 768 ? -500 : -400) - parallaxImages.y > 0 ? 0 : 
                     (window.innerWidth < 768 ? -500 : -400) - parallaxImages.y)}px) translateX(-40px)`,
@@ -137,7 +138,7 @@ function EverythingWeBuild() {
         <img
           src={getImageUrl("/textures/unmanned-text-left.png")}
           alt="Background pattern"
-          className="md:w-[20%] w-[30%] absolute md:right-[-7%] right-[0%] bottom-[-85%] md:bottom-[-150%] z-10" 
+          className="md:w-[20%] w-[30%] absolute md:right-[-7%] right-[0%] bottom-[-95%] md:bottom-[-150%] z-10" 
           style={{
             transform: `rotateY(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,
             willChange: 'transform'

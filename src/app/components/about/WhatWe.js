@@ -84,7 +84,7 @@ export default function WhatWe({ }) {
         <img 
           src={getImageUrl("/footer-text2.png")} 
           alt="Footer text" 
-          className="md:w-[20%] w-[50%] absolute md:right-[-5%] right-[0%] bottom-[-60%] md:bottom-[-100%] z-10" 
+          className="md:w-[20%] w-[50%] absolute md:right-[-5%] right-[0%] bottom-[-70%] md:bottom-[-100%] z-10" 
           style={{ 
             transform: `rotateY(180deg) translate3d(0px, ${parallaxFooterRight.y}px, 0)`,
             willChange: 'transform'
@@ -109,20 +109,20 @@ export default function WhatWe({ }) {
           </div>
         </div>
 
-        <div className="max-w-[1200px] px-16 md:px-0 mt-28 mx-auto bg-transparent">
+        <div className="max-w-[1200px] px-16 md:px-0 mt-20 md:mt-28 mx-auto bg-transparent">
           <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-build-m.png" : "/about/about-build.png")} 
           alt="What We Build" className="md:w-[60%] w-[70%] bg-transparent" />
 
         </div>
 
-        <div className="w-full max-w-[1200px] mx-auto flex mt-16 gap-8 md:gap-20 md:flex-row flex-col px-16 md:px-0">
+        <div className="w-full max-w-[1200px] mx-auto flex mt-10 md:mt-16 gap-8 md:gap-20 md:flex-row flex-col px-16 md:px-0">
           <div className="md:w-1/2 w-full">
             <p className="md:text-xl text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '30px' }}>
             Unmanned United develops and manufactures next-generation autonomous aerial, ground, and maritime systems engineered for multi-domain operations. 
             </p>
           </div>
           <div className="md:w-1/2 w-full">
-            <p className="md:text-xl text-lg mb-16 md:mb-0 font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '30px' }}>
+            <p className="md:text-xl text-lg mb-6 md:mb-16 md:mb-0 font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '30px' }}>
               Our platforms features:
             </p>
             <div className="flex mt-3 w-[110%] md:w-full md:ml-0 ml-[-10%] md:font-light font-bold">

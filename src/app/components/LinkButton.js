@@ -4,7 +4,8 @@ const LinkButton = ({ text, href, showButton, className, onClick, ...otherProps 
             className={`uppercase w-max px-[48px] md:px-[120px] text-center cursor-pointer 
                 py-2 md:py-3.5 bg-blue 
              hover:border-white border-0 hover:border 
-             active:bg-white active:text-blue active:border-darkblue
+             md:active:bg-white md:active:text-blue md:active:border-darkblue
+             active:bg-foreground active:text-white active:border-foreground
             left-1/2 absolute -translate-x-1/2 -translate-y-1/2 
                 text-white rounded-sm shadow-lg text-sm font-regular tracking-[6.5px] 
                 ${className}

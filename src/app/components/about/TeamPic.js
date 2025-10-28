@@ -14,9 +14,9 @@ function TeamPic() {
   return (
     <div className="relative md:h-full h-[350px]" >
      <img src={getImageUrl("/about/about-team.png")} alt="Team Pic" className="w-full h-full object-cover" />
-     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-stamp-m.png" : "/about/about-stamp.png")} alt="" className="absolute md:left-0 left-[-10%] top-[-4px]" style={{ transform: `translate3d(${parallax.x}px, 0px, 0)`, willChange: 'transform'}} />
-     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-stamp-m.png" : "/about/about-stamp.png")} alt="" className="hidden md:block absolute left-[35%] top-[-4px]" style={{ transform: `translate3d(${parallax.x}px, 0px, 0)`, willChange: 'transform'}} />
-     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-stamp-m.png" : "/about/about-stamp.png")} alt="" className="hidden md:block absolute left-[70%] top-[-4px]" style={{ transform: `translate3d(${parallax.x}px, 0px, 0)`, willChange: 'transform'}} />
+     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-stamp-m.png" : "/about/about-stamp.png")} alt="" className="absolute md:left-0 left-[-10%] top-[-4px] w-[250px] md:w-auto" style={{ transform: `translate3d(${parallax.x}px, 0px, 0)`, willChange: 'transform'}} />
+     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-stamp-m.png" : "/about/about-stamp.png")} alt="" className="hidden md:block absolute left-[35%] top-[-4px] w-[250px] md:w-auto" style={{ transform: `translate3d(${parallax.x}px, 0px, 0)`, willChange: 'transform'}} />
+     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-stamp-m.png" : "/about/about-stamp.png")} alt="" className="hidden md:block absolute left-[70%] top-[-4px] w-[250px] md:w-auto" style={{ transform: `translate3d(${parallax.x}px, 0px, 0)`, willChange: 'transform'}} />
      <img src={getImageUrl("/about/about-logo.png")} alt="Team Pic" 
       className="absolute md:left-[70%] md:top-[40%] md:w-max 
       w-[18%] right-[10%] top-[12%]" 

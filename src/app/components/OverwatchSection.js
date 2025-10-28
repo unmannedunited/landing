@@ -38,7 +38,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
   return (
     <div className="w-full relative">
       <div className="hidden md:block w-full relative overflow-hidden">
-        <div className="w-full h-fit mx-auto relative mt-20">
+        <div className="w-full h-fit mx-auto relative mt-20 ">
 
           <div className="max-w-[1200px] mx-auto relative h-[38vw]">
             {/* Título principal */}
@@ -135,14 +135,14 @@ export default function OverwatchSection({ scrollY = 0 }) {
       </div>
       <div className="block md:hidden w-full">
 
-        <div className="w-full h-fit mx-auto relative mt-20">
+        <div className="w-full h-fit mx-auto relative mt-32">
 
-          <div className="max-w-[1200px] mx-auto relative h-[38vw]">
+          <div className="max-w-[1200px] mx-auto relative h-[48vw]">
             {/* Título principal */}
             <img
-              src={getImageUrl("/home/overw-title-b.png")}
+              src={getImageUrl("/home/overw-title-b-m.png")}
               alt="Badge of Unmanned united"
-              className={`absolute left-[5vw] top-0 w-[90vw] transition-opacity duration-1000 ease-in-out
+              className={`absolute left-[15vw] top-0 transition-opacity duration-1000 ease-in-out
       }`}
             // style={{ paddingLeft: '10px' }}
             />
@@ -151,7 +151,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
 <img
               src={getImageUrl("/overview-logo.png")}
               alt="Badge of Unmanned united"
-              className={`absolute right-[10vw] top-[135%] w-[25vw] transition-opacity duration-1000 ease-in-out
+              className={`absolute left-[15vw] top-[155%] w-[25vw] transition-opacity duration-1000 ease-in-out
       }`}
       style={{ transform: 'rotate(15deg)' }}
       />
@@ -160,30 +160,34 @@ export default function OverwatchSection({ scrollY = 0 }) {
             <img
               src={getImageUrl("/dron1.png")}
               alt="Dron image"
-              className={`absolute w-[160vw] top-[-15%] right-[-28%] transition-all duration-300 ease-out
+              className={`absolute w-[180vw] top-[30%] left-[-40%] transition-all duration-300 ease-out
       }`}
               style={{
                 zIndex: 10,
                 maxWidth: 'none',
-                transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) rotateY(${mousePosition.x * 5}deg) rotateX(${mousePosition.y * -5}deg)`,
+                transform: `translate3d(${mousePosition.x * 15}px, ${mousePosition.y * 15}px, 0) 
+                rotateY(180deg) 
+                rotateX(${mousePosition.y * -5}deg) 
+                `,
               }}
             />
 
             {/* Subtítulo */}
             <img
-              src={getImageUrl("/home/overw-title-w.png")}
+              src={getImageUrl("/home/overw-title-w-m.png")}
               alt="Badge of Unmanned united"
-              className={`absolute left-[5vw] top-0 w-[90vw] transition-opacity duration-1000 ease-in-out
+              className={`absolute left-[15vw] top-0 transition-opacity duration-1000 ease-in-out
+                translate-x-[-1px]
       }`}
               style={{ zIndex: 11 }}
             />
 
-            <img
+            {/* <img
               src={getImageUrl("/home/overw-text.png")}
               alt="Badge of Unmanned united"
               className={`absolute top-[38%] right-[10%] w-[40%] transition-opacity duration-1000 ease-in-out
       }`}
-            />
+            /> */}
 
           </div>
           <div className="w-full max-w-[1200px] px-16 mt-[240px] mx-auto relative">
@@ -193,7 +197,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
             </p>
           </div>
           <div className="w-full mt-36 px-16">
-            <h3 className="w-4/5 mb-8 text-darkblue md:text-[71px] text-[32px] 
+            <h3 className="w-4/5 md:mb-8 text-darkblue md:text-[71px] text-[32px] 
             leading-[35px] md:leading-[71px] font-coulson" 
             style={{ }}>Application scenarios</h3>
 
@@ -205,7 +209,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
                   alt="Tactical ISR"
                   className="w-full object-cover"
                 />
-                <p className="text-xl text-darkblue font-semibold px-6 py-12 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+                <p className="text-xl text-darkblue font-semibold px-6 pb-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                   EW & RF NEUTRALIZATION
                 </p>
               </div>
@@ -216,7 +220,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
                   alt="MARITIME / BORDER ISR"
                   className="w-full object-cover"
                 />
-                <p className="text-xl text-darkblue font-semibold px-6 py-12 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+                <p className="text-xl text-darkblue font-semibold px-6 pb-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                   MARITIME /<br /> BORDER ISR
                 </p>
               </div>
@@ -227,7 +231,7 @@ export default function OverwatchSection({ scrollY = 0 }) {
                   alt="ANTI-ACCESS AREA DENIAL (A2AD)"
                   className="w-full object-cover"
                 />
-                <p className="text-xl text-darkblue font-semibold px-6 pt-12 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
+                <p className="text-xl text-darkblue font-semibold px-6 pb-6 text-center" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '26px' }}>
                   ANTI-ACCESS AREA DENIAL (A2AD)
                 </p>
               </div>
