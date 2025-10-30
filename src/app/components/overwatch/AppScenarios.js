@@ -119,13 +119,12 @@ function AppScenarios() {
     overflow-hidden transition-opacity duration-1000 ease-in-out"
     style={{ zIndex: 1000 }}>
       <div className="w-full max-w-[1200px] mx-auto flex flex-col gap-12 md:mb-36 mt-36 px-12 md:px-0">
-        <h2 className="md:text-[72px] md:leading-[72px] text-[32px] leading-[32px] text-blue font-coulson w-1/2 md:mb-36" >
+        <h2 className="md:text-[72px] md:leading-[72px] text-[32px] leading-[32px] text-blue font-coulson w-1/2 md:mb-16" >
         APPLICATION SCENARIOS</h2>
         
         {/* Versión Desktop - Mantiene el diseño original */}
         <div className="hidden md:block">
-          {scenarios.map((scenario, index) => { 
-            console.log(scenario.image);
+          {scenarios.map((scenario, index) => {
             return (
             <DesktopScenarioCard 
               key={index}
@@ -193,7 +192,6 @@ function AppScenarios() {
           {documents.map((doc, index) => (
             
             <div key={index} className="w-1/3 flex flex-col justify-between">
-            {console.log(doc.image)}
               <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
               <p className="text-center text-md font-bold text-blue w-3/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>{doc.title}</p>
               <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />

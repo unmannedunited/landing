@@ -72,6 +72,8 @@ module.exports = {
         'loading': 'loading 1.5s ease-in-out infinite',
         'loading2': 'loading2 1.5s ease-in-out infinite',
         'loading3': 'loading3 1.5s ease-in-out infinite',
+        'slide': 'slide 2.5s linear infinite',
+        'marquee': 'marquee 20s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -175,6 +177,15 @@ module.exports = {
           '0%': { opacity: 0.2 }, '20%': { opacity: 0.2 }, '50%': { opacity: 1 }, 
           '70%': { opacity: 1 }, '80%': { opacity: 0.2 }, '100%': { opacity: 0.2 }
         },
+
+        slide: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
 
       },
     },

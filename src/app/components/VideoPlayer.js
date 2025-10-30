@@ -69,7 +69,7 @@ export default function VideoPlayer({ src, className = "", volume = 0.2 }) {
             <img
               src={getImageUrl("/controls/play.png")}
               alt="Play"
-              className="md:h-18 h-10 relative"
+              className="md:h-24 h-10 relative"
               style={{ zIndex: 1200 }}
             />
           </button>

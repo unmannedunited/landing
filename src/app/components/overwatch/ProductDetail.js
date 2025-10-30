@@ -1,5 +1,5 @@
 import { getImageUrl } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const ProductDetail = () => {
@@ -108,11 +108,50 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
     rootMargin: '0px 0px -50px 0px'
   });
 
+  // Refs para los videos
+  const videoRef1 = useRef(null);
+  const videoRef2 = useRef(null);
+  const videoRef3 = useRef(null);
+
+  // Control de reproducción según visibilidad
+  useEffect(() => {
+    const el = videoRef1.current;
+    if (!el) return;
+    if (isIntersecting1) {
+      el.currentTime = 0;
+      el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [isIntersecting1]);
+
+  useEffect(() => {
+    const el = videoRef2.current;
+    if (!el) return;
+    if (isIntersecting2) {
+      el.currentTime = 0;
+      el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [isIntersecting2]);
+
+  useEffect(() => {
+    const el = videoRef3.current;
+    if (!el) return;
+    if (isIntersecting3) {
+      el.currentTime = 0;
+      el.play().catch(() => {});
+    } else {
+      el.pause();
+    }
+  }, [isIntersecting3]);
+
   return (
     <div className="w-full flex gap-16 relative md:flex-row flex-col">
       
       <img src={getImageUrl("/product/product-detail-model.png")} alt="Product Detail" 
-                className="absolute right-[10%] top-[0%] w-[80%] "
+                className="absolute right-[10%] top-[0%] w-[80%] opacity-60"
                   />
         <div className="md:w-2/3 w-full md:px-0 px-16">
             <img src={getImageUrl("/product/product-detail-title.png")} alt="Product Detail" 
@@ -120,10 +159,10 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
 
               <div className="md:block flex gap-8 align-middle justify-center">
                 <img src={getImageUrl("/product/product-detail-camera.png")} alt="Product Detail" 
-                className="md:mb-16 w-1/3 object-contain" />
+                className="md:mb-8 w-1/3 object-contain" />
 
                 <p className="text-white text-[17px] md:text-lg font-nunito font-light md:w-1/2 w-2/3">
-                  A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
+                  4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
                 </p>
 
               </div>
@@ -140,8 +179,15 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 <p className="text-darkblue text-md font-thabit font-bold w-full text-right pr-2">
                     4K VIDEO REC.
                 </p>
-                <img src={getImageUrl("/product/product-detail-1.png")} alt="Product Detail" 
-                    className="w-full object-cover" />
+                <video
+                  ref={videoRef1}
+                  src={getImageUrl("/product/video001_sm.mp4")}
+                  className="w-full object-cover pl-12"
+                  muted
+                  playsInline
+                  loop
+                  preload="metadata"
+                />
             </div>
 
             <div 
@@ -153,8 +199,15 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 <p className="text-darkblue text-md font-thabit font-bold w-full text-right pr-2">
                     HEAT VISION
                 </p>
-                <img src={getImageUrl("/product/product-detail-2.png")} alt="Product Detail" 
-                    className="w-full object-cover" />
+                <video
+                  ref={videoRef2}
+                  src={getImageUrl("/product/video002_sm.mp4")}
+                  className="w-full object-cover pl-12"
+                  muted
+                  playsInline
+                  loop
+                  preload="metadata"
+                />
             </div>
 
             <div 
@@ -166,8 +219,15 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 <p className="text-darkblue text-md font-thabit font-bold w-full text-right pr-2">
                     NIGHT VISION
                 </p>
-                <img src={getImageUrl("/product/product-detail-3.png")} alt="Product Detail" 
-                    className="w-full object-cover" />
+                <video
+                  ref={videoRef3}
+                  src={getImageUrl("/product/video003_sm.mp4")}
+                  className="w-full object-cover pl-12"
+                  muted
+                  playsInline
+                  loop
+                  preload="metadata"
+                />
             </div>
         
         </div>
@@ -202,7 +262,7 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                             className="w-full object-cover mb-16" />
 
                     <p className="hidden md:block text-white text-lg font-nunito font-light w-1/2">
-                    A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
+                    Resilient connectivity in remote areas and harsh environments, extreme weather, high-vibration settings, and in-motion usage
                     </p>
         
                 </div>
@@ -213,7 +273,7 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
                 </div>
                 <div 
                     className="flashlight-container absolute md:left-[15%] left-0 md:top-[-7%] top-[12%] md:w-[80%] w-full 
-                    overflow-hidden opacity-30 md:opacity-10"
+                    overflow-hidden opacity-60 md:opacity-60"
                 >
                     <img src={getImageUrl("/product/product-detail-model2.png")} alt="Product Detail" 
                         className="w-full h-full object-cover" 
@@ -241,15 +301,9 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
 
             </div>
             <div className="w-full flex md:gap-24 gap-12 relative md:mt-32 mt-16 md:flex-row flex-col">
-                <div className="w-4/5 md:mx-0 mx-12 pr-6">
+                <div className="w-3/5 md:mx-0 mx-12 pr-20">
                     <img src={getImageUrl("/product/product-detail-title3.png")} alt="Product Detail" 
                             className="w-full object-cover md:mb-16" />        
-                </div>
-                <div className="md:w-1/3 w-3/5 mx-36 flex flex-col md:pt-28">
-
-                    <p className="text-white text-lg font-nunito font-light">
-                    A20KTR 4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
-                    </p>                
                 </div>
             </div>
         </div>
