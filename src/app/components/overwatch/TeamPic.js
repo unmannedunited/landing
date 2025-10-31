@@ -28,15 +28,12 @@ function TeamPic() {
 
   return (
     <div className="relative md:h-full h-[350px]" style={{ zIndex: 1000 }} >
-     <img src={getImageUrl("/about/about-team.png")} alt="Team Pic" className="w-full h-full object-cover" />
+     <img src={getImageUrl(window.innerWidth < 768 ? "/about/about-team-m.png" : "/about/about-team.png")} alt="Team Pic" className="w-full h-full object-cover" />
 
     <div className="absolute left-0 top-[-12px] w-full overflow-hidden pointer-events-none">
-      <div className="flex items-center gap-48 w-[200%] animate-marquee">
+      <div className="flex items-center gap-16 md:gap-48 w-[200%] animate-marquee">
         {Array.from({ length: 10 }).map((_, i) => (
-          <img key={`track-a-${i}`} src={stampSrc} alt="" className="h-8 md:h-20" />
-        ))}
-        {Array.from({ length: 10 }).map((_, i) => (
-          <img key={`track-b-${i}`} src={stampSrc} alt="" className="h-8 md:h-10" />
+          <img key={`track-a-${i}`} src={stampSrc} alt="" className="h-10 md:h-20" />
         ))}
       </div>
     </div>

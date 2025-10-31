@@ -67,6 +67,7 @@ function AppScenarios() {
     {
       title: "EQUIPMENT & SUPPLY DEPLOYMENT",
       image: "/product/product-scenarios-4.png",
+      imagePadding: "md:pl-0 p-16",
       inverted: true,
       big: false,
       content: (
@@ -83,15 +84,18 @@ function AppScenarios() {
   const documents = [
     {
       image: "/product/product-doc-1.png",
-      title: "OVERWATCH: Comparisson Overview"
+      title: "OVERWATCH: Comparisson Overview",
+      titleMobile: "OVERWATCH: <br/>Comparisson Overview"
     },
     {
       image: "/product/product-doc-2.png", 
-      title: "OVERWATCH: Technical Specifications"
+      title: "OVERWATCH: Technical Specifications",
+      titleMobile: "OVERWATCH: <br/>Technical Specifications"
     },
     {
       image: "/product/product-doc-3.png",
-      title: "Warranty & Service Level Agreement"
+      title: "Warranty & Service Level Agreement",
+      titleMobile: "Warranty & Service<br/> Level Agreement"
     }
   ];
 
@@ -150,7 +154,8 @@ function AppScenarios() {
                     title={scenario.title} 
                     image={scenario.image}
                     inverted={scenario.inverted}
-                    big={scenario.big}>
+                    big={scenario.big}
+                    imagePadding={scenario.imagePadding}>
                     {scenario.content}
                   </ScenarioCard>
                 </div>
@@ -161,7 +166,7 @@ function AppScenarios() {
           {/* Botones de navegación */}
           <button
             onClick={prevSlide}
-            className="absolute left-[-45px] top-1/2 transform -translate-y-1/2 
+            className="absolute left-[-45px] top-[150px] transform -translate-y-1/2 
             rounded-full p-3 transition-all duration-200 z-10"
             aria-label="Anterior"
           >
@@ -172,7 +177,7 @@ function AppScenarios() {
           
           <button
             onClick={nextSlide}
-            className="absolute right-[-45px] top-1/2 transform -translate-y-1/2  
+            className="absolute right-[-45px] top-[150px] transform -translate-y-1/2  
             rounded-full p-3 transition-all duration-200 z-10"
             aria-label="Siguiente"
           >
@@ -184,8 +189,8 @@ function AppScenarios() {
         </div>
       </div>
 
-      <div className="w-full max-w-[1400px] mx-auto pb-36">
-        <img src={getImageUrl("/product/product-detail-title4.png")} alt="Application Scenarios" 
+      <div className="w-full max-w-[1400px] mx-auto md:pb-36 pb-16">
+        <img src={getImageUrl(window.innerWidth < 768 ? "/product/product-detail-title4-m.png" : "/product/product-detail-title4.png")} alt="Application Scenarios" 
         className="w-2/3 mx-auto object-cover" />
         {/* Versión Desktop - Mantiene el diseño original */}
         <div className="hidden md:flex gap-24 mb-36 md:mt-36 mt-12 relative" id="documentation">
@@ -193,14 +198,14 @@ function AppScenarios() {
             
             <div key={index} className="w-1/3 flex flex-col justify-between">
               <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
-              <p className="text-center text-md font-bold text-blue w-3/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>{doc.title}</p>
+              <p className="text-center text-md font-bold text-blue w-3/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }} dangerouslySetInnerHTML={{ __html: doc.title }} />
               <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />
             </div>
           ))}
         </div>
 
         {/* Versión Móvil - Carrusel de documentos */}
-        <div className="md:hidden relative mb-36 mt-12" id="documentation">
+        <div className="md:hidden relative mb-16 mt-12" id="documentation">
           <div className="overflow-hidden">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
@@ -210,7 +215,7 @@ function AppScenarios() {
                 <div key={index} className="w-full flex-shrink-0 px-4">
                   <div className="flex flex-col justify-between items-center h-full">
                     <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
-                    <p className="text-center text-md font-bold text-blue w-4/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }}>{doc.title}</p>
+                    <p className="text-center text-md font-bold text-blue w-4/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }} ><div dangerouslySetInnerHTML={{ __html: doc.titleMobile }} /></p>
                     <TransparentButton text="DOWNLOAD" style={{ width: '80%' }} onClick={() => {}} />
                   </div>
                 </div>
@@ -221,7 +226,7 @@ function AppScenarios() {
           {/* Botones de navegación para documentos */}
           <button
             onClick={prevDocSlide}
-            className="absolute left-[-45px] top-1/2 transform -translate-y-1/2 
+            className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 
             rounded-full p-3 transition-all duration-200 z-10"
             aria-label="Documento anterior"
           >
@@ -232,7 +237,7 @@ function AppScenarios() {
           
           <button
             onClick={nextDocSlide}
-            className="absolute right-[-45px] top-1/2 transform -translate-y-1/2  
+            className="absolute right-[-20px] top-1/2 transform -translate-y-1/2  
             rounded-full p-3 transition-all duration-200 z-10"
             aria-label="Documento siguiente"
           >
@@ -249,7 +254,7 @@ function AppScenarios() {
         src={getImageUrl("/textures/unmanned-text-right.png")}
         alt="Background pattern"
         className={`absolute md:w-[15%] md:top-[120vh] md:right-0 
-          right-0 w-[50%] top-[40%] 
+          right-0 w-[50%] top-[720px] 
           transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `translate3d(0px, ${parallaxRight.y}px, 0)`,
@@ -261,7 +266,7 @@ function AppScenarios() {
         src={getImageUrl("/textures/unmanned-text-right.png")}
         alt="Background pattern"
         className={`absolute md:w-[15%] md:top-[60vh] 
-          left-0 w-[50%] top-[30%] 
+          left-0 w-[50%] top-[450px]
           transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `rotateY(180deg) translate3d(0px, ${parallaxLeft.y}px, 0)`,
@@ -296,7 +301,7 @@ function AppScenarios() {
         src={getImageUrl("/textures/unmanned-text-right.png")}
         alt="Background pattern"
         className={`absolute md:w-[15%] md:bottom-[220vh] md:right-0 
-          bottom-[70%]
+          bottom-[1200px]
           right-0 w-[50%] transition-opacity 
           duration-1000 ease-in-out}`}
         style={{
@@ -328,21 +333,21 @@ const DesktopScenarioCard = ({ title, children, image, inverted, big }) => {
 }
 
 // Componente para Móvil - diseño simplificado para el carrusel
-const ScenarioCard = ({ title, children, image, inverted, big }) => {
+const ScenarioCard = ({ title, children, image, inverted, big, imagePadding }) => {
   return (
-    <div className="flex flex-col gap-6 items-center mb-16 px-4">
+    <div className="flex flex-col items-center mb-16 px-4">
       {/* Imagen */}
       <div className="w-full">
         <img 
           src={getImageUrl(image)} 
           alt="Application Scenarios" 
-          className={`w-full h-[350px] object-contain`} 
+          className={`w-full h-[350px] object-contain ${imagePadding ? imagePadding : ''}`} 
         />
       </div>
 
       {/* Contenido */}
-      <div className="flex flex-col gap-6 justify-center w-full">
-        <h2 className="text-[32px] pr-12 text-palegray font-coulson break-words overflow-hidden" 
+      <div className="flex flex-col gap-6 justify-center w-full mt-[-10px]">
+        <h2 className="text-[30px] text-palegray font-coulson break-words overflow-hidden" 
           style={{ lineHeight: '32px' }}>{title}</h2>
         <p className="text-lg font-light text-blue" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '28px', wordBreak: 'break-all' }}>
           {children}

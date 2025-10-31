@@ -77,7 +77,7 @@ const ProductDetail = () => {
             
         </div>
 
-        <div className="pb-56 relative flex flex-col gap-48">
+        <div className="md:pb-56 pb-20 relative flex flex-col md:gap-48 gap-16">
 
             <FirstSection mousePosition={mousePosition} flashlightPosition={flashlightPosition} />
 
@@ -151,25 +151,38 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
     <div className="w-full flex gap-16 relative md:flex-row flex-col">
       
       <img src={getImageUrl("/product/product-detail-model.png")} alt="Product Detail" 
-                className="absolute right-[10%] top-[0%] w-[80%] opacity-60"
+                className="absolute right-0 top-[100px] w-[100%] 
+                md:right-[10%] md:top-[0%] md:w-[80%] opacity-60"
                   />
-        <div className="md:w-2/3 w-full md:px-0 px-16">
-            <img src={getImageUrl("/product/product-detail-title.png")} alt="Product Detail" 
-              className="relative z-10 md:w-full mt-56 md:mt-0 w-fit object-contain mb-16" />
+        <div className="md:w-2/3 w-full md:pl-0 md:pr-0 pl-16 pr-10">
+            <img src={getImageUrl(window.innerWidth < 768 ? "/product/product-detail-title-m.png" : "/product/product-detail-title.png")} alt="Product Detail" 
+              className="relative z-10 md:w-full mt-0 md:mt-0 w-fit object-contain md:mb-16 mb-48  md:pr-0 pr-6" />
 
-              <div className="md:block flex gap-8 align-middle justify-center">
+              <div className="md:block hidden flex gap-8 align-middle justify-center">
                 <img src={getImageUrl("/product/product-detail-camera.png")} alt="Product Detail" 
                 className="md:mb-8 w-1/3 object-contain" />
 
-                <p className="text-white text-[17px] md:text-lg font-nunito font-light md:w-1/2 w-2/3">
+                <p className="text-white text-[15px] md:text-lg font-nunito font-light md:w-1/2 w-2/3">
                   4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
                 </p>
 
               </div>
 
 
+              <div className="md:hidden block flex gap-4 align-middle justify-center">
+                <p className="text-white text-[15px] md:text-lg font-nunito font-light md:w-1/2 w-2/3">
+                  4K 20X Optical Zoom Triple Sensors Al Object Tracking Target GPS Coordinate Resolving and 3000m LRF Gimbal Camera
+                </p>
+  
+                <img src={getImageUrl("/product/product-detail-camera.png")} alt="Product Detail" 
+                className="md:mb-8 w-1/3 object-contain" />
+
+
+              </div>
+
+
         </div>
-        <div className="md:w-1/3 w-full md:px-0 px-24 flex flex-col gap-4 mt-[-32px]">
+        <div className="md:w-1/3 w-full md:px-0 pl-20 pr-24 flex flex-col gap-4 mt-[-32px]">
             <div 
               ref={ref1}
               className={`flex flex-col gap-2 transition-opacity duration-500 ${
@@ -182,7 +195,7 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 <video
                   ref={videoRef1}
                   src={getImageUrl("/product/video001_sm.mp4")}
-                  className="w-full object-cover pl-12"
+                  className="w-full object-cover"
                   muted
                   playsInline
                   loop
@@ -202,7 +215,7 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 <video
                   ref={videoRef2}
                   src={getImageUrl("/product/video002_sm.mp4")}
-                  className="w-full object-cover pl-12"
+                  className="w-full object-cover"
                   muted
                   playsInline
                   loop
@@ -222,7 +235,7 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 <video
                   ref={videoRef3}
                   src={getImageUrl("/product/video003_sm.mp4")}
-                  className="w-full object-cover pl-12"
+                  className="w-full object-cover"
                   muted
                   playsInline
                   loop
@@ -233,7 +246,8 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
         </div>
 
       <img src={getImageUrl("/product/product-detail-model-dodge.png")} alt="Product Detail" 
-                className="absolute right-[10%] top-[0%] w-[80%] flashlight-container overflow-hidden"
+                className="absolute right-0 top-[100px] w-[100%] 
+                md:right-[10%] md:top-[0%] md:w-[80%] flashlight-container overflow-hidden"
                     style={{
                         maskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
                         WebkitMaskImage: `radial-gradient(circle 300px at ${flashlightPosition.x}px ${flashlightPosition.y}px, black 0%, transparent 100%)`,
@@ -301,8 +315,8 @@ const SecondSection = ({mousePosition, flashlightPosition}) => {
 
             </div>
             <div className="w-full flex md:gap-24 gap-12 relative md:mt-32 mt-16 md:flex-row flex-col">
-                <div className="w-3/5 md:mx-0 mx-12 pr-20">
-                    <img src={getImageUrl("/product/product-detail-title3.png")} alt="Product Detail" 
+                <div className="md:w-3/5 w-1/2 md:mx-0  md:pr-20 ml-auto mr-12">
+                    <img src={getImageUrl(window.innerWidth < 768 ? "/product/product-detail-title3-m.png" : "/product/product-detail-title3.png")} alt="Product Detail" 
                             className="w-full object-cover md:mb-16" />        
                 </div>
             </div>
