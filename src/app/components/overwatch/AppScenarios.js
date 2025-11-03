@@ -83,19 +83,22 @@ function AppScenarios() {
   // Datos de los documentos
   const documents = [
     {
-      image: "/product/product-doc-1.png",
+      image: "/Overwatch-LR™ Overview.png",
       title: "OVERWATCH: Comparisson Overview",
-      titleMobile: "OVERWATCH: <br/>Comparisson Overview"
+      titleMobile: "OVERWATCH: <br/>Comparisson Overview",
+      pdf: "/Overwatch-LR™ Overview.pdf"
     },
     {
-      image: "/product/product-doc-2.png", 
+      image: "/Overwatch-LR™ Technical Specifications.png", 
       title: "OVERWATCH: Technical Specifications",
-      titleMobile: "OVERWATCH: <br/>Technical Specifications"
+      titleMobile: "OVERWATCH: <br/>Technical Specifications",
+      pdf: "/Overwatch-LR™ Technical Specifications.pdf"
     },
     {
-      image: "/product/product-doc-3.png",
+      image: "/Overwatch-LR™ Warranty & Service Level Agreement (SLA).png",
       title: "Warranty & Service Level Agreement",
-      titleMobile: "Warranty & Service<br/> Level Agreement"
+      titleMobile: "Warranty & Service<br/> Level Agreement",
+      pdf: "/Overwatch-LR™ Warranty & Service Level Agreement (SLA).pdf"
     }
   ];
 
@@ -115,6 +118,16 @@ function AppScenarios() {
 
   const prevDocSlide = () => {
     setCurrentDocSlide((prev) => (prev - 1 + documents.length) % documents.length);
+  };
+
+  // Función para descargar PDF
+  const handleDownloadPDF = (pdfPath) => {
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = pdfPath.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
 
@@ -199,7 +212,7 @@ function AppScenarios() {
             <div key={index} className="w-1/3 flex flex-col justify-between">
               <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
               <p className="text-center text-md font-bold text-blue w-3/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }} dangerouslySetInnerHTML={{ __html: doc.title }} />
-              <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => {}} />
+              <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => handleDownloadPDF(doc.pdf)} />
             </div>
           ))}
         </div>
@@ -216,7 +229,7 @@ function AppScenarios() {
                   <div className="flex flex-col justify-between items-center h-full">
                     <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
                     <p className="text-center text-md font-bold text-blue w-4/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }} ><div dangerouslySetInnerHTML={{ __html: doc.titleMobile }} /></p>
-                    <TransparentButton text="DOWNLOAD" style={{ width: '80%' }} onClick={() => {}} />
+                    <TransparentButton text="DOWNLOAD" style={{ width: '80%' }} onClick={() => handleDownloadPDF(doc.pdf)} />
                   </div>
                 </div>
               ))}
