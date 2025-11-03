@@ -78,7 +78,7 @@ export default function About() {
         <AppScenarios />
         <LastPic />
 
-        <ContactForm offset={windowWidth < 768 ? 300 : -1000} scrollY={scrollY} />
+        <ContactForm offset={windowWidth < 768 ? 600 : -1000} scrollY={scrollY} />
         <Footer />
       </div>
     </LogoLoader>

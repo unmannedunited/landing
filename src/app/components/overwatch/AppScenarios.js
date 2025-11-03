@@ -226,7 +226,7 @@ function AppScenarios() {
           {/* Botones de navegación para documentos */}
           <button
             onClick={prevDocSlide}
-            className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 
+            className="absolute left-[-20px] top-[30%] transform -translate-y-1/2 
             rounded-full p-3 transition-all duration-200 z-10"
             aria-label="Documento anterior"
           >
@@ -237,7 +237,7 @@ function AppScenarios() {
           
           <button
             onClick={nextDocSlide}
-            className="absolute right-[-20px] top-1/2 transform -translate-y-1/2  
+            className="absolute right-[-20px] top-[30%] transform -translate-y-1/2  
             rounded-full p-3 transition-all duration-200 z-10"
             aria-label="Documento siguiente"
           >
@@ -277,7 +277,8 @@ function AppScenarios() {
       <img
         src={getImageUrl("/textures/unmanned-text.png")}
         alt="Background pattern"
-        className={`absolute md:w-[15%] md:top-[300vh] md:left-0 w-[50%] transition-opacity duration-1000 ease-in-out}`}
+        className={`absolute md:w-[15%] md:top-[300vh] md:left-0 
+          top-[240vh] w-[50%] transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `translate3d(0px, ${parallaxRight.y}px, 0)`,
           willChange: 'transform'
@@ -289,7 +290,7 @@ function AppScenarios() {
         src={getImageUrl("/textures/unmanned-text.png")}
         alt="Background pattern"
         className={`absolute md:w-[15%] md:top-[300vh] md:right-0 w-[50%] 
-          right-0
+          right-0 top-[320vh]
           transition-opacity duration-1000 ease-in-out}`}
         style={{
           transform: `rotateY(180deg) translate3d(0px, ${parallaxLeft.y}px, 0)`,
@@ -347,14 +348,18 @@ const ScenarioCard = ({ title, children, image, inverted, big, imagePadding }) =
 
       {/* Contenido */}
       <div className="flex flex-col gap-6 justify-center w-full mt-[-10px]">
-        <h2 className="text-[30px] text-palegray font-coulson break-words overflow-hidden" 
-          style={{ lineHeight: '32px' }}>{title}</h2>
-        <p className="text-lg font-light text-blue" style={{ fontFamily: 'var(--font-nunito-sans)', lineHeight: '28px', wordBreak: 'break-all' }}>
-          {children}
-        </p>
+        <h2 className="text-palegray font-coulson" 
+          style={{ lineHeight: '32px', wordBreak: 'normal', overflowWrap: 'normal', hyphens: 'none',
+            fontSize: window.innerWidth < 400 ? '24px' : '30px', letterSpacing: window.innerWidth < 400 ? '-0.02em' : '0.02em'
+            }}>{title}</h2>
+          <p className="text-lg font-light text-blue leading-6" style={{ 
+            fontFamily: 'var(--font-nunito-sans)', wordBreak: 'normal', letterSpacing: window.innerWidth < 400 ? '0.01em' : '0.02em'
+            }}>
+            {children}
+          </p>
+        </div>
       </div>
-    </div>
-  )
-}
-
-export default AppScenarios;
+    )
+  }
+  
+  export default AppScenarios;
