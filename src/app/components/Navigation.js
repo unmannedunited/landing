@@ -204,13 +204,13 @@ export default function Navigation() {
             </Link>
             <div className="flex items-center gap-12">
               <Link 
-              className={`flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap ${pathname === '/about' ? 'underline decoration-2 underline-offset-4' : ''}`}
+              className={`flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap ${pathname === '/about' ? 'underline decoration-1 underline-offset-4' : ''}`}
               href={"/about"}
               >
                 About us
               </Link>
               <Link 
-                className={`flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap ${pathname === '/overwatch' ? 'underline decoration-2 underline-offset-4' : ''}`}
+                className={`flex items-center text-darkblue gap-2 uppercase cursor-pointer text-xs font-syncopate font-regular tracking-[4.5px] whitespace-nowrap ${pathname === '/overwatch' ? 'underline decoration-1 underline-offset-4' : ''}`}
                 href={"/overwatch"}
               >
                 Overwatch-LR™
