@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { getImageUrl } from "../../../lib/utils";
+import { getImageUrl, getLinkUrl } from "../../../lib/utils";
 import { useAdvancedParallax } from "../../../hooks/useParallax";
 import TransparentButton from "../TransparentButton";
 
@@ -84,20 +84,20 @@ function AppScenarios() {
   const documents = [
     {
       image: "/Overwatch-LR™ Overview.png",
-      title: "OVERWATCH: Comparisson Overview",
-      titleMobile: "OVERWATCH: <br/>Comparisson Overview",
+      title: "Overwatch-LR™ Overview",
+      titleMobile: "Overwatch-LR™ Overview",
       pdf: "/Overwatch-LR™ Overview.pdf"
     },
     {
       image: "/Overwatch-LR™ Technical Specifications.png", 
-      title: "OVERWATCH: Technical Specifications",
-      titleMobile: "OVERWATCH: <br/>Technical Specifications",
+      title: "Overwatch-LR™ Technical Specifications",
+      titleMobile: "Overwatch-LR™<br/> Technical Specifications",
       pdf: "/Overwatch-LR™ Technical Specifications.pdf"
     },
     {
       image: "/Overwatch-LR™ Warranty & Service Level Agreement (SLA).png",
-      title: "Warranty & Service Level Agreement",
-      titleMobile: "Warranty & Service<br/> Level Agreement",
+      title: "Overwatch-LR™ Warranty & Service Level Agreement (SLA)",
+      titleMobile: "Overwatch-LR™ Warranty<br/> & Service Level Agreement (SLA)",
       pdf: "/Overwatch-LR™ Warranty & Service Level Agreement (SLA).pdf"
     }
   ];
@@ -123,7 +123,7 @@ function AppScenarios() {
   // Función para descargar PDF
   const handleDownloadPDF = (pdfPath) => {
     const link = document.createElement('a');
-    link.href = pdfPath;
+    link.href = getLinkUrl(pdfPath);
     link.download = pdfPath.split('/').pop();
     document.body.appendChild(link);
     link.click();

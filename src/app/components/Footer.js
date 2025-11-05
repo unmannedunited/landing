@@ -16,7 +16,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
-                    jason@unmannedunited.com
+                    sales@unmannedunited.com
                   </p>
                   {/* <p className="text-lg font-light text-white" style={{ fontFamily: 'var(--font-nunito-sans)' }}>
                     +1-321-389-1600

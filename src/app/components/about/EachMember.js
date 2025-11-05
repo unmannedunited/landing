@@ -14,7 +14,6 @@ function EachMember() {
         <li>AI, Machine Learning & Computer Vision</li>
         <li>Advanced Carbon Fiber and Additive Manufacturing</li>
         <li>Defense Procurement and National Security Policy</li>
-        <li>Venture Capital and Strategic M&A</li>
       </ul>
     </div>
   )
