@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "build:staging": "BASE_PATH=/landing ASSET_PREFIX=/landing next build --turbopack",
-    "build:production": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
   },
