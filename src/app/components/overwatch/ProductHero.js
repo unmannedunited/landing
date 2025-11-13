@@ -18,7 +18,8 @@ export default function HeroSection({ scrollY = 0 }) {
     <div className="w-full relative md:overflow-hidden">
       <div className="max-w-[1200px] w-full h-full mx-auto relative overflow-visible" style={{ zIndex: 2000 }}>
         <p className="text-white md:text-left text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] md:top-[150px] top-[-20px] uppercase font-syncopate absolute tracking-[4px]">Overwatch isn’t <br/> like other drones</p>
-        <p className="text-white md:text-right text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] uppercase font-syncopate absolute right-0 tracking-[4px]" style={{ top:window.innerWidth < 768 ? "420px" : "calc(100vh - 200px)" }}>it’s what those other <br/> drones wish they were</p>
+        <p className="text-white md:text-right text-center text-xs md:text-xl w-full md:w-auto md:leading-[35px] uppercase font-syncopate absolute right-0 md:right-[5vw] right-[0] tracking-[4px]" 
+        style={{ top: window.innerWidth < 768 ? "420px" : "calc(50vw)" }}>it’s what those other <br/> drones wish they were</p>
       </div>
 
       <div 

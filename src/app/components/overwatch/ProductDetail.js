@@ -185,13 +185,10 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
         <div className="md:w-1/3 w-full md:px-0 pl-20 pr-24 flex flex-col gap-4 mt-[-32px]">
             <div 
               ref={ref1}
-              className={`flex flex-col gap-2 transition-opacity duration-500 ${
+              className={`flex flex-col gap-2 pt-3 transition-opacity duration-500 ${
                 hasIntersected1 ? 'animate-flicker' : 'opacity-0'
               }`}
             >
-                <p className="hidden md:block text-darkblue text-md font-thabit font-bold w-full text-right pr-2">
-                    4K VIDEO REC.
-                </p>
                 <video
                   ref={videoRef1}
                   src={getImageUrl("/product/video001_sm.mp4")}
@@ -209,9 +206,6 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 hasIntersected2 ? 'animate-flicker2' : 'opacity-0'
               }`}
             >
-                <p className="hidden md:block text-darkblue text-md font-thabit font-bold w-full text-right pr-2">
-                    HEAT VISION
-                </p>
                 <video
                   ref={videoRef2}
                   src={getImageUrl("/product/video002_sm.mp4")}
@@ -229,9 +223,6 @@ const FirstSection = ({mousePosition, flashlightPosition}) => {
                 hasIntersected3 ? 'animate-flicker3' : 'opacity-0'
               }`}
             >
-                <p className="hidden md:block text-darkblue text-md font-thabit font-bold w-full text-right pr-2">
-                    NIGHT VISION
-                </p>
                 <video
                   ref={videoRef3}
                   src={getImageUrl("/product/video003_sm.mp4")}
