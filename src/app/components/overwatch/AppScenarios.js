@@ -1,16 +1,20 @@
 'use client';
 
 import { useState } from "react";
-import { getImageUrl, getLinkUrl } from "../../../lib/utils";
+import { getImageUrl } from "../../../lib/utils";
 import { useAdvancedParallax } from "../../../hooks/useParallax";
 import TransparentButton from "../TransparentButton";
+import DownloadModal from "./DownloadModal";
 
 function AppScenarios() {
   // Estado para el carrusel móvil
   const [currentSlide, setCurrentSlide] = useState(0);
   // Estado para el carrusel de documentos
   const [currentDocSlide, setCurrentDocSlide] = useState(0);
-  
+  // Estado para el modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDocument, setSelectedDocument] = useState(null);
+
   // Efectos de parallax para las imágenes de fondo
   const parallaxRight = useAdvancedParallax({
     speed: 0.3,
@@ -120,14 +124,16 @@ function AppScenarios() {
     setCurrentDocSlide((prev) => (prev - 1 + documents.length) % documents.length);
   };
 
-  // Función para descargar PDF
-  const handleDownloadPDF = (pdfPath) => {
-    const link = document.createElement('a');
-    link.href = getLinkUrl(pdfPath);
-    link.download = pdfPath.split('/').pop();
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  // Función para abrir el modal de descarga
+  const handleDownloadClick = (doc) => {
+    setSelectedDocument(doc);
+    setIsModalOpen(true);
+  };
+
+  // Función para cerrar el modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedDocument(null);
   };
 
 
@@ -212,7 +218,7 @@ function AppScenarios() {
             <div key={index} className="w-1/3 flex flex-col justify-between">
               <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
               <p className="text-center text-md font-bold text-blue w-3/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }} dangerouslySetInnerHTML={{ __html: doc.title }} />
-              <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => handleDownloadPDF(doc.pdf)} />
+              <TransparentButton text="DOWNLOAD" style={{ width: '100%' }} onClick={() => handleDownloadClick(doc)} />
             </div>
           ))}
         </div>
@@ -229,7 +235,7 @@ function AppScenarios() {
                   <div className="flex flex-col justify-between items-center h-full">
                     <img src={getImageUrl(doc.image)} alt="Application Scenarios" className="w-4/5 mx-auto object-cover" />
                     <p className="text-center text-md font-bold text-blue w-4/5 mx-auto mt-3" style={{ fontFamily: 'var(--font-nunito-sans)' }} ><div dangerouslySetInnerHTML={{ __html: doc.titleMobile }} /></p>
-                    <TransparentButton text="DOWNLOAD" style={{ width: '80%' }} onClick={() => handleDownloadPDF(doc.pdf)} />
+                    <TransparentButton text="DOWNLOAD" style={{ width: '80%' }} onClick={() => handleDownloadClick(doc)} />
                   </div>
                 </div>
               ))}
@@ -322,6 +328,13 @@ function AppScenarios() {
           transform: `rotateX(180deg) translate3d(0px, ${parallaxRight.y}px, 0)`,
           willChange: 'transform'
         }}
+      />
+
+      {/* Modal de descarga */}
+      <DownloadModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        selectedDocument={selectedDocument}
       />
 
     </div>

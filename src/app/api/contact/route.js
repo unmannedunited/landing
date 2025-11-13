@@ -22,7 +22,7 @@ export async function POST(request) {
       );
     }
 
-    // Enviar email a SENDGRID_TO_EMAIL
+    // Enviar email a MAILJET_TO_EMAIL
     await sendContactEmail(email, message);
     console.log('Email successfully sent:', { email, message });
 

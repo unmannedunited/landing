@@ -6,13 +6,21 @@ Ve a tu repositorio → Settings → Secrets and variables → Actions → New r
 
 ### **Secrets Requeridos:**
 
-1. **`SENDGRID_API_KEY`**
-   - Valor: Tu API Key de SendGrid (comienza con `SG.`)
-   - Ejemplo: `SG.abc123def456ghi789jkl012mno345pqr678stu901vwx234yz.1234567890abcdef`
+1. **`MAILJET_API_KEY`**
+   - Valor: Tu API Key pública de Mailjet
+   - Ejemplo: `abc123def456ghi789jkl012mno345pqr`
 
-2. **`SENDGRID_FROM_EMAIL`**
-   - Valor: Email verificado en SendGrid para enviar
+2. **`MAILJET_API_SECRET`**
+   - Valor: Tu Secret Key de Mailjet
+   - Ejemplo: `xyz789uvw456rst123opq890lmn567ijk`
+
+3. **`MAILJET_FROM_EMAIL`**
+   - Valor: Email verificado en Mailjet para enviar
    - Ejemplo: `noreply@unmannedunited.com`
+
+4. **`MAILJET_TO_EMAIL`**
+   - Valor: Email donde recibirás las notificaciones
+   - Ejemplo: `achinahas95@gmail.com`
 
 ## 🚀 **Configuración del Workflow**
 
@@ -62,14 +70,15 @@ npx serve out
 
 - ✅ **No necesitas** configurar `BASE_PATH` y `ASSET_PREFIX` como secrets
 - ✅ **Están hardcodeados** en el workflow para GitHub Pages
-- ✅ **Solo necesitas** configurar los secrets de SendGrid
+- ✅ **Solo necesitas** configurar los secrets de Mailjet
 - ✅ **El workflow maneja** automáticamente la configuración estática
 
 ## 🚨 **Solución de Problemas**
 
 ### Error: "Build failed"
 - Verifica que los secrets estén configurados correctamente
-- Revisa que la API Key de SendGrid sea válida
+- Revisa que las API Keys de Mailjet sean válidas
+- Asegúrate de que `MAILJET_API_KEY` y `MAILJET_API_SECRET` estén configuradas
 
 ### Error: "Images not loading"
 - Las imágenes se optimizan automáticamente para GitHub Pages

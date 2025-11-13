@@ -34,9 +34,10 @@ jobs:
       - name: Set up environment variables
         run: 
           echo "NODE_ENV=production" >> $GITHUB_ENV
-          echo "SENDGRID_API_KEY=${{ secrets.SENDGRID_API_KEY }}" >> $GITHUB_ENV
-          echo "SENDGRID_FROM_EMAIL=${{ secrets.SENDGRID_FROM_EMAIL }}" >> $GITHUB_ENV
-          echo "SENDGRID_TO_EMAIL=${{ secrets.SENDGRID_TO_EMAIL }}" >> $GITHUB_ENV
+          echo "MAILJET_API_KEY=${{ secrets.MAILJET_API_KEY }}" >> $GITHUB_ENV
+          echo "MAILJET_API_SECRET=${{ secrets.MAILJET_API_SECRET }}" >> $GITHUB_ENV
+          echo "MAILJET_FROM_EMAIL=${{ secrets.MAILJET_FROM_EMAIL }}" >> $GITHUB_ENV
+          echo "MAILJET_TO_EMAIL=${{ secrets.MAILJET_TO_EMAIL }}" >> $GITHUB_ENV
           echo "BASE_PATH=/landing" >> $GITHUB_ENV
           echo "ASSET_PREFIX=/landing" >> $GITHUB_ENV
       - name: Detect package manager
