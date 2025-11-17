@@ -11,7 +11,6 @@ import AppScenarios from "../components/overwatch/AppScenarios";
 import LastPic from "../components/overwatch/LastPic";
 import { getImageUrl } from "@/lib/utils";
 import VideoPlayer from "../components/VideoPlayer";
-import LogoLoader from "../../components/LogoLoader";
 import LinkScrollButton from "../components/LinkScrollButton";
 
 export default function About() {
@@ -52,35 +51,33 @@ export default function About() {
   }, []);
 
   return (
-    <LogoLoader>
-      <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
-        <Navigation />
-        <div className="bg-black relative z-10">
-          <div className="w-full md:mt-0 mt-16 max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
-            <VideoPlayer 
-              src={getImageUrl("/UU_vid_sm.mp4")}
-              className="w-full h-fit bg-black object-contain relative"
-              volume={0.3}
-            />
+    <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
+      <Navigation />
+      <div className="bg-black relative z-10">
+        <div className="w-full md:mt-0 mt-16 max-w-[1400px] mx-auto h-fit bg-black object-contain relative">
+          <VideoPlayer 
+            src={getImageUrl("/UU_vid_sm.mp4")}
+            className="w-full h-fit bg-black object-contain relative"
+            volume={0.3}
+          />
 
-            <LinkScrollButton text={windowWidth < 768 ? "Get docs" : "Get documentation"} href="#documentation" showButton={true} onClick={handleDocumentationClick} />
+          <LinkScrollButton text={windowWidth < 768 ? "Get docs" : "Get documentation"} href="#documentation" showButton={true} onClick={handleDocumentationClick} />
 
-          </div>
         </div>
-        
-        <div className="md:pt-0 pt-36 bg-black border-black border-b">
-          <ProductHero scrollY={scrollY} />
-        </div>
-        <ProductDetail />
-
-        <TeamPic />
-
-        <AppScenarios />
-        <LastPic />
-
-        <ContactForm offset={windowWidth < 768 ? 600 : -1000} scrollY={scrollY} />
-        <Footer />
       </div>
-    </LogoLoader>
+      
+      <div className="md:pt-0 pt-36 bg-black border-black border-b">
+        <ProductHero scrollY={scrollY} />
+      </div>
+      <ProductDetail />
+
+      <TeamPic />
+
+      <AppScenarios />
+      <LastPic />
+
+      <ContactForm offset={windowWidth < 768 ? 600 : -1000} scrollY={scrollY} />
+      <Footer />
+    </div>
   );
 }

@@ -8,7 +8,6 @@ import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
 import LinkScrollButton from "./components/LinkScrollButton";
 import OverwatchSection from "./components/OverwatchSection";
-import LogoLoader from "../components/LogoLoader";
 import { getLinkUrl } from "@/lib/utils";
 
 export default function Home() {
@@ -78,28 +77,26 @@ export default function Home() {
   };
 
   return (
-    <LogoLoader>
-      <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
-        <Navigation />
-        <div className="md:pt-0 pt-16">
-          <HeroSection scrollY={scrollY} />
-        </div>
-
-        <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
-          <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} onClick={handleContactClick} />
-          
-
-          <Overview />
-          <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href={getLinkUrl("/about")} showButton={true} />
-
-
-          <OverwatchSection scrollY={scrollY} />
-
-          <ContactForm offset={windowWidth < 768 ? 900 : 300} />
-        </div>
-
-        <Footer />
+    <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
+      <Navigation />
+      <div className="md:pt-0 pt-16">
+        <HeroSection scrollY={scrollY} />
       </div>
-    </LogoLoader>
+
+      <div className={`w-full bg-background border-t border-dashed border-foreground transition-opacity duration-1000 ease-in-out`}>
+        <LinkScrollButton text="Contact us" href="#contact-form" showButton={showButton} onClick={handleContactClick} />
+        
+
+        <Overview />
+        <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href={getLinkUrl("/about")} showButton={true} />
+
+
+        <OverwatchSection scrollY={scrollY} />
+
+        <ContactForm offset={windowWidth < 768 ? 900 : 300} />
+      </div>
+
+      <Footer />
+    </div>
   );
 }

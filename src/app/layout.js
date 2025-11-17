@@ -3,7 +3,7 @@ import "./globals.css";
 import { getImageUrl } from "../lib/utils";
 import FontLoader from "../components/FontLoader";
 import CookieBanner from "./components/CookieBanner";
-import GlobalImageLoader from "../components/GlobalImageLoader";
+import LogoLoader from "../components/LogoLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,11 +109,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased`}
       >
-        <GlobalImageLoader>
+        <LogoLoader>
           <FontLoader />
           {children}
           <CookieBanner />
-        </GlobalImageLoader>
+        </LogoLoader>
       </body>
     </html>
   );
