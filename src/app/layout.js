@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Syncopate, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { getImageUrl } from "../lib/utils";
 import FontLoader from "../components/FontLoader";
+import CookieBanner from "./components/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,6 +104,7 @@ export default function RootLayout({ children }) {
       >
         <FontLoader />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

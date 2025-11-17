@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { getImageUrl, getLinkUrl } from "../../../lib/utils";
 import SendButton from "../SendButton";
+import { useCookieConsent } from "../../../hooks/useCookieConsent";
 
 export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
+  const { hasConsent } = useCookieConsent();
   const [formData, setFormData] = useState({
     name: '',
     lastName: '',
@@ -16,18 +18,20 @@ export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Cargar datos guardados del localStorage al montar
+  // Cargar datos guardados del localStorage al montar (solo si hay consentimiento)
   useEffect(() => {
-    const savedData = localStorage.getItem('downloadFormData');
-    if (savedData) {
-      try {
-        const parsed = JSON.parse(savedData);
-        setFormData(prev => ({ ...prev, ...parsed }));
-      } catch (error) {
-        console.error('Error parsing saved form data:', error);
+    if (hasConsent()) {
+      const savedData = localStorage.getItem('downloadFormData');
+      if (savedData) {
+        try {
+          const parsed = JSON.parse(savedData);
+          setFormData(prev => ({ ...prev, ...parsed }));
+        } catch (error) {
+          console.error('Error parsing saved form data:', error);
+        }
       }
     }
-  }, []);
+  }, [hasConsent]);
 
   // Prevenir scroll cuando el modal está abierto
   useEffect(() => {
@@ -126,7 +130,7 @@ export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
     setIsSubmitting(true);
     
     try {
-      // Guardar datos en localStorage
+      // Guardar datos en localStorage solo si hay consentimiento
       const dataToSave = {
         name: formData.name,
         lastName: formData.lastName,
@@ -134,7 +138,10 @@ export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
         phone: formData.phone,
         email: formData.email
       };
-      localStorage.setItem('downloadFormData', JSON.stringify(dataToSave));
+      
+      if (hasConsent()) {
+        localStorage.setItem('downloadFormData', JSON.stringify(dataToSave));
+      }
 
       // Enviar email
       const link = getLinkUrl('/api/download');
