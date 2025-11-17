@@ -48,7 +48,7 @@ export default function CookieBanner() {
             </h3>
             <p className="text-foreground text-sm sm:text-base leading-relaxed">
               We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
-              By clicking "Accept All", you consent to our use of cookies. You can also choose to reject non-essential cookies.
+              By clicking &quot;Accept All&quot;, you consent to our use of cookies. You can also choose to reject non-essential cookies.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
