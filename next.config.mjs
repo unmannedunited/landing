@@ -8,14 +8,11 @@ const nextConfig = {
     
     // Configuración de imágenes
     images: {
-        unoptimized: !isGitHubPages,
-        // loader: isGitHubPages ? 'custom' : 'default',
-        // path: isGitHubPages ? `${process.env.ASSET_PREFIX || ''}/_next/image` : '/_next/image',
-        // Configuración para optimización de imágenes
+        unoptimized: isGitHubPages,
         formats: ['image/webp', 'image/avif'],
-        // minimumCacheTTL: 60,
-        // dangerouslyAllowSVG: true,
-        // contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+        minimumCacheTTL: 31536000, // 1 año de cache
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     },
     
     // Configuración de salida estática para GitHub Pages
@@ -33,19 +30,28 @@ const nextConfig = {
     compress: true,
     
     // Configuración de headers para cache
-    // async headers() {
-    //     return [
-    //         {
-    //             source: '/public/:path*',
-    //             headers: [
-    //                 {
-    //                     key: 'Cache-Control',
-    //                     value: 'public, max-age=31536000, immutable',
-    //                 },
-    //             ],
-    //         },
-    //     ];
-    // },
+    async headers() {
+        return [
+            {
+                source: '/:path*\\.(png|jpg|jpeg|gif|webp|avif|svg|ico)',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
+                ],
+            },
+            {
+                source: '/_next/static/:path*',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
+                ],
+            },
+        ];
+    },
 };
 
 export default nextConfig;

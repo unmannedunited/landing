@@ -3,6 +3,7 @@ import "./globals.css";
 import { getImageUrl } from "../lib/utils";
 import FontLoader from "../components/FontLoader";
 import CookieBanner from "./components/CookieBanner";
+import GlobalImageLoader from "../components/GlobalImageLoader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -98,13 +99,21 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Unmanned United" />
         <link rel="canonical" href="https://unmannedunited.com" />
+        <link rel="preload" as="image" href="/landing/home/hero.png" />
+        <link rel="preload" as="image" href="/landing/home/hero-mobile.png" />
+        <link rel="preload" as="image" href="/landing/home/hero-text.png" />
+        <link rel="preload" as="image" href="/landing/home/hero-text-sm.png" />
+        <link rel="preload" as="image" href="/landing/home/hero-logo.png" />
+        <link rel="preload" as="image" href="/landing/unmanned-logo.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syncopate.variable} ${nunitoSans.variable} antialiased`}
       >
-        <FontLoader />
-        {children}
-        <CookieBanner />
+        <GlobalImageLoader>
+          <FontLoader />
+          {children}
+          <CookieBanner />
+        </GlobalImageLoader>
       </body>
     </html>
   );
