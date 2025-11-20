@@ -44,16 +44,24 @@ export function trackEvent(eventName, eventParams = {}) {
   // Verificar consentimiento antes de trackear (GDPR compliant)
   if (!hasCookieConsent()) {
     // No trackear si no hay consentimiento
+    if (process.env.NODE_ENV === 'development') {
+      console.log('🚫 GA Event blocked (no consent):', eventName, eventParams);
+    }
     return;
   }
 
   // Verificar si gtag está disponible
   if (typeof window.gtag === 'function') {
     window.gtag('event', eventName, eventParams);
+    // Log en desarrollo para debugging
+    if (process.env.NODE_ENV === 'development') {
+      console.log('✅ GA Event tracked:', eventName, eventParams);
+    }
   } else {
     // Fallback: log en consola solo en desarrollo (no trackear sin consentimiento)
     if (process.env.NODE_ENV === 'development') {
-      console.log('GA Event (consent required):', eventName, eventParams);
+      console.warn('⚠️ GA Event NOT tracked (gtag not available):', eventName, eventParams);
+      console.log('💡 Tip: Asegúrate de que Google Analytics está cargado y que aceptaste las cookies');
     }
   }
 }

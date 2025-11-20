@@ -20,6 +20,30 @@ export default function GoogleAnalyticsComponent() {
       // Solo cargar si el consentimiento es explícitamente 'accepted'
       const hasAccepted = consent === 'accepted';
       setShouldLoad(hasAccepted);
+      
+      // Debug logging en desarrollo
+      if (process.env.NODE_ENV === 'development') {
+        console.log('🔍 GoogleAnalytics Debug:', {
+          mounted,
+          hasGaId: !!gaId,
+          gaId: gaId ? `${gaId.substring(0, 3)}...` : 'undefined',
+          consent,
+          hasAccepted,
+          shouldLoad: hasAccepted
+        });
+        
+        if (!gaId) {
+          console.warn('⚠️ NEXT_PUBLIC_GA_ID no está configurado. Agrega NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX a tu archivo .env.local');
+        }
+        
+        if (mounted && gaId && consent !== 'accepted') {
+          console.log('💡 Google Analytics no se carga porque:', 
+            consent === null ? 'No hay consentimiento (acepta las cookies)' :
+            consent === 'rejected' ? 'El usuario rechazó las cookies' :
+            'Consentimiento desconocido'
+          );
+        }
+      }
     } else {
       setShouldLoad(false);
     }
@@ -32,6 +56,9 @@ export default function GoogleAnalyticsComponent() {
 
   // No cargar Google Analytics si no hay ID configurado
   if (!gaId) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('⚠️ Google Analytics no se carga: NEXT_PUBLIC_GA_ID no está configurado');
+    }
     return null;
   }
 
@@ -39,6 +66,11 @@ export default function GoogleAnalyticsComponent() {
   // Si consent es 'rejected' o null, no cargar (GDPR compliant)
   if (!shouldLoad) {
     return null;
+  }
+
+  // Debug: confirmar que se está cargando
+  if (process.env.NODE_ENV === 'development') {
+    console.log('✅ Cargando Google Analytics con ID:', gaId);
   }
 
   return <GoogleAnalytics gaId={gaId} />;
