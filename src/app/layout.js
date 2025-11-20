@@ -4,6 +4,7 @@ import { getImageUrl } from "../lib/utils";
 import FontLoader from "../components/FontLoader";
 import CookieBanner from "./components/CookieBanner";
 import LogoLoader from "../components/LogoLoader";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -113,6 +114,7 @@ export default function RootLayout({ children }) {
           <FontLoader />
           {children}
           <CookieBanner />
+          <GoogleAnalytics />
         </LogoLoader>
       </body>
     </html>

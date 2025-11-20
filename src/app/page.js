@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import LinkScrollButton from "./components/LinkScrollButton";
 import OverwatchSection from "./components/OverwatchSection";
 import { getLinkUrl } from "@/lib/utils";
+import { trackButtonClick } from "@/lib/analytics";
 
 export default function Home() {
   // Estado para la sección de overview y botón
@@ -70,10 +71,17 @@ export default function Home() {
 
   const handleContactClick = (e) => {
     e.preventDefault();
+    // Trackear click en botón "Contact us"
+    trackButtonClick('Contact Us', 'home');
     document.getElementById('contact-form')?.scrollIntoView({ 
       behavior: 'smooth',
       block: 'start'
     });
+  };
+
+  const handleLearnMoreClick = (e) => {
+    // Trackear click en botón "Learn more"
+    trackButtonClick('Learn More', 'home');
   };
 
   return (
@@ -88,7 +96,7 @@ export default function Home() {
         
 
         <Overview />
-        <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href={getLinkUrl("/about")} showButton={true} />
+        <LinkScrollButton text={windowWidth < 768 ? "Learn more" : "Learn more about us"} href={getLinkUrl("/about")} showButton={true} onClick={handleLearnMoreClick} />
 
 
         <OverwatchSection scrollY={scrollY} />

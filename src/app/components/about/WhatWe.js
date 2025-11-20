@@ -5,6 +5,7 @@ import { getImageUrl, getLinkUrl } from "../../../lib/utils";
 import { useAdvancedParallax } from "../../../hooks/useParallax";
 import ActionButton from "../ActionButton";
 import AimIcon from "./AimIcon";
+import { trackFormSubmit } from "../../../lib/analytics";
 
 export default function WhatWe({ }) {
   const [formData, setFormData] = useState({
@@ -58,6 +59,8 @@ export default function WhatWe({ }) {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ message: "", email: "" });
+        // Trackear envío exitoso del formulario
+        trackFormSubmit('about_whatwe');
       } else {
         setSubmitStatus('error');
       }

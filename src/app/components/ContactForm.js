@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getImageUrl, getLinkUrl } from "../../lib/utils";
 import { useAdvancedParallax } from "../../hooks/useParallax";
 import SendButton from "./SendButton";
+import { trackFormSubmit } from "../../lib/analytics";
 
 export default function ContactForm({ offset, scrollY = 0 }) {
   const [formData, setFormData] = useState({
@@ -54,6 +55,8 @@ export default function ContactForm({ offset, scrollY = 0 }) {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ message: "", email: "" });
+        // Trackear envío exitoso del formulario
+        trackFormSubmit('home');
       } else {
         setSubmitStatus('error');
       }

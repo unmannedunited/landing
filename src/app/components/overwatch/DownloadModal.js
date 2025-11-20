@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { getImageUrl, getLinkUrl } from "../../../lib/utils";
 import SendButton from "../SendButton";
 import { useCookieConsent } from "../../../hooks/useCookieConsent";
+import { trackDownload } from "../../../lib/analytics";
 
 export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
   const { hasConsent } = useCookieConsent();
@@ -164,6 +165,9 @@ export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
       downloadLink.click();
       document.body.removeChild(downloadLink);
 
+      // Trackear descarga exitosa
+      trackDownload(selectedDocument.title);
+
       // Cerrar el modal
       handleCloseModal();
     } catch (error) {
@@ -175,6 +179,10 @@ export default function DownloadModal({ isOpen, onClose, selectedDocument }) {
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
+      
+      // Trackear descarga (aunque haya habido error en el email)
+      trackDownload(selectedDocument.title);
+      
       handleCloseModal();
     } finally {
       setIsSubmitting(false);
