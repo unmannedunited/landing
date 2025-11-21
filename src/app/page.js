@@ -84,8 +84,6 @@ export default function Home() {
     trackButtonClick('Learn More', 'home');
   };
 
-  console.log("This is new")
-
   return (
     <div className="relative w-full bg-white max-w-[100vw] overflow-x-hidden">
       <Navigation />

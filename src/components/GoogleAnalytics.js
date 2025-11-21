@@ -1,136 +1,164 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import ReactGA from 'react-ga4';
 import { useCookieConsent } from '../hooks/useCookieConsent';
 
 export default function GoogleAnalyticsComponent() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   const { hasConsent, consent } = useCookieConsent();
   const [mounted, setMounted] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Actualizar cuando cambia el consentimiento (para cargar GA si el usuario acepta después)
+  // Inicializar Google Analytics cuando el usuario da consentimiento
   useEffect(() => {
-    if (mounted && gaId) {
-      // Solo cargar si el consentimiento es explícitamente 'accepted'
-      const hasAccepted = consent === 'accepted';
-      setShouldLoad(hasAccepted);
-      
-      // Debug logging en desarrollo
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔍 GoogleAnalytics Debug:', {
-          mounted,
-          hasGaId: !!gaId,
-          gaId: gaId ? `${gaId.substring(0, 3)}...` : 'undefined',
-          consent,
-          hasAccepted,
-          shouldLoad: hasAccepted
+    if (!mounted) {
+      console.log('🔍 [GA Debug] Componente aún no montado');
+      return;
+    }
+
+    if (!gaId) {
+      console.error('❌ [GA Debug] NEXT_PUBLIC_GA_ID no está configurado');
+      console.log('💡 Agrega NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX a tu archivo .env.local');
+      return;
+    }
+
+    const hasAccepted = consent === 'accepted';
+
+    console.log('🔍 [GA Debug] Estado actual:', {
+      mounted,
+      hasGaId: !!gaId,
+      gaId: gaId ? `${gaId.substring(0, 3)}...` : 'undefined',
+      consent,
+      hasAccepted,
+      initialized
+    });
+
+    if (hasAccepted && !initialized) {
+      try {
+        console.log('🚀 [GA Debug] Inicializando react-ga4 con ID:', gaId);
+        
+        // Inicializar react-ga4 SIN testMode para que realmente envíe datos
+        ReactGA.initialize(gaId, {
+          // testMode: false - no usar testMode para que envíe datos reales
         });
-        
-        if (!gaId) {
-          console.warn('⚠️ NEXT_PUBLIC_GA_ID no está configurado. Agrega NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX a tu archivo .env.local');
-        }
-        
-        if (mounted && gaId && consent !== 'accepted') {
-          console.log('💡 Google Analytics no se carga porque:', 
-            consent === null ? 'No hay consentimiento (acepta las cookies)' :
-            consent === 'rejected' ? 'El usuario rechazó las cookies' :
-            'Consentimiento desconocido'
-          );
-        }
-      }
-    } else {
-      setShouldLoad(false);
-    }
-  }, [mounted, gaId, consent]);
 
-  // No renderizar hasta que el componente esté montado (evitar hydration mismatch)
-  if (!mounted) {
-    return null;
-  }
+        setInitialized(true);
 
-  // No cargar Google Analytics si no hay ID configurado
-  if (!gaId) {
-    if (process.env.NODE_ENV === 'development') {
-      console.warn('⚠️ Google Analytics no se carga: NEXT_PUBLIC_GA_ID no está configurado');
-    }
-    return null;
-  }
-
-  // Solo cargar Google Analytics si el usuario ha dado su consentimiento
-  // Si consent es 'rejected' o null, no cargar (GDPR compliant)
-  if (!shouldLoad) {
-    return null;
-  }
-
-  // Debug: confirmar que se está cargando
-  if (process.env.NODE_ENV === 'development') {
-    console.log('✅ Cargando Google Analytics con ID:', gaId);
-  }
-
-  // Inicializar Google Analytics manualmente si el componente no lo hace
-  useEffect(() => {
-    if (shouldLoad && gaId) {
-      let attempts = 0;
-      const maxAttempts = 10;
-      
-      // Esperar a que el script se cargue y luego inicializar
-      const initGA = () => {
-        attempts++;
-        
-        // Verificar si ya está inicializado (hay un evento config en dataLayer)
-        const hasConfig = window.dataLayer?.some(item => 
-          Array.isArray(item) && item[0] === 'config' && item[1] === gaId
-        );
-
-        if (!hasConfig && typeof window.gtag === 'function') {
-          // Inicializar Google Analytics manualmente
-          console.log('🔧 Inicializando Google Analytics manualmente con ID:', gaId);
-          try {
-            window.gtag('config', gaId, {
-              page_path: window.location.pathname,
-              page_title: document.title
-            });
-            console.log('✅ Google Analytics inicializado correctamente');
+        // Esperar a que react-ga4 cargue completamente el script
+        const checkAndSendPageview = (attempts = 0) => {
+          const maxAttempts = 20;
+          
+          if (typeof window.gtag === 'function') {
+            console.log('✅ [GA Debug] gtag está disponible, enviando pageview');
             
-            // Verificar que se agregó al dataLayer
-            setTimeout(() => {
-              const configAdded = window.dataLayer?.some(item => 
-                Array.isArray(item) && item[0] === 'config' && item[1] === gaId
-              );
-              if (configAdded) {
-                console.log('✅ Evento de configuración confirmado en dataLayer');
-              } else {
-                console.warn('⚠️ Evento de configuración no se agregó al dataLayer');
-              }
-            }, 100);
-          } catch (e) {
-            console.error('❌ Error al inicializar Google Analytics:', e);
+            try {
+              // Enviar página inicial - react-ga4 trackea automáticamente pero podemos forzarlo
+              ReactGA.send('pageview');
+              
+              // También enviar con gtag directamente para asegurar
+              window.gtag('config', gaId, {
+                page_path: window.location.pathname + window.location.search,
+                page_title: document.title
+              });
+              
+              console.log('✅ [GA Debug] Pageview enviado:', window.location.pathname);
+              
+              // Enviar un evento de prueba después de un momento
+              setTimeout(() => {
+                try {
+                  ReactGA.event('ga_initialized', {
+                    event_category: 'System',
+                    event_label: 'GA4 Initialization',
+                    value: 1
+                  });
+                  console.log('✅ [GA Debug] Evento de prueba enviado');
+                  
+                  // Verificar dataLayer
+                  if (window.dataLayer) {
+                    console.log('📊 [GA Debug] dataLayer tiene', window.dataLayer.length, 'eventos');
+                    const lastEvents = window.dataLayer.slice(-3);
+                    console.log('📊 [GA Debug] Últimos eventos:');
+                    lastEvents.forEach((event, index) => {
+                      if (Array.isArray(event)) {
+                        const [command, ...args] = event;
+                        console.log(`   ${index + 1}. ${command}:`, args.length > 0 ? args : '(sin parámetros)');
+                      } else {
+                        console.log(`   ${index + 1}.`, event);
+                      }
+                    });
+                    
+                    // Verificar si hay eventos config
+                    const configEvents = window.dataLayer.filter(e => 
+                      Array.isArray(e) && e[0] === 'config'
+                    );
+                    if (configEvents.length > 0) {
+                      console.log('✅ [GA Debug] Eventos de configuración encontrados:', configEvents.length);
+                    }
+                    
+                    // Verificar eventos de tipo event
+                    const eventEvents = window.dataLayer.filter(e => 
+                      Array.isArray(e) && e[0] === 'event'
+                    );
+                    if (eventEvents.length > 0) {
+                      console.log('✅ [GA Debug] Eventos de tracking encontrados:', eventEvents.length);
+                    }
+                  }
+                } catch (error) {
+                  console.error('❌ [GA Debug] Error al enviar evento de prueba:', error);
+                }
+              }, 1000);
+            } catch (error) {
+              console.error('❌ [GA Debug] Error al enviar pageview:', error);
+            }
+          } else if (attempts < maxAttempts) {
+            // Intentar de nuevo en 200ms
+            setTimeout(() => checkAndSendPageview(attempts + 1), 200);
+          } else {
+            console.error('❌ [GA Debug] gtag no se hizo disponible después de', maxAttempts, 'intentos');
+            console.log('💡 [GA Debug] Verifica:');
+            console.log('   1. Que el ID de GA sea correcto (formato G-XXXXXXXXXX)');
+            console.log('   2. Que no haya bloqueadores de anuncios activos');
+            console.log('   3. La consola del navegador para errores de red');
           }
-        } else if (hasConfig) {
-          if (process.env.NODE_ENV === 'development') {
-            console.log('✅ Google Analytics ya estaba inicializado');
-          }
-        } else if (typeof window.gtag !== 'function' && attempts < maxAttempts) {
-          // Reintentar si gtag aún no está disponible
-          setTimeout(initGA, 500);
-        } else if (attempts >= maxAttempts) {
-          console.error('❌ No se pudo inicializar Google Analytics después de', maxAttempts, 'intentos');
-        }
-      };
+        };
+        
+        // Comenzar a verificar después de un breve delay
+        setTimeout(() => checkAndSendPageview(), 300);
 
-      // Esperar un poco para que el script se cargue
-      const timer = setTimeout(initGA, 1000);
-      
-      return () => clearTimeout(timer);
+        console.log('✅ [GA Debug] Google Analytics inicializado correctamente');
+      } catch (error) {
+        console.error('❌ [GA Debug] Error al inicializar Google Analytics:', error);
+        console.error('Stack:', error.stack);
+      }
+    } else if (!hasAccepted) {
+      console.log('💡 [GA Debug] Google Analytics no se inicializa porque:', 
+        consent === null ? 'No hay consentimiento (acepta las cookies)' :
+        consent === 'rejected' ? 'El usuario rechazó las cookies' :
+        'Consentimiento desconocido'
+      );
     }
-  }, [shouldLoad, gaId]);
+  }, [mounted, gaId, consent, initialized]);
 
-  return <GoogleAnalytics gaId={gaId} />;
+  // Verificar estado de gtag periódicamente en desarrollo
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && initialized) {
+      const interval = setInterval(() => {
+        if (typeof window.gtag === 'function') {
+          console.log('✅ [GA Debug] gtag verificado y funcionando');
+        } else {
+          console.warn('⚠️ [GA Debug] gtag aún no está disponible');
+        }
+      }, 5000);
+
+      return () => clearInterval(interval);
+    }
+  }, [initialized]);
+
+  // No renderizar nada (react-ga4 no necesita un componente visual)
+  return null;
 }
-
