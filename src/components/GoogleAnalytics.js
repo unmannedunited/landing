@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
 import { useCookieConsent } from '../hooks/useCookieConsent';
+import { checkGAStatus, checkGANetwork } from '../lib/analytics';
 
 export default function GoogleAnalyticsComponent() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -107,6 +108,13 @@ export default function GoogleAnalyticsComponent() {
                     if (eventEvents.length > 0) {
                       console.log('✅ [GA Debug] Eventos de tracking encontrados:', eventEvents.length);
                     }
+                    
+                    // Información sobre cómo verificar en Network
+                    console.log('\n💡 [GA Debug] Para verificar que los eventos se envían a Google:');
+                    console.log('   1. Abre DevTools > Network tab');
+                    console.log('   2. Filtra por "google-analytics" o "collect"');
+                    console.log('   3. Deberías ver requests a: https://www.google-analytics.com/g/collect');
+                    console.log('   4. O ejecuta: window.checkGANetwork()');
                   }
                 } catch (error) {
                   console.error('❌ [GA Debug] Error al enviar evento de prueba:', error);
@@ -158,6 +166,17 @@ export default function GoogleAnalyticsComponent() {
       return () => clearInterval(interval);
     }
   }, [initialized]);
+
+  // Exponer funciones de debugging globalmente en desarrollo
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
+      window.checkGAStatus = checkGAStatus;
+      window.checkGANetwork = checkGANetwork;
+      console.log('💡 [GA Debug] Funciones de debugging disponibles:');
+      console.log('   - window.checkGAStatus() - Ver estado de GA');
+      console.log('   - window.checkGANetwork() - Verificar requests de red');
+    }
+  }, []);
 
   // No renderizar nada (react-ga4 no necesita un componente visual)
   return null;
