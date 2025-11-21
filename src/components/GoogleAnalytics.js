@@ -73,6 +73,64 @@ export default function GoogleAnalyticsComponent() {
     console.log('✅ Cargando Google Analytics con ID:', gaId);
   }
 
+  // Inicializar Google Analytics manualmente si el componente no lo hace
+  useEffect(() => {
+    if (shouldLoad && gaId) {
+      let attempts = 0;
+      const maxAttempts = 10;
+      
+      // Esperar a que el script se cargue y luego inicializar
+      const initGA = () => {
+        attempts++;
+        
+        // Verificar si ya está inicializado (hay un evento config en dataLayer)
+        const hasConfig = window.dataLayer?.some(item => 
+          Array.isArray(item) && item[0] === 'config' && item[1] === gaId
+        );
+
+        if (!hasConfig && typeof window.gtag === 'function') {
+          // Inicializar Google Analytics manualmente
+          console.log('🔧 Inicializando Google Analytics manualmente con ID:', gaId);
+          try {
+            window.gtag('config', gaId, {
+              page_path: window.location.pathname,
+              page_title: document.title
+            });
+            console.log('✅ Google Analytics inicializado correctamente');
+            
+            // Verificar que se agregó al dataLayer
+            setTimeout(() => {
+              const configAdded = window.dataLayer?.some(item => 
+                Array.isArray(item) && item[0] === 'config' && item[1] === gaId
+              );
+              if (configAdded) {
+                console.log('✅ Evento de configuración confirmado en dataLayer');
+              } else {
+                console.warn('⚠️ Evento de configuración no se agregó al dataLayer');
+              }
+            }, 100);
+          } catch (e) {
+            console.error('❌ Error al inicializar Google Analytics:', e);
+          }
+        } else if (hasConfig) {
+          if (process.env.NODE_ENV === 'development') {
+            console.log('✅ Google Analytics ya estaba inicializado');
+          }
+        } else if (typeof window.gtag !== 'function' && attempts < maxAttempts) {
+          // Reintentar si gtag aún no está disponible
+          setTimeout(initGA, 500);
+        } else if (attempts >= maxAttempts) {
+          console.error('❌ No se pudo inicializar Google Analytics después de', maxAttempts, 'intentos');
+        }
+      };
+
+      // Esperar un poco para que el script se cargue
+      const timer = setTimeout(initGA, 1000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [shouldLoad, gaId]);
+
   return <GoogleAnalytics gaId={gaId} />;
 }
 
